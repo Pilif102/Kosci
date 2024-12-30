@@ -1,0 +1,4 @@
+# Hashes of file build rules.
+cf8e88198aa693becbf1b9e82d99c701 CMakeFiles/KlientKosci_autogen
+cf8e88198aa693becbf1b9e82d99c701 CMakeFiles/KlientKosci_autogen_timestamp_deps
+0b60e926f220995a9718c646e33cd958 KlientKosci_autogen/timestamp
