@@ -44,7 +44,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "KlientKosci::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-KlientKosci-Debug-b82118711fde94f27a56.json",
+					"jsonFile" : "target-KlientKosci-Debug-ede8b2b0596556ee2c98.json",
 					"name" : "KlientKosci",
 					"projectIndex" : 0
 				},
@@ -68,8 +68,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/student/KlientKosci/build/Desktop-Debug",
-		"source" : "/home/student/KlientKosci"
+		"build" : "/home/student/KosciVersus/KlientKosci/build/Desktop-Debug",
+		"source" : "/home/student/KosciVersus/KlientKosci"
 	},
 	"version" : 
 	{

@@ -36,6 +36,7 @@ public:
     QLineEdit *lineEditIP;
     QSpinBox *spinBoxPort;
     QPushButton *PushConnect;
+    QLineEdit *lineEdit;
     QVBoxLayout *verticalLayout;
     QLabel *label;
     QListView *listView;
@@ -85,6 +86,11 @@ public:
 
         verticalLayout_2->addLayout(horizontalLayout);
 
+        lineEdit = new QLineEdit(centralwidget);
+        lineEdit->setObjectName("lineEdit");
+
+        verticalLayout_2->addWidget(lineEdit);
+
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName("verticalLayout");
         label = new QLabel(centralwidget);
@@ -125,7 +131,11 @@ public:
         wybor->setWindowTitle(QCoreApplication::translate("wybor", "Sieci", nullptr));
         actionclose->setText(QCoreApplication::translate("wybor", "Close", nullptr));
         actionInfo->setText(QCoreApplication::translate("wybor", "Info", nullptr));
+        lineEditIP->setInputMask(QString());
+        lineEditIP->setText(QString());
+        lineEditIP->setPlaceholderText(QCoreApplication::translate("wybor", "server ip", nullptr));
         PushConnect->setText(QCoreApplication::translate("wybor", "Connect to Server", nullptr));
+        lineEdit->setPlaceholderText(QCoreApplication::translate("wybor", "nick", nullptr));
         label->setText(QCoreApplication::translate("wybor", "<html><head/><body><p>Available games list:</p></body></html>", nullptr));
         GameButton->setText(QCoreApplication::translate("wybor", "Connect to game", nullptr));
     } // retranslateUi

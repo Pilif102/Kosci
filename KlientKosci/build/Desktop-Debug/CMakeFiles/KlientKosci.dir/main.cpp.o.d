@@ -1,5 +1,6 @@
-CMakeFiles/KlientKosci.dir/main.cpp.o: /home/student/KlientKosci/main.cpp \
-  /home/student/KlientKosci/wybor.h \
+CMakeFiles/KlientKosci.dir/main.cpp.o: \
+  /home/student/KosciVersus/KlientKosci/main.cpp \
+  /home/student/KosciVersus/KlientKosci/wybor.h \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMainWindow \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qmainwindow.h \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtwidgetsglobal.h \

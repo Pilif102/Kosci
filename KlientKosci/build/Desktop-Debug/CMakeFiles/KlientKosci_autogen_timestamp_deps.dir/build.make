@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/student/KlientKosci
+CMAKE_SOURCE_DIR = /home/student/KosciVersus/KlientKosci
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/student/KlientKosci/build/Desktop-Debug
+CMAKE_BINARY_DIR = /home/student/KosciVersus/KlientKosci/build/Desktop-Debug
 
 # Utility rule file for KlientKosci_autogen_timestamp_deps.
 
@@ -68,8 +68,8 @@ include CMakeFiles/KlientKosci_autogen_timestamp_deps.dir/progress.make
 
 CMakeFiles/KlientKosci_autogen_timestamp_deps: /usr/lib/qt6/libexec/uic
 CMakeFiles/KlientKosci_autogen_timestamp_deps: /usr/lib/qt6/libexec/moc
-CMakeFiles/KlientKosci_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Core.so.6.4.2
 CMakeFiles/KlientKosci_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Widgets.so.6.4.2
+CMakeFiles/KlientKosci_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Core.so.6.4.2
 
 KlientKosci_autogen_timestamp_deps: CMakeFiles/KlientKosci_autogen_timestamp_deps
 KlientKosci_autogen_timestamp_deps: CMakeFiles/KlientKosci_autogen_timestamp_deps.dir/build.make
@@ -84,6 +84,6 @@ CMakeFiles/KlientKosci_autogen_timestamp_deps.dir/clean:
 .PHONY : CMakeFiles/KlientKosci_autogen_timestamp_deps.dir/clean
 
 CMakeFiles/KlientKosci_autogen_timestamp_deps.dir/depend:
-	cd /home/student/KlientKosci/build/Desktop-Debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/student/KlientKosci /home/student/KlientKosci /home/student/KlientKosci/build/Desktop-Debug /home/student/KlientKosci/build/Desktop-Debug /home/student/KlientKosci/build/Desktop-Debug/CMakeFiles/KlientKosci_autogen_timestamp_deps.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/student/KosciVersus/KlientKosci/build/Desktop-Debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/student/KosciVersus/KlientKosci /home/student/KosciVersus/KlientKosci /home/student/KosciVersus/KlientKosci/build/Desktop-Debug /home/student/KosciVersus/KlientKosci/build/Desktop-Debug /home/student/KosciVersus/KlientKosci/build/Desktop-Debug/CMakeFiles/KlientKosci_autogen_timestamp_deps.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/KlientKosci_autogen_timestamp_deps.dir/depend
 

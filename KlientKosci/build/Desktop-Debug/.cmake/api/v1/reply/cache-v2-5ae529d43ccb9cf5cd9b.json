@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/student/KlientKosci/build/Desktop-Debug"
+			"value" : "/home/student/KosciVersus/KlientKosci/build/Desktop-Debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -235,7 +235,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "-DQT_QML_DEBUG"
+			"value" : ""
 		},
 		{
 			"name" : "CMAKE_CXX_FLAGS_DEBUG",
@@ -263,7 +263,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "-DQT_QML_DEBUG"
+			"value" : ""
 		},
 		{
 			"name" : "CMAKE_CXX_FLAGS_MINSIZEREL",
@@ -483,7 +483,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/student/KlientKosci/build/Desktop-Debug/CMakeFiles/pkgRedirects"
+			"value" : "/home/student/KosciVersus/KlientKosci/build/Desktop-Debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -555,7 +555,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/student/KlientKosci"
+			"value" : "/home/student/KosciVersus/KlientKosci"
 		},
 		{
 			"name" : "CMAKE_INSTALL_BINDIR",
@@ -1067,7 +1067,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/home/student/KlientKosci/build/Desktop-Debug/.qtc/package-manager/auto-setup.cmake"
+			"value" : "/home/student/KosciVersus/KlientKosci/build/Desktop-Debug/.qtc/package-manager/auto-setup.cmake"
 		},
 		{
 			"name" : "CMAKE_PROJECT_NAME",
@@ -1531,7 +1531,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/student/KlientKosci/build/Desktop-Debug"
+			"value" : "/home/student/KosciVersus/KlientKosci/build/Desktop-Debug"
 		},
 		{
 			"name" : "KlientKosci_IS_TOP_LEVEL",
@@ -1555,7 +1555,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/student/KlientKosci"
+			"value" : "/home/student/KosciVersus/KlientKosci"
 		},
 		{
 			"name" : "OPENGL_EGL_INCLUDE_DIR",

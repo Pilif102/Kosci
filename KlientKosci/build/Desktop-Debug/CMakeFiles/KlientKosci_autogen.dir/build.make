@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/student/KlientKosci
+CMAKE_SOURCE_DIR = /home/student/KosciVersus/KlientKosci
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/student/KlientKosci/build/Desktop-Debug
+CMAKE_BINARY_DIR = /home/student/KosciVersus/KlientKosci/build/Desktop-Debug
 
 # Utility rule file for KlientKosci_autogen.
 
@@ -71,9 +71,9 @@ CMakeFiles/KlientKosci_autogen: KlientKosci_autogen/timestamp
 KlientKosci_autogen/timestamp: /usr/lib/qt6/libexec/moc
 KlientKosci_autogen/timestamp: /usr/lib/qt6/libexec/uic
 KlientKosci_autogen/timestamp: CMakeFiles/KlientKosci_autogen.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/student/KlientKosci/build/Desktop-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target KlientKosci"
-	/usr/bin/cmake -E cmake_autogen /home/student/KlientKosci/build/Desktop-Debug/CMakeFiles/KlientKosci_autogen.dir/AutogenInfo.json Debug
-	/usr/bin/cmake -E touch /home/student/KlientKosci/build/Desktop-Debug/KlientKosci_autogen/timestamp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/student/KosciVersus/KlientKosci/build/Desktop-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target KlientKosci"
+	/usr/bin/cmake -E cmake_autogen /home/student/KosciVersus/KlientKosci/build/Desktop-Debug/CMakeFiles/KlientKosci_autogen.dir/AutogenInfo.json Debug
+	/usr/bin/cmake -E touch /home/student/KosciVersus/KlientKosci/build/Desktop-Debug/KlientKosci_autogen/timestamp
 
 KlientKosci_autogen: CMakeFiles/KlientKosci_autogen
 KlientKosci_autogen: KlientKosci_autogen/timestamp
@@ -89,6 +89,6 @@ CMakeFiles/KlientKosci_autogen.dir/clean:
 .PHONY : CMakeFiles/KlientKosci_autogen.dir/clean
 
 CMakeFiles/KlientKosci_autogen.dir/depend:
-	cd /home/student/KlientKosci/build/Desktop-Debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/student/KlientKosci /home/student/KlientKosci /home/student/KlientKosci/build/Desktop-Debug /home/student/KlientKosci/build/Desktop-Debug /home/student/KlientKosci/build/Desktop-Debug/CMakeFiles/KlientKosci_autogen.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/student/KosciVersus/KlientKosci/build/Desktop-Debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/student/KosciVersus/KlientKosci /home/student/KosciVersus/KlientKosci /home/student/KosciVersus/KlientKosci/build/Desktop-Debug /home/student/KosciVersus/KlientKosci/build/Desktop-Debug /home/student/KosciVersus/KlientKosci/build/Desktop-Debug/CMakeFiles/KlientKosci_autogen.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/KlientKosci_autogen.dir/depend
 

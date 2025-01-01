@@ -1,5 +1,5 @@
-/home/student/KlientKosci/build/Desktop-Debug/KlientKosci_autogen/EWIEGA46WW/moc_wybor.cpp: /home/student/KlientKosci/wybor.h \
-  /home/student/KlientKosci/build/Desktop-Debug/KlientKosci_autogen/moc_predefs.h \
+/home/student/KosciVersus/KlientKosci/build/Desktop-Debug/KlientKosci_autogen/EWIEGA46WW/moc_wybor.cpp: /home/student/KosciVersus/KlientKosci/wybor.h \
+  /home/student/KosciVersus/KlientKosci/build/Desktop-Debug/KlientKosci_autogen/moc_predefs.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \

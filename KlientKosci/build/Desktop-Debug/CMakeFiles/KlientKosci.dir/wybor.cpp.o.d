@@ -1,5 +1,6 @@
 CMakeFiles/KlientKosci.dir/wybor.cpp.o: \
-  /home/student/KlientKosci/wybor.cpp /home/student/KlientKosci/wybor.h \
+  /home/student/KosciVersus/KlientKosci/wybor.cpp \
+  /home/student/KosciVersus/KlientKosci/wybor.h \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMainWindow \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qmainwindow.h \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtwidgetsglobal.h \
@@ -387,7 +388,7 @@ CMakeFiles/KlientKosci.dir/wybor.cpp.o: \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qcursor.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qbitmap.h \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtabwidget.h \
-  /home/student/KlientKosci/build/Desktop-Debug/KlientKosci_autogen/include/./ui_wybor.h \
+  /home/student/KosciVersus/KlientKosci/build/Desktop-Debug/KlientKosci_autogen/include/./ui_wybor.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/QVariant \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/QAction \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QApplication \
