@@ -5,7 +5,8 @@ project(ServerKosci LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(ServerKosci main.cpp)
+add_executable(ServerKosci main.cpp
+    punkty)
 
 include(GNUInstallDirs)
 install(TARGETS ServerKosci

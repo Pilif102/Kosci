@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/student/ServerKosci/build/Desktop-Debug"
+			"value" : "/home/student/KosciVersus/ServerKosci/build/Desktop-Debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -483,7 +483,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/student/ServerKosci/build/Desktop-Debug/CMakeFiles/pkgRedirects"
+			"value" : "/home/student/KosciVersus/ServerKosci/build/Desktop-Debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -543,7 +543,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/student/ServerKosci"
+			"value" : "/home/student/KosciVersus/ServerKosci"
 		},
 		{
 			"name" : "CMAKE_INSTALL_BINDIR",
@@ -1055,7 +1055,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/home/student/ServerKosci/build/Desktop-Debug/.qtc/package-manager/auto-setup.cmake"
+			"value" : "/home/student/KosciVersus/ServerKosci/build/Desktop-Debug/.qtc/package-manager/auto-setup.cmake"
 		},
 		{
 			"name" : "CMAKE_PROJECT_NAME",
@@ -1399,7 +1399,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/student/ServerKosci/build/Desktop-Debug"
+			"value" : "/home/student/KosciVersus/ServerKosci/build/Desktop-Debug"
 		},
 		{
 			"name" : "ServerKosci_IS_TOP_LEVEL",
@@ -1423,7 +1423,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/student/ServerKosci"
+			"value" : "/home/student/KosciVersus/ServerKosci"
 		},
 		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",

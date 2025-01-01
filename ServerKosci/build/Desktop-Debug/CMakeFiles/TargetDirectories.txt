@@ -1,7 +1,7 @@
-/home/student/ServerKosci/build/Desktop-Debug/CMakeFiles/ServerKosci.dir
-/home/student/ServerKosci/build/Desktop-Debug/CMakeFiles/edit_cache.dir
-/home/student/ServerKosci/build/Desktop-Debug/CMakeFiles/rebuild_cache.dir
-/home/student/ServerKosci/build/Desktop-Debug/CMakeFiles/list_install_components.dir
-/home/student/ServerKosci/build/Desktop-Debug/CMakeFiles/install.dir
-/home/student/ServerKosci/build/Desktop-Debug/CMakeFiles/install/local.dir
-/home/student/ServerKosci/build/Desktop-Debug/CMakeFiles/install/strip.dir
+/home/student/KosciVersus/ServerKosci/build/Desktop-Debug/CMakeFiles/ServerKosci.dir
+/home/student/KosciVersus/ServerKosci/build/Desktop-Debug/CMakeFiles/edit_cache.dir
+/home/student/KosciVersus/ServerKosci/build/Desktop-Debug/CMakeFiles/rebuild_cache.dir
+/home/student/KosciVersus/ServerKosci/build/Desktop-Debug/CMakeFiles/list_install_components.dir
+/home/student/KosciVersus/ServerKosci/build/Desktop-Debug/CMakeFiles/install.dir
+/home/student/KosciVersus/ServerKosci/build/Desktop-Debug/CMakeFiles/install/local.dir
+/home/student/KosciVersus/ServerKosci/build/Desktop-Debug/CMakeFiles/install/strip.dir

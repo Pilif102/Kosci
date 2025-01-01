@@ -1,4 +1,5 @@
-CMakeFiles/ServerKosci.dir/main.cpp.o: /home/student/ServerKosci/main.cpp \
+CMakeFiles/ServerKosci.dir/main.cpp.o: \
+  /home/student/KosciVersus/ServerKosci/main.cpp \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/iostream \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/requires_hosted.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/x86_64-linux-gnu/c++/13/bits/c++config.h \
