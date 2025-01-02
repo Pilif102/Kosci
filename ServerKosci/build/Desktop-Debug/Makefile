@@ -174,6 +174,30 @@ ServerKosci/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServerKosci.dir/build.make CMakeFiles/ServerKosci.dir/build
 .PHONY : ServerKosci/fast
 
+gamemanager.o: gamemanager.cpp.o
+.PHONY : gamemanager.o
+
+# target to build an object file
+gamemanager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServerKosci.dir/build.make CMakeFiles/ServerKosci.dir/gamemanager.cpp.o
+.PHONY : gamemanager.cpp.o
+
+gamemanager.i: gamemanager.cpp.i
+.PHONY : gamemanager.i
+
+# target to preprocess a source file
+gamemanager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServerKosci.dir/build.make CMakeFiles/ServerKosci.dir/gamemanager.cpp.i
+.PHONY : gamemanager.cpp.i
+
+gamemanager.s: gamemanager.cpp.s
+.PHONY : gamemanager.s
+
+# target to generate assembly for a file
+gamemanager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServerKosci.dir/build.make CMakeFiles/ServerKosci.dir/gamemanager.cpp.s
+.PHONY : gamemanager.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -197,6 +221,30 @@ main.s: main.cpp.s
 main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServerKosci.dir/build.make CMakeFiles/ServerKosci.dir/main.cpp.s
 .PHONY : main.cpp.s
+
+playermanager.o: playermanager.cpp.o
+.PHONY : playermanager.o
+
+# target to build an object file
+playermanager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServerKosci.dir/build.make CMakeFiles/ServerKosci.dir/playermanager.cpp.o
+.PHONY : playermanager.cpp.o
+
+playermanager.i: playermanager.cpp.i
+.PHONY : playermanager.i
+
+# target to preprocess a source file
+playermanager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServerKosci.dir/build.make CMakeFiles/ServerKosci.dir/playermanager.cpp.i
+.PHONY : playermanager.cpp.i
+
+playermanager.s: playermanager.cpp.s
+.PHONY : playermanager.s
+
+# target to generate assembly for a file
+playermanager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServerKosci.dir/build.make CMakeFiles/ServerKosci.dir/playermanager.cpp.s
+.PHONY : playermanager.cpp.s
 
 poczekalnia.o: poczekalnia.cpp.o
 .PHONY : poczekalnia.o
@@ -235,9 +283,15 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... ServerKosci"
+	@echo "... gamemanager.o"
+	@echo "... gamemanager.i"
+	@echo "... gamemanager.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... playermanager.o"
+	@echo "... playermanager.i"
+	@echo "... playermanager.s"
 	@echo "... poczekalnia.o"
 	@echo "... poczekalnia.i"
 	@echo "... poczekalnia.s"

@@ -1,23 +1,6 @@
 #include "poczekalnia.h"
 
-#include <string.h>
-#include <iostream>
-#include <cstdio>
-#include <stdio.h>
-#include <netdb.h>
-#include <signal.h>
-#include <sys/socket.h>
-#include <unistd.h>
-#include <string.h>
-#include <sys/epoll.h>
-#include <thread>
-
-
-Poczekalnia::Poczekalnia() {
-}
-
-
-// Gracz gracze[ILEPOKOI*MAXGRACZY];
+Poczekalnia::Poczekalnia() {}
 
 void Poczekalnia::podajPokoje(int usr){
     std::string msg="";
@@ -33,6 +16,9 @@ void Poczekalnia::podajPokoje(int usr){
 
 void Poczekalnia::wyborPokoju(int usr,int wyb){
     if(pokoje[wyb].liczbaGraczy < MAXGRACZY && pokoje[wyb].runda==0){
+        //
+        pokoje[wyb].liczbaGraczy++;
+        //
         std::string msg = "rm"+std::to_string(wyb);
         char tab[msg.length()+1];
         strcpy(tab,msg.c_str());

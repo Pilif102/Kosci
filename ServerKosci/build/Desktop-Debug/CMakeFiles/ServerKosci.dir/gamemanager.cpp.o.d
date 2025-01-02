@@ -1,6 +1,6 @@
-CMakeFiles/ServerKosci.dir/poczekalnia.cpp.o: \
-  /home/student/KosciVersus/ServerKosci/poczekalnia.cpp \
-  /home/student/KosciVersus/ServerKosci/poczekalnia.h \
+CMakeFiles/ServerKosci.dir/gamemanager.cpp.o: \
+  /home/student/KosciVersus/ServerKosci/gamemanager.cpp \
+  /home/student/KosciVersus/ServerKosci/gamemanager.h \
   /home/student/KosciVersus/ServerKosci/struktury.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/iostream \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/requires_hosted.h \

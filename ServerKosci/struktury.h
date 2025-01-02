@@ -1,6 +1,20 @@
 #ifndef STRUKTURY_H
 #define STRUKTURY_H
 
+#include <iostream>
+#include <cstdio>
+#include <stdio.h>
+#include <netdb.h> //addrinfo
+#include <signal.h>
+#include <unistd.h>
+#include <string.h>
+#include <thread>
+
+//main
+#include <sys/epoll.h>
+#include <sys/socket.h>
+#include <fcntl.h>
+
 #define MAXGRACZY 4
 #define ILEPOKOI 10
 
@@ -11,6 +25,14 @@ struct Partia{
     int wybrane[MAXGRACZY*5]={};
     int runda=0;
     int limitRund = 17;
+};
+
+struct Gracz{
+    //struct in_addr ipik;
+    std::string nick; //mozna ze nick do 10 znakow
+    int id;
+    char pozycja;
+    int numpokoju;
 };
 
 #endif // STRUKTURY_H

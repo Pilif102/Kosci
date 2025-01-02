@@ -1,6 +1,10 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/ServerKosci.dir/gamemanager.cpp.o"
+  "CMakeFiles/ServerKosci.dir/gamemanager.cpp.o.d"
   "CMakeFiles/ServerKosci.dir/main.cpp.o"
   "CMakeFiles/ServerKosci.dir/main.cpp.o.d"
+  "CMakeFiles/ServerKosci.dir/playermanager.cpp.o"
+  "CMakeFiles/ServerKosci.dir/playermanager.cpp.o.d"
   "CMakeFiles/ServerKosci.dir/poczekalnia.cpp.o"
   "CMakeFiles/ServerKosci.dir/poczekalnia.cpp.o.d"
   "ServerKosci"

@@ -1,1 +1,1 @@
-/usr/bin/clang++-18 -DQT_QML_DEBUG -g CMakeFiles/ServerKosci.dir/main.cpp.o CMakeFiles/ServerKosci.dir/poczekalnia.cpp.o -o ServerKosci 
+/usr/bin/clang++-18 -DQT_QML_DEBUG -g CMakeFiles/ServerKosci.dir/main.cpp.o CMakeFiles/ServerKosci.dir/poczekalnia.cpp.o CMakeFiles/ServerKosci.dir/playermanager.cpp.o CMakeFiles/ServerKosci.dir/gamemanager.cpp.o -o ServerKosci 
