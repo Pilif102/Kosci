@@ -7,7 +7,7 @@
 				{
 					"build" : ".",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-.-Debug-95039ac884c1eb141f83.json",
+					"jsonFile" : "directory-.-Debug-94eb47dbe3081451b89b.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.5"
@@ -40,7 +40,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "ServerKosci::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ServerKosci-Debug-fc74f838bed12757d18d.json",
+					"jsonFile" : "target-ServerKosci-Debug-d0c8d40623d639126fca.json",
 					"name" : "ServerKosci",
 					"projectIndex" : 0
 				}

@@ -198,6 +198,30 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServerKosci.dir/build.make CMakeFiles/ServerKosci.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+poczekalnia.o: poczekalnia.cpp.o
+.PHONY : poczekalnia.o
+
+# target to build an object file
+poczekalnia.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServerKosci.dir/build.make CMakeFiles/ServerKosci.dir/poczekalnia.cpp.o
+.PHONY : poczekalnia.cpp.o
+
+poczekalnia.i: poczekalnia.cpp.i
+.PHONY : poczekalnia.i
+
+# target to preprocess a source file
+poczekalnia.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServerKosci.dir/build.make CMakeFiles/ServerKosci.dir/poczekalnia.cpp.i
+.PHONY : poczekalnia.cpp.i
+
+poczekalnia.s: poczekalnia.cpp.s
+.PHONY : poczekalnia.s
+
+# target to generate assembly for a file
+poczekalnia.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServerKosci.dir/build.make CMakeFiles/ServerKosci.dir/poczekalnia.cpp.s
+.PHONY : poczekalnia.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -214,6 +238,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... poczekalnia.o"
+	@echo "... poczekalnia.i"
+	@echo "... poczekalnia.s"
 .PHONY : help
 
 

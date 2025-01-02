@@ -1,4 +1,6 @@
-﻿#include <iostream>
+﻿#include "poczekalnia.h"
+
+#include <iostream>
 #include <cstdio>
 #include <stdio.h>
 #include <netdb.h>
@@ -9,8 +11,6 @@
 #include <sys/epoll.h>
 #include <thread>
 
-#define ILEPOKOI 10
-#define MAXGRACZY 4
 #define MAXBUF 255
 using namespace std;
 
@@ -22,17 +22,6 @@ struct Gracz{
     int numpokoju;
 };
 
-struct Partia{
-    int liczbaGraczy = 0;
-    int idGraczy[MAXGRACZY]={};
-    int kosci[MAXGRACZY*5]={};
-    int wybrane[MAXGRACZY*5]={};
-    int runda=0;
-    int limitRund = 17;
-};
-
-Partia pokoje[ILEPOKOI];
-//Gracz gracze[ILEPOKOI*MAXGRACZY];
 
 int rollDie(){
     return rand()%6+1;
@@ -76,48 +65,10 @@ void gra(Partia partia){ //tworzona przy stworzeniu pokoju
     }
 }
 
-void poczekalnia(){
-
-}
-
 void responseHandler(){
 
 }
 
-void podajPokoje(int usr){
-    string msg="";
-    for(int i=0;i<ILEPOKOI;i++){
-        if(pokoje[i].liczbaGraczy>0){
-            msg+="p"+to_string(i)+"g"+to_string(pokoje[i].liczbaGraczy);
-        }
-    }
-    char tab[msg.length()+1];
-    strcpy(tab,msg.c_str());
-    write(usr,tab,sizeof(tab));
-}
-
-void wyborPokoju(int usr,int wyb){
-    if(pokoje[wyb].liczbaGraczy < MAXGRACZY && pokoje[wyb].runda==0){
-        string msg = "rm"+to_string(wyb);
-        char tab[msg.length()+1];
-        strcpy(tab,msg.c_str());
-        write(usr,tab,sizeof(tab));
-    } else {
-        write(usr,"rb",2);
-    }
-}
-
-void nowyPokoj(int usr){
-    int wyb=0;
-    while(wyb<ILEPOKOI){
-        if(pokoje[wyb].liczbaGraczy == 0){
-            wyborPokoju(usr,wyb);
-            return;
-        }
-        wyb++;
-    }
-    write(usr,"rd",2);
-}
 
 void przygotujGracza(int usr){
 
@@ -133,8 +84,8 @@ void usunGracza(int usr){
 
 int main()
 {
-    pokoje[3].liczbaGraczy=3;
-    pokoje[1].liczbaGraczy=2;
+    Poczekalnia pocz;
+    pocz.pokoje[0].liczbaGraczy=2;
 
     srand(time(NULL));
 
@@ -162,17 +113,17 @@ int main()
             //if(gracz not in poczekalnia)
             switch(buff[1]){
             case 'n':
-                nowyPokoj(c1);
+                pocz.nowyPokoj(c1);
                 break;
             case 'r':
-                podajPokoje(c1);
+                pocz.podajPokoje(c1);
                 break;
             case 'j':
                 //unikaj nie-numerow (teraz nie implementuje) i pustych wartosci
                 string s = buff;
                 s.erase(0,2);
                 int wyb = stoi(s);
-                wyborPokoju(c1,wyb);
+                pocz.wyborPokoju(c1,wyb);
                 break;
             }
             break;
