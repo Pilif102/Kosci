@@ -2,7 +2,8 @@
 
 using namespace std;
 
-PlayerManager gracz;
+static PlayerManager gracz;
+static GameManager partia;
 
 Poczekalnia::Poczekalnia() {}
 
@@ -22,10 +23,9 @@ void Poczekalnia::podajPokoje(int usr){
 
 void Poczekalnia::wyborPokoju(int usr,int wyb){
     if(pokoje[wyb].liczbaGraczy < MAXGRACZY && pokoje[wyb].runda==0){
-        //
-        pokoje[wyb].liczbaGraczy++;
         gracz.zmienPozycjeGracza(usr,'g',wyb);
-        //
+        Partia* pokoj = pokoje+wyb;
+        partia.dodajGracza(usr,pokoj);
         string msg = "rm"+to_string(wyb);
         char tab[msg.length()+1];
         strcpy(tab,msg.c_str());
@@ -39,6 +39,8 @@ void Poczekalnia::nowyPokoj(int usr){
     int wyb=0;
     while(wyb<ILEPOKOI){
         if(pokoje[wyb].liczbaGraczy == 0){
+            //gra przygotowanie
+            pokoje[wyb]={};
             wyborPokoju(usr,wyb);
             return;
         }
@@ -47,10 +49,15 @@ void Poczekalnia::nowyPokoj(int usr){
     write(usr,"rd",2);
 }
 
+Partia* Poczekalnia::zwrocPokoj(int usr){
+    Partia* ptr = pokoje+gracz.podajPokojGracza(usr);
+    return ptr;
+}
+
 void Poczekalnia::actionManager(int usr, char* command, int size){
     if(size>=3){
         string komenda = {command[0],command[1],command[2]};
-        if(komenda == "nwr"){
+        if(komenda == "new"){
             nowyPokoj(usr);
         } else if(komenda == "gib"){
             podajPokoje(usr);
@@ -60,6 +67,12 @@ void Poczekalnia::actionManager(int usr, char* command, int size){
             s.erase(0,3);
             int wyb = stoi(s);
             wyborPokoju(usr,wyb);
+        } else if(komenda == "ext"){
+            cout << "gracz sie rozlaczyl" << endl;
+            gracz.usunGracza(usr);
+            shutdown(usr,SHUT_RDWR);
+            close(usr);
+            return;
         }
     }
 }

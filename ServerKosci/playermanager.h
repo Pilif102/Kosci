@@ -8,6 +8,7 @@ class PlayerManager
 public:
     PlayerManager();
     static Gracz gracze[MAXGRACZY*ILEPOKOI];
+    int graczId(int usr);
     void przygotujGracza(int usr);
     void zmienPozycjeGracza(int usr,char pozycja,int num = -1);
     char podajPozycjeGracza(int usr);

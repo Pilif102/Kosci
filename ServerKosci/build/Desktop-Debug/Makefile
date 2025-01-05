@@ -270,6 +270,30 @@ poczekalnia.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServerKosci.dir/build.make CMakeFiles/ServerKosci.dir/poczekalnia.cpp.s
 .PHONY : poczekalnia.cpp.s
 
+pointscount.o: pointscount.cpp.o
+.PHONY : pointscount.o
+
+# target to build an object file
+pointscount.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServerKosci.dir/build.make CMakeFiles/ServerKosci.dir/pointscount.cpp.o
+.PHONY : pointscount.cpp.o
+
+pointscount.i: pointscount.cpp.i
+.PHONY : pointscount.i
+
+# target to preprocess a source file
+pointscount.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServerKosci.dir/build.make CMakeFiles/ServerKosci.dir/pointscount.cpp.i
+.PHONY : pointscount.cpp.i
+
+pointscount.s: pointscount.cpp.s
+.PHONY : pointscount.s
+
+# target to generate assembly for a file
+pointscount.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServerKosci.dir/build.make CMakeFiles/ServerKosci.dir/pointscount.cpp.s
+.PHONY : pointscount.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -295,6 +319,9 @@ help:
 	@echo "... poczekalnia.o"
 	@echo "... poczekalnia.i"
 	@echo "... poczekalnia.s"
+	@echo "... pointscount.o"
+	@echo "... pointscount.i"
+	@echo "... pointscount.s"
 .PHONY : help
 
 

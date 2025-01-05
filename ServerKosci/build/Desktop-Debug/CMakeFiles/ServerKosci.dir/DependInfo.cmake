@@ -12,6 +12,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/student/KosciVersus/ServerKosci/main.cpp" "CMakeFiles/ServerKosci.dir/main.cpp.o" "gcc" "CMakeFiles/ServerKosci.dir/main.cpp.o.d"
   "/home/student/KosciVersus/ServerKosci/playermanager.cpp" "CMakeFiles/ServerKosci.dir/playermanager.cpp.o" "gcc" "CMakeFiles/ServerKosci.dir/playermanager.cpp.o.d"
   "/home/student/KosciVersus/ServerKosci/poczekalnia.cpp" "CMakeFiles/ServerKosci.dir/poczekalnia.cpp.o" "gcc" "CMakeFiles/ServerKosci.dir/poczekalnia.cpp.o.d"
+  "/home/student/KosciVersus/ServerKosci/pointscount.cpp" "CMakeFiles/ServerKosci.dir/pointscount.cpp.o" "gcc" "CMakeFiles/ServerKosci.dir/pointscount.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

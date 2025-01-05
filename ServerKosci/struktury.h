@@ -19,12 +19,17 @@
 #define ILEPOKOI 10
 
 struct Partia{
+    // bool reload=false;
+    // bool waiting=false;
     int liczbaGraczy = 0;
     int idGraczy[MAXGRACZY]={};
     int kosci[MAXGRACZY*5]={};
-    int wybrane[MAXGRACZY*5]={};
+    int wybrane[MAXGRACZY*5];
     int runda=0;
     int limitRund = 17;
+    int rerolls=3;
+    bool ready[4] = {};
+    bool punktowanie = false;
 };
 
 struct Gracz{

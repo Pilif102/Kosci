@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/ServerKosci.dir/playermanager.cpp.o.d"
   "CMakeFiles/ServerKosci.dir/poczekalnia.cpp.o"
   "CMakeFiles/ServerKosci.dir/poczekalnia.cpp.o.d"
+  "CMakeFiles/ServerKosci.dir/pointscount.cpp.o"
+  "CMakeFiles/ServerKosci.dir/pointscount.cpp.o.d"
   "ServerKosci"
   "ServerKosci.pdb"
 )

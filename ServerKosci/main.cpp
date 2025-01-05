@@ -9,6 +9,7 @@
 using namespace std;
 
 Poczekalnia pocz;
+GameManager gra;
 PlayerManager player;
 
 void setnonblocking(int fd) {
@@ -28,9 +29,10 @@ void do_use_fd(int ufd){
 
     } catch(int l){
         cout << "gracz sie rozlaczyl" << endl;
+        if(player.podajPozycjeGracza(ufd)=='g'){
+            gra.refactor(ufd);
+        }
         player.usunGracza(ufd);
-        shutdown(ufd,SHUT_RDWR);
-        close(ufd);
         return;
     }
     //dodać testowanie gdzie znajduje się gracz, i osyłanie go do danej klasy
@@ -41,36 +43,8 @@ void do_use_fd(int ufd){
         break;
     case 'g': //komendy dla gry
         //if w grze
-        switch(buff[1]){
-        case 's':
-            //zglos gotowosc
-            break;
-        case 'r':
-            //przerzuc kosci
-            break;
-        case 'c':
-            //zablokowac kosc o danym id
-            break;
-        case 'p':
-            //wybierz rubryke punktacji (id)
-            break;
-        // case 'z':
-        //     //zmienione zasady (może, może nie)
-        //     break;
-        case 'q':
-            //wyjdz z gry
-            break;
-        }
-
-    case 'q':
-        shutdown(ufd,SHUT_RDWR);
-        close(ufd);
+        gra.actionManager(ufd,buff,size,pocz.zwrocPokoj(ufd));
         break;
-    default:
-        write(ufd,"br",2);
-    }
-    if(buff[0]=='q'){
-        return;
     }
     write(ufd,"\n",1);
 }
@@ -127,8 +101,6 @@ int main()
                               &ev) == -1) {
                     perror("epoll_ctl: conn_sock");
                     exit(EXIT_FAILURE);
-
-
                 }
                 player.przygotujGracza(conn_sock);
             } else {
@@ -140,5 +112,4 @@ int main()
     shutdown(fd,SHUT_RDWR);
     close(fd);
     return 0;
-
 }

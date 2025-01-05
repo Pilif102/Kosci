@@ -3,6 +3,7 @@
 
 #include "struktury.h"
 #include "playermanager.h"
+#include "gamemanager.h"
 
 class Poczekalnia
 {
@@ -12,6 +13,8 @@ public:
     void podajPokoje(int usr);
     void wyborPokoju(int usr,int wyb);
     void nowyPokoj(int usr);
+    Partia* zwrocPokoj(int usr);
+
     void actionManager(int usr,char* command, int size);
 };
 
