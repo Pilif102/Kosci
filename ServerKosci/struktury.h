@@ -29,10 +29,10 @@ struct Partia{
 
 struct Gracz{
     //struct in_addr ipik;
-    std::string nick; //mozna ze nick do 10 znakow
-    int id;
-    char pozycja;
-    int numpokoju;
+    std::string nick = "nowy_gracz"; //mozna ze nick do 10 znakow
+    int id = -1;
+    char pozycja = 'r';
+    int numpokoju = -1;
 };
 
 #endif // STRUKTURY_H

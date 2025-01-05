@@ -123,10 +123,12 @@ CMakeFiles/ServerKosci.dir/gamemanager.cpp.o: /home/student/KosciVersus/ServerKo
   /usr/include/ctype.h \
   /usr/include/endian.h \
   /usr/include/errno.h \
+  /usr/include/fcntl.h \
   /usr/include/features-time64.h \
   /usr/include/features.h \
   /usr/include/linux/close_range.h \
   /usr/include/linux/errno.h \
+  /usr/include/linux/falloc.h \
   /usr/include/linux/posix_types.h \
   /usr/include/linux/stddef.h \
   /usr/include/locale.h \
@@ -159,7 +161,10 @@ CMakeFiles/ServerKosci.dir/gamemanager.cpp.o: /home/student/KosciVersus/ServerKo
   /usr/include/x86_64-linux-gnu/bits/endian.h \
   /usr/include/x86_64-linux-gnu/bits/endianness.h \
   /usr/include/x86_64-linux-gnu/bits/environments.h \
+  /usr/include/x86_64-linux-gnu/bits/epoll.h \
   /usr/include/x86_64-linux-gnu/bits/errno.h \
+  /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h \
+  /usr/include/x86_64-linux-gnu/bits/fcntl.h \
   /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
   /usr/include/x86_64-linux-gnu/bits/floatn.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
@@ -192,6 +197,7 @@ CMakeFiles/ServerKosci.dir/gamemanager.cpp.o: /home/student/KosciVersus/ServerKo
   /usr/include/x86_64-linux-gnu/bits/socket.h \
   /usr/include/x86_64-linux-gnu/bits/socket_type.h \
   /usr/include/x86_64-linux-gnu/bits/ss_flags.h \
+  /usr/include/x86_64-linux-gnu/bits/stat.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
@@ -199,6 +205,7 @@ CMakeFiles/ServerKosci.dir/gamemanager.cpp.o: /home/student/KosciVersus/ServerKo
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
   /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
+  /usr/include/x86_64-linux-gnu/bits/struct_stat.h \
   /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
   /usr/include/x86_64-linux-gnu/bits/time.h \
   /usr/include/x86_64-linux-gnu/bits/time64.h \
@@ -249,6 +256,7 @@ CMakeFiles/ServerKosci.dir/gamemanager.cpp.o: /home/student/KosciVersus/ServerKo
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs.h \
   /usr/include/x86_64-linux-gnu/sys/cdefs.h \
+  /usr/include/x86_64-linux-gnu/sys/epoll.h \
   /usr/include/x86_64-linux-gnu/sys/select.h \
   /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
   /usr/include/x86_64-linux-gnu/sys/socket.h \
@@ -663,10 +671,12 @@ CMakeFiles/ServerKosci.dir/playermanager.cpp.o: /home/student/KosciVersus/Server
   /usr/include/ctype.h \
   /usr/include/endian.h \
   /usr/include/errno.h \
+  /usr/include/fcntl.h \
   /usr/include/features-time64.h \
   /usr/include/features.h \
   /usr/include/linux/close_range.h \
   /usr/include/linux/errno.h \
+  /usr/include/linux/falloc.h \
   /usr/include/linux/posix_types.h \
   /usr/include/linux/stddef.h \
   /usr/include/locale.h \
@@ -699,7 +709,10 @@ CMakeFiles/ServerKosci.dir/playermanager.cpp.o: /home/student/KosciVersus/Server
   /usr/include/x86_64-linux-gnu/bits/endian.h \
   /usr/include/x86_64-linux-gnu/bits/endianness.h \
   /usr/include/x86_64-linux-gnu/bits/environments.h \
+  /usr/include/x86_64-linux-gnu/bits/epoll.h \
   /usr/include/x86_64-linux-gnu/bits/errno.h \
+  /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h \
+  /usr/include/x86_64-linux-gnu/bits/fcntl.h \
   /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
   /usr/include/x86_64-linux-gnu/bits/floatn.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
@@ -732,6 +745,7 @@ CMakeFiles/ServerKosci.dir/playermanager.cpp.o: /home/student/KosciVersus/Server
   /usr/include/x86_64-linux-gnu/bits/socket.h \
   /usr/include/x86_64-linux-gnu/bits/socket_type.h \
   /usr/include/x86_64-linux-gnu/bits/ss_flags.h \
+  /usr/include/x86_64-linux-gnu/bits/stat.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
@@ -739,6 +753,7 @@ CMakeFiles/ServerKosci.dir/playermanager.cpp.o: /home/student/KosciVersus/Server
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
   /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
+  /usr/include/x86_64-linux-gnu/bits/struct_stat.h \
   /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
   /usr/include/x86_64-linux-gnu/bits/time.h \
   /usr/include/x86_64-linux-gnu/bits/time64.h \
@@ -789,6 +804,7 @@ CMakeFiles/ServerKosci.dir/playermanager.cpp.o: /home/student/KosciVersus/Server
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs.h \
   /usr/include/x86_64-linux-gnu/sys/cdefs.h \
+  /usr/include/x86_64-linux-gnu/sys/epoll.h \
   /usr/include/x86_64-linux-gnu/sys/select.h \
   /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
   /usr/include/x86_64-linux-gnu/sys/socket.h \
@@ -807,6 +823,7 @@ CMakeFiles/ServerKosci.dir/playermanager.cpp.o: /home/student/KosciVersus/Server
   /usr/lib/llvm-18/lib/clang/18/include/stdint.h
 
 CMakeFiles/ServerKosci.dir/poczekalnia.cpp.o: /home/student/KosciVersus/ServerKosci/poczekalnia.cpp \
+  /home/student/KosciVersus/ServerKosci/playermanager.h \
   /home/student/KosciVersus/ServerKosci/poczekalnia.h \
   /home/student/KosciVersus/ServerKosci/struktury.h \
   /usr/include/c++/13/backward/binders.h \
@@ -928,10 +945,12 @@ CMakeFiles/ServerKosci.dir/poczekalnia.cpp.o: /home/student/KosciVersus/ServerKo
   /usr/include/ctype.h \
   /usr/include/endian.h \
   /usr/include/errno.h \
+  /usr/include/fcntl.h \
   /usr/include/features-time64.h \
   /usr/include/features.h \
   /usr/include/linux/close_range.h \
   /usr/include/linux/errno.h \
+  /usr/include/linux/falloc.h \
   /usr/include/linux/posix_types.h \
   /usr/include/linux/stddef.h \
   /usr/include/locale.h \
@@ -964,7 +983,10 @@ CMakeFiles/ServerKosci.dir/poczekalnia.cpp.o: /home/student/KosciVersus/ServerKo
   /usr/include/x86_64-linux-gnu/bits/endian.h \
   /usr/include/x86_64-linux-gnu/bits/endianness.h \
   /usr/include/x86_64-linux-gnu/bits/environments.h \
+  /usr/include/x86_64-linux-gnu/bits/epoll.h \
   /usr/include/x86_64-linux-gnu/bits/errno.h \
+  /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h \
+  /usr/include/x86_64-linux-gnu/bits/fcntl.h \
   /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
   /usr/include/x86_64-linux-gnu/bits/floatn.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
@@ -997,6 +1019,7 @@ CMakeFiles/ServerKosci.dir/poczekalnia.cpp.o: /home/student/KosciVersus/ServerKo
   /usr/include/x86_64-linux-gnu/bits/socket.h \
   /usr/include/x86_64-linux-gnu/bits/socket_type.h \
   /usr/include/x86_64-linux-gnu/bits/ss_flags.h \
+  /usr/include/x86_64-linux-gnu/bits/stat.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
@@ -1004,6 +1027,7 @@ CMakeFiles/ServerKosci.dir/poczekalnia.cpp.o: /home/student/KosciVersus/ServerKo
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
   /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
+  /usr/include/x86_64-linux-gnu/bits/struct_stat.h \
   /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
   /usr/include/x86_64-linux-gnu/bits/time.h \
   /usr/include/x86_64-linux-gnu/bits/time64.h \
@@ -1054,6 +1078,7 @@ CMakeFiles/ServerKosci.dir/poczekalnia.cpp.o: /home/student/KosciVersus/ServerKo
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs.h \
   /usr/include/x86_64-linux-gnu/sys/cdefs.h \
+  /usr/include/x86_64-linux-gnu/sys/epoll.h \
   /usr/include/x86_64-linux-gnu/sys/select.h \
   /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
   /usr/include/x86_64-linux-gnu/sys/socket.h \
@@ -1076,14 +1101,6 @@ CMakeFiles/ServerKosci.dir/poczekalnia.cpp.o: /home/student/KosciVersus/ServerKo
 
 /home/student/KosciVersus/ServerKosci/playermanager.cpp:
 
-/usr/include/x86_64-linux-gnu/bits/struct_stat.h:
-
-/usr/include/x86_64-linux-gnu/bits/fcntl.h:
-
-/usr/include/x86_64-linux-gnu/bits/fcntl-linux.h:
-
-/usr/include/fcntl.h:
-
 /home/student/KosciVersus/ServerKosci/poczekalnia.h:
 
 /home/student/KosciVersus/ServerKosci/playermanager.h:
@@ -1099,6 +1116,20 @@ CMakeFiles/ServerKosci.dir/poczekalnia.cpp.o: /home/student/KosciVersus/ServerKo
 /usr/lib/llvm-18/lib/clang/18/include/__stddef_ptrdiff_t.h:
 
 /usr/lib/llvm-18/lib/clang/18/include/__stddef_offsetof.h:
+
+/usr/lib/llvm-18/lib/clang/18/include/__stddef_nullptr_t.h:
+
+/usr/lib/llvm-18/lib/clang/18/include/__stddef_null.h:
+
+/usr/lib/llvm-18/lib/clang/18/include/__stddef_max_align_t.h:
+
+/usr/lib/llvm-18/lib/clang/18/include/__stdarg___gnuc_va_list.h:
+
+/usr/include/x86_64-linux-gnu/sys/ucontext.h:
+
+/usr/include/x86_64-linux-gnu/sys/types.h:
+
+/usr/include/x86_64-linux-gnu/sys/single_threaded.h:
 
 /usr/include/c++/13/bits/streambuf.tcc:
 
@@ -1140,6 +1171,8 @@ CMakeFiles/ServerKosci.dir/poczekalnia.cpp.o: /home/student/KosciVersus/ServerKo
 
 /usr/include/x86_64-linux-gnu/bits/wordsize.h:
 
+/usr/include/fcntl.h:
+
 /usr/include/c++/13/ostream:
 
 /usr/include/c++/13/bits/streambuf_iterator.h:
@@ -1163,10 +1196,6 @@ CMakeFiles/ServerKosci.dir/poczekalnia.cpp.o: /home/student/KosciVersus/ServerKo
 /home/student/KosciVersus/ServerKosci/gamemanager.h:
 
 /usr/include/c++/13/iostream:
-
-/usr/include/x86_64-linux-gnu/bits/stat.h:
-
-/usr/include/x86_64-linux-gnu/bits/sigstksz.h:
 
 /usr/include/c++/13/ext/type_traits.h:
 
@@ -1218,6 +1247,8 @@ CMakeFiles/ServerKosci.dir/poczekalnia.cpp.o: /home/student/KosciVersus/ServerKo
 
 /usr/include/c++/13/bits/stl_function.h:
 
+/usr/include/x86_64-linux-gnu/bits/fcntl.h:
+
 /usr/include/c++/13/bits/uses_allocator_args.h:
 
 /usr/include/c++/13/bits/new_allocator.h:
@@ -1241,10 +1272,6 @@ CMakeFiles/ServerKosci.dir/poczekalnia.cpp.o: /home/student/KosciVersus/ServerKo
 /usr/include/wchar.h:
 
 /usr/include/ctype.h:
-
-/usr/include/x86_64-linux-gnu/sys/epoll.h:
-
-/usr/include/c++/13/bits/basic_string.h:
 
 /usr/include/c++/13/ios:
 
@@ -1288,6 +1315,8 @@ CMakeFiles/ServerKosci.dir/poczekalnia.cpp.o: /home/student/KosciVersus/ServerKo
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/cpu_defines.h:
 
+/usr/include/x86_64-linux-gnu/bits/fcntl-linux.h:
+
 /usr/include/c++/13/bits/stringfwd.h:
 
 /usr/include/c++/13/backward/binders.h:
@@ -1330,10 +1359,6 @@ CMakeFiles/ServerKosci.dir/poczekalnia.cpp.o: /home/student/KosciVersus/ServerKo
 
 /usr/include/x86_64-linux-gnu/bits/time64.h:
 
-/usr/include/c++/13/bits/ptr_traits.h:
-
-/usr/include/linux/posix_types.h:
-
 /usr/lib/llvm-18/lib/clang/18/include/__stddef_wchar_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/sigaction.h:
@@ -1346,13 +1371,15 @@ CMakeFiles/ServerKosci.dir/poczekalnia.cpp.o: /home/student/KosciVersus/ServerKo
 
 /usr/include/c++/13/type_traits:
 
-/usr/include/x86_64-linux-gnu/sys/single_threaded.h:
-
 /usr/include/c++/13/bits/locale_facets.h:
+
+/usr/include/x86_64-linux-gnu/bits/socket_type.h:
 
 /usr/include/c++/13/bits/localefwd.h:
 
-/usr/include/x86_64-linux-gnu/bits/socket_type.h:
+/usr/include/c++/13/bits/ptr_traits.h:
+
+/usr/include/linux/posix_types.h:
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h:
 
@@ -1411,6 +1438,10 @@ CMakeFiles/ServerKosci.dir/poczekalnia.cpp.o: /home/student/KosciVersus/ServerKo
 /usr/include/c++/13/bits/stl_construct.h:
 
 /usr/include/features.h:
+
+/usr/include/c++/13/bits/basic_string.h:
+
+/usr/include/x86_64-linux-gnu/sys/epoll.h:
 
 /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
 
@@ -1510,8 +1541,6 @@ CMakeFiles/ServerKosci.dir/poczekalnia.cpp.o: /home/student/KosciVersus/ServerKo
 
 /usr/include/x86_64-linux-gnu/bits/in.h:
 
-/usr/lib/llvm-18/lib/clang/18/include/__stddef_nullptr_t.h:
-
 /usr/include/x86_64-linux-gnu/bits/locale.h:
 
 /usr/include/x86_64-linux-gnu/bits/posix_opt.h:
@@ -1520,7 +1549,13 @@ CMakeFiles/ServerKosci.dir/poczekalnia.cpp.o: /home/student/KosciVersus/ServerKo
 
 /usr/include/x86_64-linux-gnu/bits/sched.h:
 
+/usr/include/x86_64-linux-gnu/bits/struct_stat.h:
+
 /usr/include/x86_64-linux-gnu/bits/siginfo-consts.h:
+
+/usr/include/x86_64-linux-gnu/bits/sigstksz.h:
+
+/usr/include/x86_64-linux-gnu/bits/stat.h:
 
 /usr/include/c++/13/bits/stl_pair.h:
 
@@ -1580,6 +1615,10 @@ CMakeFiles/ServerKosci.dir/poczekalnia.cpp.o: /home/student/KosciVersus/ServerKo
 
 /usr/include/x86_64-linux-gnu/bits/types/stack_t.h:
 
+/usr/include/x86_64-linux-gnu/sys/socket.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h:
+
 /usr/include/x86_64-linux-gnu/bits/types/sigevent_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h:
@@ -1611,17 +1650,3 @@ CMakeFiles/ServerKosci.dir/poczekalnia.cpp.o: /home/student/KosciVersus/ServerKo
 /usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
 
 /usr/include/x86_64-linux-gnu/sys/cdefs.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h:
-
-/usr/include/x86_64-linux-gnu/sys/socket.h:
-
-/usr/include/x86_64-linux-gnu/sys/types.h:
-
-/usr/include/x86_64-linux-gnu/sys/ucontext.h:
-
-/usr/lib/llvm-18/lib/clang/18/include/__stdarg___gnuc_va_list.h:
-
-/usr/lib/llvm-18/lib/clang/18/include/__stddef_max_align_t.h:
-
-/usr/lib/llvm-18/lib/clang/18/include/__stddef_null.h:

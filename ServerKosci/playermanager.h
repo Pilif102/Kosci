@@ -7,9 +7,13 @@ class PlayerManager
 {
 public:
     PlayerManager();
-
+    static Gracz gracze[MAXGRACZY*ILEPOKOI];
     void przygotujGracza(int usr);
-    void dajNick(int usr); //przy dołączaniu do pokoju
+    void zmienPozycjeGracza(int usr,char pozycja,int num = -1);
+    char podajPozycjeGracza(int usr);
+    int podajPokojGracza(int usr);
+    std::string zwrocNick(int usr);
+    void dajNick(int usr, std::string nick); //przy dołączaniu do pokoju
     void usunGracza(int usr);
 };
 

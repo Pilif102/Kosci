@@ -9,6 +9,7 @@
 using namespace std;
 
 Poczekalnia pocz;
+PlayerManager player;
 
 void setnonblocking(int fd) {
     int flags = fcntl(fd, F_GETFL, 0);
@@ -16,32 +17,31 @@ void setnonblocking(int fd) {
 }
 
 void do_use_fd(int ufd){
-    char buff[MAXBUF];
+    char buff[MAXBUF]; // dodaj ochrone przed przepelnieniem bufora na wszelki wypadek
     cout << ufd << endl;
-    int size = read(ufd,buff,MAXBUF); //dodać exita i shutdowana przy błędzie
-    //dodać testowanie gdzie znajduje się gracz, i osyłanie go do danej klasy
-    switch(buff[0]){ //switch dla czytelnosci
-    case 'r': //sygnały związane z poczekalnia, przeniesc do klasy poczekalnia
-        //if(gracz not in poczekalnia)
-        switch(buff[1]){
-        case 'n':
-            pocz.nowyPokoj(ufd);
-            break;
-        case 'r':
-            pocz.podajPokoje(ufd);
-            break;
-        case 'j':
-            //unikaj nie-numerow (teraz nie implementuje) i pustych wartosci
-            string s = buff;
-            s.erase(0,2);
-            int wyb = stoi(s);
-            pocz.wyborPokoju(ufd,wyb);
-            break;
+    int size = 0;
+    try{
+        size = read(ufd,buff,MAXBUF); //dodać exita i shutdowana przy błędzie
+        if(size == 0){
+            throw(1);
         }
+
+    } catch(int l){
+        cout << "gracz sie rozlaczyl" << endl;
+        player.usunGracza(ufd);
+        shutdown(ufd,SHUT_RDWR);
+        close(ufd);
+        return;
+    }
+    //dodać testowanie gdzie znajduje się gracz, i osyłanie go do danej klasy
+    cout << player.podajPozycjeGracza(ufd) << endl;
+    switch(player.podajPozycjeGracza(ufd)){ //switch dla czytelnosci
+    case 'r': //sygnały związane z poczekalnia, przeniesc do klasy poczekalnia
+        pocz.actionManager(ufd,buff,size);
         break;
     case 'g': //komendy dla gry
         //if w grze
-        switch(buff[2]){
+        switch(buff[1]){
         case 's':
             //zglos gotowosc
             break;
@@ -112,7 +112,7 @@ int main()
         }
 
         for (int n = 0; n < nfds; ++n) {
-            if (events[n].data.fd == fd) {
+            if (events[n].data.fd == fd) { //połączenie, dodaje gracza
 
                 conn_sock = accept(fd,
                                    (struct sockaddr *) &addr, &addrlen);
@@ -127,7 +127,10 @@ int main()
                               &ev) == -1) {
                     perror("epoll_ctl: conn_sock");
                     exit(EXIT_FAILURE);
+
+
                 }
+                player.przygotujGracza(conn_sock);
             } else {
                 do_use_fd(events[n].data.fd);
             }
