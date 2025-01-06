@@ -26,10 +26,11 @@ struct Partia{
     int kosci[MAXGRACZY*5]={};
     int wybrane[MAXGRACZY*5];
     int runda=0;
-    int limitRund = 17;
+    int limitRund = 1;
     int rerolls=3;
     bool ready[4] = {};
     bool punktowanie = false;
+    int punkty[17*MAXGRACZY]={};
 };
 
 struct Gracz{

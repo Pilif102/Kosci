@@ -25,8 +25,8 @@ void Poczekalnia::wyborPokoju(int usr,int wyb){
     if(pokoje[wyb].liczbaGraczy < MAXGRACZY && pokoje[wyb].runda==0){
         gracz.zmienPozycjeGracza(usr,'g',wyb);
         Partia* pokoj = pokoje+wyb;
-        partia.dodajGracza(usr,pokoj);
         string msg = "rm"+to_string(wyb);
+        partia.dodajGracza(usr,pokoj);
         char tab[msg.length()+1];
         strcpy(tab,msg.c_str());
         write(usr,tab,sizeof(tab));
@@ -67,6 +67,10 @@ void Poczekalnia::actionManager(int usr, char* command, int size){
             s.erase(0,3);
             int wyb = stoi(s);
             wyborPokoju(usr,wyb);
+        } else if(komenda == "nnc"){
+            string s = command;
+            s.erase(0,3);
+            gracz.dajNick(usr,s);
         } else if(komenda == "ext"){
             cout << "gracz sie rozlaczyl" << endl;
             gracz.usunGracza(usr);

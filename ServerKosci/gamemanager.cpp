@@ -4,7 +4,9 @@ using namespace std;
 
 PlayerManager gracz;
 Partia* partia;
-thread gry[ILEPOKOI];
+PointsCount punkty;
+
+//thread gry[ILEPOKOI];
 
 GameManager::GameManager() {}
 
@@ -75,8 +77,25 @@ void GameManager::wezKosc(int usr,int kosc){
     }
 }
 
-void GameManager::koniecGry(){
+void GameManager::koniecGry(Partia* gra){
     //liczenie punktów
+    int max=0;
+    int wygrany=0;
+
+    for(int i=0;i<gra->liczbaGraczy;i++){
+        int wynik=0;
+        for(int j=0;j<ILEWIERSZY;j++){
+            wynik+=gra->punkty[(17*i)+j];
+        }
+        SendToAll(gra,"fin"+to_string(wynik)+"usr"+to_string(i));
+        if(wynik > max){
+            max=wynik;
+            wygrany=i;
+        }
+    }
+    SendToAll(gra,"win"+to_string(wygrany));
+    gra->runda=0;
+    fill(gra->ready,gra->ready+MAXGRACZY,0);
 }
 
 void GameManager::dodajGracza(int usr,Partia* gra){
@@ -87,7 +106,15 @@ void GameManager::dodajGracza(int usr,Partia* gra){
         gra->idGraczy[i]=usr;
         gra->ready[i]=false;
     }
-    SendToAll(gra,"nic"+to_string(i)+gracz.gracze[gracz.graczId(usr)].nick);
+    SendToAll(gra,"nic"+to_string(i)+gracz.zwrocNick(usr));
+    for(int j=0;j<gra->liczbaGraczy;j++){
+        if(i!=j){
+            string msg = "nic"+to_string(j)+gracz.zwrocNick(gra->idGraczy[j]);
+            char tab[msg.length()+1];
+            strcpy(tab,msg.c_str());
+            write(usr,tab,sizeof(tab));
+        }
+    }
 
 }
 
@@ -150,23 +177,44 @@ void GameManager::reroll(Partia* gra){
     cout << msg << endl;
 }
 
-void GameManager::refactor(int usr){
-    if(int i = graczId(usr,partia);i!=-1){
+void GameManager::refactor(int usr,Partia* gra){
+    if(int i = graczId(usr,gra);i!=-1){ //niech idzie z pokoju
         partia->liczbaGraczy--;
-        partia->idGraczy[i]=0;
-        partia->ready[i]=false;
         //wyslij informacje do innych graczy, zmien kolejnosc graczy zeby było ich mało
-        for(int j=i+1;j<MAXGRACZY;j++){
+        SendToAll(partia,"qit"+to_string(i)+gracz.zwrocNick(usr));
+        for(int j=i+1;j<gra->liczbaGraczy;j++){
             partia->idGraczy[j-1]=partia->idGraczy[j];
-            SendToAll(partia,"nic"+to_string(i)+gracz.gracze[gracz.graczId(usr)].nick);
+            SendToAll(partia,"nic"+to_string(j-1)+gracz.zwrocNick(partia->idGraczy[j-1]));
         }
 
     }
 
     //zrestartuj runde ktora aktualnie jest
+    if(gra->punktowanie==false) runda(gra);
 }
-void punkty(int usr,int pid){
-
+void GameManager::punktyGra(int usr,int pid){
+    int gid = (graczId(usr,partia));
+    int ksc[5];
+    for(int i=0;i<5;i++){
+        ksc[i]=partia->kosci[partia->wybrane[(gid*5)+i]];
+    }
+    int pkt = punkty.liczPunkty(ksc,pid);
+    //dodaj do punktacji gracza
+    partia->punkty[(gid*17)+pid]=pkt;
+    SendToAll(partia,"pts"+to_string(pkt)+"usr"+to_string(gid));
+    //dodac gotowosc, jesli gotowe to nowa runda chyba ze koniec
+    partia->ready[gid]=true;
+    for(int i=0;i<partia->liczbaGraczy;i++){
+        if(partia->ready[i]==false){
+            return;
+        }
+    }
+    if(partia->runda==partia->limitRund){
+        koniecGry(partia);
+    }else{
+        partia->runda++;
+        runda(partia);
+    }
 }
 
 void GameManager::endPlayerTurn(int usr){
@@ -196,7 +244,7 @@ void GameManager::actionManager(int usr,char* command, int size,Partia* gra){
         partia = gra;
         if(komenda == "ext"){
             cout << "gracz sie rozlaczyl" << endl;
-            refactor(usr);
+            refactor(usr,partia);
             gracz.usunGracza(usr);
         }else if(partia->runda == 0){
             if(komenda == "rdy"){
@@ -217,28 +265,30 @@ void GameManager::actionManager(int usr,char* command, int size,Partia* gra){
                     wezKosc(usr,wyb);
                 } else if(komenda == "rdy"){
                     //koniec,wszystko wybrane
+                    if(){
+
+                    }
                     endPlayerTurn(usr);
                 }
-                int id = graczId(usr,partia);
+
                 for(int i=0;i<gra->liczbaGraczy*5;i++){
                     cout << partia->kosci[i] << ",";
                 }
                 cout << endl;
-                for(int i=id*5;i<(id*5)+5;i++){
+                for(int i=0;i<partia->liczbaGraczy*5;i++){
                     cout << partia->wybrane[i] << ",";
                 }
                 cout << endl;
             }else {
-                if(komenda == "ptn"){
+                if(komenda == "ptn" && partia->ready[graczId(usr,partia)]){
                 //wybierz rubryke punktacji (id)
+                    cout << "punktacja" << endl;
                     string s = command;
                     s.erase(0,3);
                     int wyb = stoi(s);
-                    punkty(usr,wyb);
+                    punktyGra(usr,wyb);
                 }
             }
-        }else{
-            koniecGry();
         }
 
     }

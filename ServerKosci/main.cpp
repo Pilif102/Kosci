@@ -11,6 +11,7 @@ using namespace std;
 Poczekalnia pocz;
 GameManager gra;
 PlayerManager player;
+PointsCount pts;
 
 void setnonblocking(int fd) {
     int flags = fcntl(fd, F_GETFL, 0);
@@ -30,7 +31,7 @@ void do_use_fd(int ufd){
     } catch(int l){
         cout << "gracz sie rozlaczyl" << endl;
         if(player.podajPozycjeGracza(ufd)=='g'){
-            gra.refactor(ufd);
+            gra.refactor(ufd,pocz.zwrocPokoj(ufd));
         }
         player.usunGracza(ufd);
         return;
@@ -51,8 +52,6 @@ void do_use_fd(int ufd){
 
 int main()
 {
-    pocz.pokoje[0].liczbaGraczy=2;
-
     srand(time(NULL));
     struct epoll_event ev, events[MAX_EVENTS];
     int fd, conn_sock, nfds, epollfd;

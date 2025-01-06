@@ -4,33 +4,33 @@ using namespace std;
 
 PointsCount::PointsCount() {}
 
-int PointsCount::cyfry(int kosci[5],int wyb){
+int cyfry(int kosci[5],int wyb){
     int ile = count(kosci,kosci+5,wyb);
     return wyb*(ile-3);
 }
 
-int PointsCount::szansa(int kosci[5]){
+int szansa(int kosci[5]){
     return accumulate(kosci,kosci+5,0);
 }
 
-int PointsCount::parzystosci(int kosci[5],bool parz){
+int parzystosci(int kosci[5],bool parz){
     int suma = 0;
     int ile = 0;
     for(int i=0;i<5;i++){
-        ile = kosci[i]%2;
+        ile += kosci[i]%2;
+        suma+=kosci[i];
     }
-    if((parz && ile==5) || (parz && ile==0)){
-        suma = accumulate(kosci,kosci+5,0);
+    if((!parz && ile==5) || (parz && ile==0)){
+        return suma;
     }
-    return suma;
+    return 0;
 }
 
-int PointsCount::strity(int kosci[5],bool duzy){
+int strity(int kosci[5],bool duzy){
     sort(kosci,kosci+5);
     int malyS[] = {1,2,3,4,5};
     int duzyS[] = {2,3,4,5,6};
     int* strit = malyS;
-    int* strit2 = duzyS;
     if(duzy) strit = duzyS;
     for(int i=0;i<5;i++){
         if(kosci[i]!=strit[i]){
@@ -41,14 +41,15 @@ int PointsCount::strity(int kosci[5],bool duzy){
     return 15;
 }
 
-int PointsCount::identyczne(int kosci[5],int wyb){
+int identyczne(int kosci[5],int wyb){
+    sort(kosci,kosci+5);
     int bonus = 0;
     int suma = 0;
     int ile=0;
     for(int i=6;i>=1;i--){
         ile = count(kosci,kosci+5,i);
-        if(ile==wyb){
-            suma=ile*wyb;
+        if(ile>=wyb){
+            suma=wyb*i;
             break;
         }
     }
@@ -62,27 +63,43 @@ int PointsCount::identyczne(int kosci[5],int wyb){
     return suma+bonus;
 }
 
-int PointsCount::full(int kosci[5]){
-    int para = identyczne(kosci,2);
-    int trojka = identyczne(kosci,3);
-    if(para > 0 && trojka > 0) return para+trojka+10;
-    return 0;
+int full(int kosci[5]){
+    sort(kosci,kosci+5);
+    int suma = 0;
+    bool niebylo = true;
+    int pop = 0;
+    for(int i=0;i<5;i++){
+        if(pop!=0){
+            if(pop!=kosci[i]){
+                if((i==2 || i==3) && niebylo){
+                    niebylo=false;
+                } else {
+                    return 0;
+                }
+            }
+        }
+        pop = kosci[i];
+        suma+=kosci[i];
+    }
+    return suma+10;
 }
 
-int PointsCount::dwiePary(int kosci[5]){
+int dwiePary(int kosci[5]){
+    sort(kosci,kosci+5);
     int bonus = 0;
     int suma = 0;
     int ile=0;
     int wyb = 0;
     for(int i=6;i>=1;i--){
         ile = count(kosci,kosci+5,i);
-        if(ile==wyb){
-            suma+=ile*wyb;
+        if(ile>=2){
+            suma+=2*i;
             wyb++;
             if(wyb==2) break;
         }
     }
-    return suma+bonus;
+    if(wyb!=2) return 0;
+    return suma;
 }
 
 
@@ -102,4 +119,26 @@ int PointsCount::punktyFinalne(int punktyGracza[17]){
         punkty+=punktyGracza[i];
     }
     return punkty;
+}
+
+int PointsCount::liczPunkty(int kosci[5],int wybPunkt){
+    if(wybPunkt<6 && wybPunkt >=0){ //szkolka
+        return cyfry(kosci,wybPunkt+1);
+    }else if(wybPunkt==6){ //para
+        return identyczne(kosci,2);
+    }else if(wybPunkt==7){ //dwie pary
+        return dwiePary(kosci);
+    }else if(wybPunkt==8 || wybPunkt==9){ //trojka i kareta
+        return identyczne(kosci,wybPunkt-5);
+    }else if(wybPunkt==10 || wybPunkt==11){ //nieparzyste i parzyste
+        return parzystosci(kosci,wybPunkt-10);
+    }else if(wybPunkt==12 || wybPunkt==13){ //maly i duzy strit
+        return strity(kosci,wybPunkt-12);
+    }else if(wybPunkt==14){
+        return full(kosci);
+    }else if(wybPunkt==15){
+        return identyczne(kosci,5);
+    }else if(wybPunkt==16){
+        return szansa(kosci);
+    } else return -1;
 }

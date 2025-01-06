@@ -51,7 +51,7 @@ string PlayerManager::zwrocNick(int usr){
     if(int i = graczId(usr);i != -1){
         return gracze[i].nick;
     }
-    return NULL;
+    return "dziwny_gracz";
 }
 
 void PlayerManager::dajNick(int usr, string nick){ //przy dołączaniu do pokoju
