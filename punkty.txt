@@ -1,0 +1,20 @@
+jedynki: 11111 + 0
+dwojki: 22222 + 0
+trojki: 33333 + 0
+czworki: 44444 + 0
+piatki: 55555 + 0
+szostki: 66666 + 0
+para: aa*** + 0
+dwie pary: aabb* + 0
+trojka: aaa** + 0
+kareta: aaaa* + 20
+full: aaabb + 10
+maly strit: 12345 - 15
+duzy strit: 23456 - 20
+parzyste: cdefg % 0
+nieparzyste: cdefg % 1
+Poker: aaaaa + 50
+Szansa: cdefg + 0
+
+#nazwa wzorzec dzialanie pluspunktow
+# + dodawanie / - nic / % modulo
