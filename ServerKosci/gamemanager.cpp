@@ -265,9 +265,7 @@ void GameManager::actionManager(int usr,char* command, int size,Partia* gra){
                     wezKosc(usr,wyb);
                 } else if(komenda == "rdy"){
                     //koniec,wszystko wybrane
-                    if(){
 
-                    }
                     endPlayerTurn(usr);
                 }
 

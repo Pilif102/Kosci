@@ -132,10 +132,11 @@ KlientKosci: CMakeFiles/KlientKosci.dir/main.cpp.o
 KlientKosci: CMakeFiles/KlientKosci.dir/wybor.cpp.o
 KlientKosci: CMakeFiles/KlientKosci.dir/build.make
 KlientKosci: /usr/lib/x86_64-linux-gnu/libQt6Widgets.so.6.4.2
+KlientKosci: /usr/lib/x86_64-linux-gnu/libQt6Network.so.6.4.2
 KlientKosci: /usr/lib/x86_64-linux-gnu/libQt6Gui.so.6.4.2
-KlientKosci: /usr/lib/x86_64-linux-gnu/libQt6Core.so.6.4.2
 KlientKosci: /usr/lib/x86_64-linux-gnu/libGLX.so
 KlientKosci: /usr/lib/x86_64-linux-gnu/libOpenGL.so
+KlientKosci: /usr/lib/x86_64-linux-gnu/libQt6Core.so.6.4.2
 KlientKosci: CMakeFiles/KlientKosci.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/student/KosciVersus/KlientKosci/build/Desktop-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable KlientKosci"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/KlientKosci.dir/link.txt --verbose=$(VERBOSE)

@@ -32,11 +32,11 @@ public:
     QAction *actionInfo;
     QWidget *centralwidget;
     QVBoxLayout *verticalLayout_2;
-    QHBoxLayout *horizontalLayout;
+    QHBoxLayout *connectGroup;
     QLineEdit *lineEditIP;
-    QSpinBox *spinBoxPort;
+    QSpinBox *portSpinBox;
     QPushButton *PushConnect;
-    QLineEdit *lineEdit;
+    QLineEdit *nickEdit;
     QVBoxLayout *verticalLayout;
     QLabel *label;
     QListView *listView;
@@ -66,35 +66,39 @@ public:
         centralwidget->setEnabled(true);
         verticalLayout_2 = new QVBoxLayout(centralwidget);
         verticalLayout_2->setObjectName("verticalLayout_2");
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName("horizontalLayout");
+        connectGroup = new QHBoxLayout();
+        connectGroup->setObjectName("connectGroup");
         lineEditIP = new QLineEdit(centralwidget);
         lineEditIP->setObjectName("lineEditIP");
 
-        horizontalLayout->addWidget(lineEditIP);
+        connectGroup->addWidget(lineEditIP);
 
-        spinBoxPort = new QSpinBox(centralwidget);
-        spinBoxPort->setObjectName("spinBoxPort");
+        portSpinBox = new QSpinBox(centralwidget);
+        portSpinBox->setObjectName("portSpinBox");
+        portSpinBox->setMaximum(99999);
 
-        horizontalLayout->addWidget(spinBoxPort);
+        connectGroup->addWidget(portSpinBox);
 
         PushConnect = new QPushButton(centralwidget);
         PushConnect->setObjectName("PushConnect");
 
-        horizontalLayout->addWidget(PushConnect);
+        connectGroup->addWidget(PushConnect);
 
 
-        verticalLayout_2->addLayout(horizontalLayout);
+        verticalLayout_2->addLayout(connectGroup);
 
-        lineEdit = new QLineEdit(centralwidget);
-        lineEdit->setObjectName("lineEdit");
+        nickEdit = new QLineEdit(centralwidget);
+        nickEdit->setObjectName("nickEdit");
+        nickEdit->setEnabled(false);
+        nickEdit->setMaxLength(20);
 
-        verticalLayout_2->addWidget(lineEdit);
+        verticalLayout_2->addWidget(nickEdit);
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName("verticalLayout");
         label = new QLabel(centralwidget);
         label->setObjectName("label");
+        label->setEnabled(true);
         label->setLayoutDirection(Qt::LeftToRight);
         label->setAlignment(Qt::AlignCenter);
 
@@ -135,7 +139,7 @@ public:
         lineEditIP->setText(QString());
         lineEditIP->setPlaceholderText(QCoreApplication::translate("wybor", "server ip", nullptr));
         PushConnect->setText(QCoreApplication::translate("wybor", "Connect to Server", nullptr));
-        lineEdit->setPlaceholderText(QCoreApplication::translate("wybor", "nick", nullptr));
+        nickEdit->setPlaceholderText(QCoreApplication::translate("wybor", "nick", nullptr));
         label->setText(QCoreApplication::translate("wybor", "<html><head/><body><p>Available games list:</p></body></html>", nullptr));
         GameButton->setText(QCoreApplication::translate("wybor", "Connect to game", nullptr));
     } // retranslateUi
