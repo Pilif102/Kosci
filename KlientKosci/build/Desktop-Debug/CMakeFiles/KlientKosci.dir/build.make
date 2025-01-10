@@ -78,7 +78,12 @@ KlientKosci_autogen/timestamp: CMakeFiles/KlientKosci.dir/compiler_depend.ts
 
 KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp: /home/student/KosciVersus/KlientKosci/res.qrc
 KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp: CMakeFiles/KlientKosci_autogen.dir/AutoRcc_res_EWIEGA46WW_Info.json
-KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp: /home/student/KosciVersus/KlientKosci/die.jpeg
+KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp: /home/student/KosciVersus/KlientKosci/resources/side1.jpeg
+KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp: /home/student/KosciVersus/KlientKosci/resources/side3.jpeg
+KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp: /home/student/KosciVersus/KlientKosci/resources/side2.jpeg
+KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp: /home/student/KosciVersus/KlientKosci/resources/side6.jpeg
+KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp: /home/student/KosciVersus/KlientKosci/resources/side5.jpeg
+KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp: /home/student/KosciVersus/KlientKosci/resources/side4.jpeg
 KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp: /usr/lib/qt6/libexec/rcc
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/student/KosciVersus/KlientKosci/build/Desktop-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Automatic RCC for res.qrc"
 	/usr/bin/cmake -E cmake_autorcc /home/student/KosciVersus/KlientKosci/build/Desktop-Debug/CMakeFiles/KlientKosci_autogen.dir/AutoRcc_res_EWIEGA46WW_Info.json Debug

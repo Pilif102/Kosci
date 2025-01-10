@@ -295,7 +295,7 @@
 				1,
 				2,
 				6,
-				15
+				20
 			]
 		}
 	],
@@ -386,7 +386,7 @@
 				1,
 				2,
 				6,
-				15
+				20
 			]
 		},
 		{
@@ -395,9 +395,9 @@
 			[
 				3,
 				5,
-				11,
-				12,
-				13
+				16,
+				17,
+				18
 			]
 		},
 		{
@@ -407,23 +407,28 @@
 				4,
 				7,
 				8,
-				10,
-				14
+				9,
+				19
 			]
 		},
 		{
 			"name" : "Resources",
 			"sourceIndexes" : 
 			[
-				9
+				10,
+				11,
+				12,
+				13,
+				14,
+				15
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				16,
-				17
+				21,
+				22
 			]
 		}
 	],
@@ -481,13 +486,38 @@
 		},
 		{
 			"backtrace" : 4,
-			"path" : "die.jpeg",
+			"path" : "res.qrc",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"path" : "resources/side1.jpeg",
 			"sourceGroupIndex" : 3
 		},
 		{
 			"backtrace" : 4,
-			"path" : "res.qrc",
-			"sourceGroupIndex" : 2
+			"path" : "resources/side2.jpeg",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 4,
+			"path" : "resources/side3.jpeg",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 4,
+			"path" : "resources/side4.jpeg",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 4,
+			"path" : "resources/side5.jpeg",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 4,
+			"path" : "resources/side6.jpeg",
+			"sourceGroupIndex" : 3
 		},
 		{
 			"backtrace" : 0,

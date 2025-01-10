@@ -6,7 +6,15 @@
 	"CMAKE_SOURCE_DIR" : "/home/student/KosciVersus/KlientKosci",
 	"GENERATOR" : "Unix Makefiles",
 	"INCLUDE_DIR" : "/home/student/KosciVersus/KlientKosci/build/Desktop-Debug/KlientKosci_autogen/include",
-	"INPUTS" : [ "/home/student/KosciVersus/KlientKosci/die.jpeg" ],
+	"INPUTS" : 
+	[
+		"/home/student/KosciVersus/KlientKosci/resources/side1.jpeg",
+		"/home/student/KosciVersus/KlientKosci/resources/side3.jpeg",
+		"/home/student/KosciVersus/KlientKosci/resources/side2.jpeg",
+		"/home/student/KosciVersus/KlientKosci/resources/side6.jpeg",
+		"/home/student/KosciVersus/KlientKosci/resources/side5.jpeg",
+		"/home/student/KosciVersus/KlientKosci/resources/side4.jpeg"
+	],
 	"LOCK_FILE" : "/home/student/KosciVersus/KlientKosci/build/Desktop-Debug/CMakeFiles/KlientKosci_autogen.dir/AutoRcc_res_EWIEGA46WW_Lock.lock",
 	"MULTI_CONFIG" : false,
 	"OPTIONS" : [ "-name", "res" ],
