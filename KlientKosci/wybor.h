@@ -19,19 +19,24 @@ class wybor : public QMainWindow
 public:
     wybor(QWidget *parent = nullptr);
     ~wybor();
+    QTcpSocket * sock {nullptr};
 
 protected:
-    QTcpSocket * sock {nullptr};
     QTimer * connTimeoutTimer{nullptr};
+
+    void connectRoom();
     void responseHandler(QByteArray komenda);
     void connectBtnHit();
-    void roomsSetup();
+    void joinGame(QString dane);
+    void roomsSetup(QString dane);
     void sendNick();
-    void joinBtnHit();
     void socketConnected();
     void socketDisconnected();
     void socketError(QTcpSocket::SocketError);
     void socketReadable();
+
+signals:
+    void dodajGracza(QString dane);
 
 private:
     Ui::wybor *ui;

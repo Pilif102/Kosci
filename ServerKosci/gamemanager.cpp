@@ -11,19 +11,20 @@ PointsCount punkty;
 GameManager::GameManager() {}
 
 void SendToAll(Partia* gra, string msg){
+    msg+=":";
     for(int i=0;i<gra->liczbaGraczy;i++){
-        char tab[msg.length()+1];
+        char tab[msg.length()];
         strcpy(tab,msg.c_str());
         write(gra->idGraczy[i],tab,sizeof(tab));
     }
 }
 
-void SendKosciToAll(Partia* gra, int mes[], string preMsg=""){
-    string msg="";
-    for(int i=0; i<MAXGRACZY*5;i++){
+void SendKosciToAll(Partia* gra, int mes[], string msg=""){
+    for(int i=0; i<gra->liczbaGraczy*5;i++){
         msg+=to_string(mes[i]);
+        msg+=",";
     }
-    SendToAll(gra,preMsg+msg);
+    SendToAll(gra,msg);
 }
 
 int GameManager::graczId(int usr,Partia* gra){
@@ -60,14 +61,15 @@ void GameManager::wezKosc(int usr,int kosc){
             }else{
                 if(partia->wybrane[i]==kosc){ //usuniecie wybranej kosci
                     partia->wybrane[i]=-1;
-                    SendKosciToAll(partia,partia->wybrane,"wyb");
+                    SendToAll(partia,"got"+to_string(kosc)+"g"+to_string(id));
+                    //SendKosciToAll(partia,partia->wybrane,"wyb");
                     return;
                 }
             }
         }
         for(int i=0;i<partia->liczbaGraczy*5;i++){
             if(partia->wybrane[i]==kosc){ //kosc w posiadaniu innego gracza
-                write(usr,"zaj",3);
+                write(usr,"zaj:",4);
                 return;
             }
         }
@@ -106,14 +108,18 @@ void GameManager::dodajGracza(int usr,Partia* gra){
         gra->idGraczy[i]=usr;
         gra->ready[i]=false;
     }
-    SendToAll(gra,"nic"+to_string(i)+gracz.zwrocNick(usr));
+    SendToAll(gra,"nic"+to_string(i)+","+gracz.zwrocNick(usr));
     for(int j=0;j<gra->liczbaGraczy;j++){
         if(i!=j){
-            string msg = "nic"+to_string(j)+gracz.zwrocNick(gra->idGraczy[j]);
-            char tab[msg.length()+1];
+            string msg = "nic"+to_string(j)+","+gracz.zwrocNick(gra->idGraczy[j])+":";
+            char tab[msg.length()];
             strcpy(tab,msg.c_str());
             write(usr,tab,sizeof(tab));
         }
+    }
+
+    for(int j=0;j<MAXGRACZY;j++){
+        cout << "nic"+to_string(j)+","+gracz.zwrocNick(gra->idGraczy[j]) << endl;
     }
 
 }
@@ -172,25 +178,31 @@ void GameManager::reroll(Partia* gra){
     for(int i=0;i<gra->liczbaGraczy*5;i++){
         msg+=to_string(gra->kosci[i]);
     }
-    SendToAll(gra,"rrl"+to_string(gra->rerolls));
-    SendToAll(gra,"kos"+msg);
+    SendToAll(gra,"rrl"+to_string(gra->rerolls)+":");
+    SendToAll(gra,"kos"+msg+":");
     cout << msg << endl;
 }
 
 void GameManager::refactor(int usr,Partia* gra){
     if(int i = graczId(usr,gra);i!=-1){ //niech idzie z pokoju
-        partia->liczbaGraczy--;
-        //wyslij informacje do innych graczy, zmien kolejnosc graczy zeby było ich mało
-        SendToAll(partia,"qit"+to_string(i)+gracz.zwrocNick(usr));
-        for(int j=i+1;j<gra->liczbaGraczy;j++){
-            partia->idGraczy[j-1]=partia->idGraczy[j];
-            SendToAll(partia,"nic"+to_string(j-1)+gracz.zwrocNick(partia->idGraczy[j-1]));
+        if(gra->liczbaGraczy==1){
+            *gra = {};
+            return;
         }
+        //wyslij informacje do innych graczy, zmien kolejnosc graczy zeby było ich mało
+        SendToAll(gra,"qit"+to_string(i));
+        for(int j=i;j<gra->liczbaGraczy-1;j++){
+            gra->idGraczy[j]=gra->idGraczy[j+1]; /*else {
+                SendToAll(gra,"nic"+to_string(j-1)+","+gracz.zwrocNick(gra->idGraczy[j-1]));
+            }*/
+        }
+        gra->liczbaGraczy--;
+        gra->idGraczy[gra->liczbaGraczy]=0;
 
     }
 
     //zrestartuj runde ktora aktualnie jest
-    if(gra->punktowanie==false) runda(gra);
+    if( gra->runda > 0 && gra->punktowanie==false) runda(gra);
 }
 void GameManager::punktyGra(int usr,int pid){
     int gid = (graczId(usr,partia));
@@ -265,7 +277,6 @@ void GameManager::actionManager(int usr,char* command, int size,Partia* gra){
                     wezKosc(usr,wyb);
                 } else if(komenda == "rdy"){
                     //koniec,wszystko wybrane
-
                     endPlayerTurn(usr);
                 }
 

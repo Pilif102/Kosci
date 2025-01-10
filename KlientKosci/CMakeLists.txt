@@ -23,6 +23,11 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(KlientKosci
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+        gra.h gra.cpp gra.ui
+        kosci.ui
+        die.jpeg
+        res.qrc
+
 
     )
 # Define target properties for Android with Qt 6 as:

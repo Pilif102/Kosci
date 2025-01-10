@@ -1,0 +1,20 @@
+{
+	"BUILD_DIR" : "/home/student/KosciVersus/KlientKosci/build/Desktop-Debug/KlientKosci_autogen",
+	"CMAKE_BINARY_DIR" : "/home/student/KosciVersus/KlientKosci/build/Desktop-Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/student/KosciVersus/KlientKosci/build/Desktop-Debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/student/KosciVersus/KlientKosci",
+	"CMAKE_SOURCE_DIR" : "/home/student/KosciVersus/KlientKosci",
+	"GENERATOR" : "Unix Makefiles",
+	"INCLUDE_DIR" : "/home/student/KosciVersus/KlientKosci/build/Desktop-Debug/KlientKosci_autogen/include",
+	"INPUTS" : [ "/home/student/KosciVersus/KlientKosci/die.jpeg" ],
+	"LOCK_FILE" : "/home/student/KosciVersus/KlientKosci/build/Desktop-Debug/CMakeFiles/KlientKosci_autogen.dir/AutoRcc_res_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "res" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_res.cpp",
+	"RCC_EXECUTABLE" : "/usr/lib/qt6/libexec/rcc",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "/home/student/KosciVersus/KlientKosci/build/Desktop-Debug/CMakeFiles/KlientKosci_autogen.dir/AutoRcc_res_EWIEGA46WW_Used.txt",
+	"SOURCE" : "/home/student/KosciVersus/KlientKosci/res.qrc",
+	"VERBOSITY" : 0
+}

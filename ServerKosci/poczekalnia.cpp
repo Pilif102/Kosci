@@ -16,22 +16,23 @@ void Poczekalnia::podajPokoje(int usr){
             msg+="p"+to_string(i)+"g"+to_string(pokoje[i].liczbaGraczy);
         }
     }
-    char tab[msg.length()+1];
+    msg+=":";
+    char tab[msg.length()];
     strcpy(tab,msg.c_str());
     write(usr,tab,sizeof(tab));
 }
 
 void Poczekalnia::wyborPokoju(int usr,int wyb){
     if(pokoje[wyb].liczbaGraczy < MAXGRACZY && pokoje[wyb].runda==0){
-        gracz.zmienPozycjeGracza(usr,'g',wyb);
         Partia* pokoj = pokoje+wyb;
-        string msg = "rm"+to_string(wyb);
-        partia.dodajGracza(usr,pokoj);
-        char tab[msg.length()+1];
+        string msg = "rom"+to_string(wyb)+"ply"+to_string(pokoj->liczbaGraczy)+":";
+        char tab[msg.length()];
         strcpy(tab,msg.c_str());
         write(usr,tab,sizeof(tab));
+        gracz.zmienPozycjeGracza(usr,'g',wyb);
+        partia.dodajGracza(usr,pokoj);
     } else {
-        write(usr,"rb",2);
+        write(usr,"rbd:",4);
     }
 }
 
@@ -46,7 +47,7 @@ void Poczekalnia::nowyPokoj(int usr){
         }
         wyb++;
     }
-    write(usr,"rd",2);
+    write(usr,"nrm:",4);
 }
 
 Partia* Poczekalnia::zwrocPokoj(int usr){

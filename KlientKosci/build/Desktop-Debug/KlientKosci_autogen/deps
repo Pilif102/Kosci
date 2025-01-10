@@ -4,6 +4,8 @@ KlientKosci_autogen/timestamp: \
 	/home/student/KosciVersus/KlientKosci/build/Desktop-Debug/CMakeFiles/3.28.3/CMakeCXXCompiler.cmake \
 	/home/student/KosciVersus/KlientKosci/build/Desktop-Debug/CMakeFiles/3.28.3/CMakeSystem.cmake \
 	/home/student/KosciVersus/KlientKosci/build/Desktop-Debug/KlientKosci_autogen/moc_predefs.h \
+	/home/student/KosciVersus/KlientKosci/gra.cpp \
+	/home/student/KosciVersus/KlientKosci/gra.h \
 	/home/student/KosciVersus/KlientKosci/main.cpp \
 	/home/student/KosciVersus/KlientKosci/wybor.cpp \
 	/home/student/KosciVersus/KlientKosci/wybor.h \
@@ -407,8 +409,11 @@ KlientKosci_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/QtNetwork/qtnetworkexports.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtNetwork/qtnetworkglobal.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMainWindow \
+	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMessageBox \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
+	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qdialog.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qmainwindow.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qmessagebox.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qsizepolicy.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtabwidget.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtwidgets-config.h \
@@ -563,5 +568,6 @@ KlientKosci_autogen/timestamp: \
 	/usr/share/cmake-3.28/Modules/Platform/Linux-Initialize.cmake \
 	/usr/share/cmake-3.28/Modules/Platform/Linux.cmake \
 	/usr/share/cmake-3.28/Modules/Platform/UnixPaths.cmake \
+	/home/student/KosciVersus/KlientKosci/gra.ui \
 	/home/student/KosciVersus/KlientKosci/wybor.ui \
 	/usr/bin/cmake

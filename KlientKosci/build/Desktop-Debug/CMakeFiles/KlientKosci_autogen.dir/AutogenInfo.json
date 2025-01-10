@@ -210,13 +210,20 @@
 		"/usr/lib/x86_64-linux-gnu/cmake/Qt6Network/Qt6NetworkTargets-none.cmake",
 		"/usr/lib/x86_64-linux-gnu/cmake/Qt6Network/Qt6NetworkAdditionalTargetInfo.cmake",
 		"/usr/lib/x86_64-linux-gnu/cmake/Qt6Network/Qt6NetworkVersionlessTargets.cmake",
-		"/usr/share/cmake-3.28/Modules/GNUInstallDirs.cmake"
+		"/usr/share/cmake-3.28/Modules/GNUInstallDirs.cmake",
+		"/home/student/KosciVersus/KlientKosci/res.qrc"
 	],
 	"CMAKE_SOURCE_DIR" : "/home/student/KosciVersus/KlientKosci",
 	"DEP_FILE" : "/home/student/KosciVersus/KlientKosci/build/Desktop-Debug/KlientKosci_autogen/deps",
 	"DEP_FILE_RULE_NAME" : "KlientKosci_autogen/timestamp",
 	"HEADERS" : 
 	[
+		[
+			"/home/student/KosciVersus/KlientKosci/gra.h",
+			"MU",
+			"EWIEGA46WW/moc_gra.cpp",
+			null
+		],
 		[
 			"/home/student/KosciVersus/KlientKosci/wybor.h",
 			"MU",
@@ -283,6 +290,7 @@
 	"SETTINGS_FILE" : "/home/student/KosciVersus/KlientKosci/build/Desktop-Debug/CMakeFiles/KlientKosci_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
+		[ "/home/student/KosciVersus/KlientKosci/gra.cpp", "MU", null ],
 		[ "/home/student/KosciVersus/KlientKosci/main.cpp", "MU", null ],
 		[ "/home/student/KosciVersus/KlientKosci/wybor.cpp", "MU", null ]
 	],

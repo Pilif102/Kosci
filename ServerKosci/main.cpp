@@ -47,7 +47,6 @@ void do_use_fd(int ufd){
         gra.actionManager(ufd,buff,size,pocz.zwrocPokoj(ufd));
         break;
     }
-    write(ufd,"\n",1);
 }
 
 int main()

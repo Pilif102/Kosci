@@ -47,7 +47,7 @@
          <string/>
         </property>
         <property name="text">
-         <string/>
+         <string>127.0.0.1</string>
         </property>
         <property name="placeholderText">
          <string>server ip</string>
@@ -58,6 +58,9 @@
        <widget class="QSpinBox" name="portSpinBox">
         <property name="maximum">
          <number>99999</number>
+        </property>
+        <property name="value">
+         <number>9999</number>
         </property>
        </widget>
       </item>
@@ -102,9 +105,32 @@
        </widget>
       </item>
       <item>
-       <widget class="QListView" name="listView">
+       <widget class="QListWidget" name="listWidget">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="verticalScrollBarPolicy">
          <enum>Qt::ScrollBarAlwaysOn</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="refresh">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string>Refresh</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="newRoom">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string>New Room</string>
         </property>
        </widget>
       </item>

@@ -15,7 +15,7 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
-#include <QtWidgets/QListView>
+#include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
@@ -39,7 +39,9 @@ public:
     QLineEdit *nickEdit;
     QVBoxLayout *verticalLayout;
     QLabel *label;
-    QListView *listView;
+    QListWidget *listWidget;
+    QPushButton *refresh;
+    QPushButton *newRoom;
     QPushButton *GameButton;
     QMenuBar *menubar;
 
@@ -76,6 +78,7 @@ public:
         portSpinBox = new QSpinBox(centralwidget);
         portSpinBox->setObjectName("portSpinBox");
         portSpinBox->setMaximum(99999);
+        portSpinBox->setValue(9999);
 
         connectGroup->addWidget(portSpinBox);
 
@@ -104,11 +107,24 @@ public:
 
         verticalLayout->addWidget(label);
 
-        listView = new QListView(centralwidget);
-        listView->setObjectName("listView");
-        listView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        listWidget = new QListWidget(centralwidget);
+        listWidget->setObjectName("listWidget");
+        listWidget->setEnabled(false);
+        listWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 
-        verticalLayout->addWidget(listView);
+        verticalLayout->addWidget(listWidget);
+
+        refresh = new QPushButton(centralwidget);
+        refresh->setObjectName("refresh");
+        refresh->setEnabled(false);
+
+        verticalLayout->addWidget(refresh);
+
+        newRoom = new QPushButton(centralwidget);
+        newRoom->setObjectName("newRoom");
+        newRoom->setEnabled(false);
+
+        verticalLayout->addWidget(newRoom);
 
         GameButton = new QPushButton(centralwidget);
         GameButton->setObjectName("GameButton");
@@ -136,11 +152,13 @@ public:
         actionclose->setText(QCoreApplication::translate("wybor", "Close", nullptr));
         actionInfo->setText(QCoreApplication::translate("wybor", "Info", nullptr));
         lineEditIP->setInputMask(QString());
-        lineEditIP->setText(QString());
+        lineEditIP->setText(QCoreApplication::translate("wybor", "127.0.0.1", nullptr));
         lineEditIP->setPlaceholderText(QCoreApplication::translate("wybor", "server ip", nullptr));
         PushConnect->setText(QCoreApplication::translate("wybor", "Connect to Server", nullptr));
         nickEdit->setPlaceholderText(QCoreApplication::translate("wybor", "nick", nullptr));
         label->setText(QCoreApplication::translate("wybor", "<html><head/><body><p>Available games list:</p></body></html>", nullptr));
+        refresh->setText(QCoreApplication::translate("wybor", "Refresh", nullptr));
+        newRoom->setText(QCoreApplication::translate("wybor", "New Room", nullptr));
         GameButton->setText(QCoreApplication::translate("wybor", "Connect to game", nullptr));
     } // retranslateUi
 

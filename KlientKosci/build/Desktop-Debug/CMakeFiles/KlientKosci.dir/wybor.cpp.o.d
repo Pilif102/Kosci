@@ -431,7 +431,8 @@ CMakeFiles/KlientKosci.dir/wybor.cpp.o: \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qtextformat.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qpen.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qtextoption.h \
-  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QListView \
+  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QListWidget \
+  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlistwidget.h \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlistview.h \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractitemview.h \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractscrollarea.h \
@@ -456,6 +457,7 @@ CMakeFiles/KlientKosci.dir/wybor.cpp.o: \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QSpinBox \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qspinbox.h \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QVBoxLayout \
+  /home/student/KosciVersus/KlientKosci/gra.h \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMessageBox \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qmessagebox.h \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qdialog.h

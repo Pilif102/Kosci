@@ -200,6 +200,30 @@ KlientKosci_autogen/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/KlientKosci_autogen.dir/build.make CMakeFiles/KlientKosci_autogen.dir/build
 .PHONY : KlientKosci_autogen/fast
 
+KlientKosci_autogen/EWIEGA46WW/qrc_res.o: KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp.o
+.PHONY : KlientKosci_autogen/EWIEGA46WW/qrc_res.o
+
+# target to build an object file
+KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KlientKosci.dir/build.make CMakeFiles/KlientKosci.dir/KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp.o
+.PHONY : KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp.o
+
+KlientKosci_autogen/EWIEGA46WW/qrc_res.i: KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp.i
+.PHONY : KlientKosci_autogen/EWIEGA46WW/qrc_res.i
+
+# target to preprocess a source file
+KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KlientKosci.dir/build.make CMakeFiles/KlientKosci.dir/KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp.i
+.PHONY : KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp.i
+
+KlientKosci_autogen/EWIEGA46WW/qrc_res.s: KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp.s
+.PHONY : KlientKosci_autogen/EWIEGA46WW/qrc_res.s
+
+# target to generate assembly for a file
+KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KlientKosci.dir/build.make CMakeFiles/KlientKosci.dir/KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp.s
+.PHONY : KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp.s
+
 KlientKosci_autogen/mocs_compilation.o: KlientKosci_autogen/mocs_compilation.cpp.o
 .PHONY : KlientKosci_autogen/mocs_compilation.o
 
@@ -223,6 +247,30 @@ KlientKosci_autogen/mocs_compilation.s: KlientKosci_autogen/mocs_compilation.cpp
 KlientKosci_autogen/mocs_compilation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/KlientKosci.dir/build.make CMakeFiles/KlientKosci.dir/KlientKosci_autogen/mocs_compilation.cpp.s
 .PHONY : KlientKosci_autogen/mocs_compilation.cpp.s
+
+gra.o: gra.cpp.o
+.PHONY : gra.o
+
+# target to build an object file
+gra.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KlientKosci.dir/build.make CMakeFiles/KlientKosci.dir/gra.cpp.o
+.PHONY : gra.cpp.o
+
+gra.i: gra.cpp.i
+.PHONY : gra.i
+
+# target to preprocess a source file
+gra.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KlientKosci.dir/build.make CMakeFiles/KlientKosci.dir/gra.cpp.i
+.PHONY : gra.cpp.i
+
+gra.s: gra.cpp.s
+.PHONY : gra.s
+
+# target to generate assembly for a file
+gra.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KlientKosci.dir/build.make CMakeFiles/KlientKosci.dir/gra.cpp.s
+.PHONY : gra.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -287,9 +335,15 @@ help:
 	@echo "... KlientKosci_autogen"
 	@echo "... KlientKosci_autogen_timestamp_deps"
 	@echo "... KlientKosci"
+	@echo "... KlientKosci_autogen/EWIEGA46WW/qrc_res.o"
+	@echo "... KlientKosci_autogen/EWIEGA46WW/qrc_res.i"
+	@echo "... KlientKosci_autogen/EWIEGA46WW/qrc_res.s"
 	@echo "... KlientKosci_autogen/mocs_compilation.o"
 	@echo "... KlientKosci_autogen/mocs_compilation.i"
 	@echo "... KlientKosci_autogen/mocs_compilation.s"
+	@echo "... gra.o"
+	@echo "... gra.i"
+	@echo "... gra.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
