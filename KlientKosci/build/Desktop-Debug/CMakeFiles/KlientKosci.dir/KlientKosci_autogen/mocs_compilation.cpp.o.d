@@ -405,4 +405,12 @@ CMakeFiles/KlientKosci.dir/KlientKosci_autogen/mocs_compilation.cpp.o: \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMessageBox \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qmessagebox.h \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qdialog.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtGui/QStandardItem \
+  /usr/include/x86_64-linux-gnu/qt6/QtGui/qstandarditemmodel.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/qabstractitemmodel.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QProxyStyle \
+  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qproxystyle.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QCommonStyle \
+  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qcommonstyle.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qstyle.h \
   /home/student/KosciVersus/KlientKosci/build/Desktop-Debug/KlientKosci_autogen/EWIEGA46WW/moc_wybor.cpp

@@ -48,7 +48,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QListWidget" name="listWidget">
+     <widget class="QTableView" name="tableView">
       <property name="enabled">
        <bool>true</bool>
       </property>
@@ -60,16 +60,16 @@
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="rollLabel">
         <property name="text">
          <string>REROLLS LEFT :</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="rollButton">
         <property name="text">
-         <string>PushButton</string>
+         <string>REROLL</string>
         </property>
        </widget>
       </item>

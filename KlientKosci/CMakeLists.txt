@@ -24,7 +24,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
         gra.h gra.cpp gra.ui
-        kosci.ui
+
         res.qrc
         resources/side1.jpeg resources/side2.jpeg resources/side3.jpeg resources/side4.jpeg resources/side5.jpeg resources/side6.jpeg
 

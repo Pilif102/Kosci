@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include "wybor.h"
 #include <QMessageBox>
+#include <QStandardItem>
+#include <QProxyStyle>
 
 namespace Ui {
 class gra;
@@ -16,6 +18,8 @@ class gra : public QMainWindow
 public:
     explicit gra(QWidget *parent = nullptr);
     void setup(int pokoj,int gracze);
+    void dodajKosc();
+    void test(QModelIndex index);
     ~gra();
 
 public slots:

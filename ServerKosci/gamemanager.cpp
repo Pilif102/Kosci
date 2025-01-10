@@ -200,7 +200,9 @@ void GameManager::refactor(int usr,Partia* gra){
         gra->idGraczy[gra->liczbaGraczy]=0;
 
     }
-
+    if(gra->liczbaGraczy==1 && gra->runda>0){
+        koniecGry(gra);
+    }else
     //zrestartuj runde ktora aktualnie jest
     if( gra->runda > 0 && gra->punktowanie==false) runda(gra);
 }
@@ -231,21 +233,27 @@ void GameManager::punktyGra(int usr,int pid){
 
 void GameManager::endPlayerTurn(int usr){
     if(int i = graczId(usr,partia);i!=-1){
-        partia->ready[i]=true;
-        SendToAll(partia,"pdn"+to_string(i));
-    }
-    if(partia->liczbaGraczy>1){
-        int suma=0;
-        for(int i=0;i<MAXGRACZY;i++){
-            if(partia->ready[i]){
-                suma++;
+        for(int j=i*5;j<i*5+5;j++){
+            if(partia->wybrane[j]==-1){
+                return;
             }
         }
-        if(suma == partia->liczbaGraczy){
-            //koniec tury, przejsc do punktowania
-            SendToAll(partia,"t-e");
-            partia->punktowanie=true;
-            fill(partia->ready,partia->ready+MAXGRACZY,0);
+        partia->ready[i]=true;
+        SendToAll(partia,"pdn"+to_string(i));
+
+        if(partia->liczbaGraczy>1){
+            int suma=0;
+            for(int i=0;i<MAXGRACZY;i++){
+                if(partia->ready[i]){
+                    suma++;
+                }
+            }
+            if(suma == partia->liczbaGraczy){
+                //koniec tury, przejsc do punktowania
+                SendToAll(partia,"t-e");
+                partia->punktowanie=true;
+                fill(partia->ready,partia->ready+MAXGRACZY,0);
+            }
         }
     }
 }

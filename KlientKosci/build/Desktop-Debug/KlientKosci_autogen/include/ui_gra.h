@@ -15,12 +15,12 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTableView>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -35,10 +35,10 @@ public:
     QVBoxLayout *verticalLayout;
     QLabel *pokoj;
     QTableWidget *gracze;
-    QListWidget *listWidget;
+    QTableView *tableView;
     QHBoxLayout *horizontalLayout;
-    QLabel *label;
-    QPushButton *pushButton;
+    QLabel *rollLabel;
+    QPushButton *rollButton;
     QMenuBar *menubar;
     QMenu *menumenu;
     QStatusBar *statusbar;
@@ -66,31 +66,31 @@ public:
             gracze->setRowCount(2);
         gracze->setObjectName("gracze");
         gracze->setEnabled(true);
-        gracze->setMaximumSize(QSize(16777215, 80));
+        gracze->setMaximumSize(QSize(16777215, 84));
         gracze->setEditTriggers(QAbstractItemView::NoEditTriggers);
         gracze->setRowCount(2);
         gracze->setColumnCount(1);
 
         verticalLayout->addWidget(gracze);
 
-        listWidget = new QListWidget(centralwidget);
-        listWidget->setObjectName("listWidget");
-        listWidget->setEnabled(true);
-        listWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        tableView = new QTableView(centralwidget);
+        tableView->setObjectName("tableView");
+        tableView->setEnabled(true);
+        tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
-        verticalLayout->addWidget(listWidget);
+        verticalLayout->addWidget(tableView);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName("horizontalLayout");
-        label = new QLabel(centralwidget);
-        label->setObjectName("label");
+        rollLabel = new QLabel(centralwidget);
+        rollLabel->setObjectName("rollLabel");
 
-        horizontalLayout->addWidget(label);
+        horizontalLayout->addWidget(rollLabel);
 
-        pushButton = new QPushButton(centralwidget);
-        pushButton->setObjectName("pushButton");
+        rollButton = new QPushButton(centralwidget);
+        rollButton->setObjectName("rollButton");
 
-        horizontalLayout->addWidget(pushButton);
+        horizontalLayout->addWidget(rollButton);
 
 
         verticalLayout->addLayout(horizontalLayout);
@@ -120,8 +120,8 @@ public:
         gra->setWindowTitle(QCoreApplication::translate("gra", "MainWindow", nullptr));
         actiongo_back_to_menu->setText(QCoreApplication::translate("gra", "change room", nullptr));
         pokoj->setText(QCoreApplication::translate("gra", "Pok\303\263j:", nullptr));
-        label->setText(QCoreApplication::translate("gra", "REROLLS LEFT :", nullptr));
-        pushButton->setText(QCoreApplication::translate("gra", "PushButton", nullptr));
+        rollLabel->setText(QCoreApplication::translate("gra", "REROLLS LEFT :", nullptr));
+        rollButton->setText(QCoreApplication::translate("gra", "REROLL", nullptr));
         menumenu->setTitle(QCoreApplication::translate("gra", "menu", nullptr));
     } // retranslateUi
 

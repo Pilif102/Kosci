@@ -460,4 +460,10 @@ CMakeFiles/KlientKosci.dir/wybor.cpp.o: \
   /home/student/KosciVersus/KlientKosci/gra.h \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMessageBox \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qmessagebox.h \
-  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qdialog.h
+  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qdialog.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtGui/QStandardItem \
+  /usr/include/x86_64-linux-gnu/qt6/QtGui/qstandarditemmodel.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QProxyStyle \
+  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qproxystyle.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QCommonStyle \
+  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qcommonstyle.h
