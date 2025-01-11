@@ -5,6 +5,18 @@ int lGraczy;
 int pokoj;
 QStandardItemModel *model = new QStandardItemModel;
 
+class ProxyStyle: public QProxyStyle{
+public:
+    using QProxyStyle::QProxyStyle;
+    QRect subElementRect(SubElement subElement, const QStyleOption *option, const QWidget *widget) const override{
+        QRect rect = QProxyStyle::subElementRect(subElement, option, widget);
+        if(subElement == SE_ItemViewItemDecoration){
+            rect.moveCenter(option->rect.center());
+        }
+        return rect;
+    }
+};
+
 gra::gra(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::gra)
@@ -60,11 +72,11 @@ void gra::dodajKosc(){
             image = image.scaled(50,50,Qt::KeepAspectRatio);
             QStandardItem *item = new QStandardItem();
             item->setData(QVariant(QPixmap::fromImage(image)), Qt::DecorationRole);
-
             model->setItem(j, i, item);
         }
     }
     ui->tableView->setModel(model);
+    ui->tableView->setStyle(new ProxyStyle(ui->tableView->style()));
 }
 
 gra::~gra()
@@ -72,14 +84,4 @@ gra::~gra()
     delete ui;
 }
 
-class ProxyStyle: public QProxyStyle{
-public:
-    using QProxyStyle::QProxyStyle;
-    QRect subElementRect(SubElement subElement, const QStyleOption *option, const QWidget *widget) const override{
-        QRect rect = QProxyStyle::subElementRect(subElement, option, widget);
-        if(subElement == SE_ItemViewItemDecoration){
-            rect.moveCenter(option->rect.center());
-        }
-        return rect;
-    }
-};
+

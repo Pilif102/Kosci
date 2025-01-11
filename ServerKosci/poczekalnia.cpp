@@ -12,7 +12,7 @@ Partia Poczekalnia::pokoje[ILEPOKOI];
 void Poczekalnia::podajPokoje(int usr){
     string msg="pok";
     for(int i=0;i<ILEPOKOI;i++){
-        if(pokoje[i].liczbaGraczy>0){
+        if(pokoje[i].liczbaGraczy>0 && pokoje[i].runda==0){
             msg+="p"+to_string(i)+"g"+to_string(pokoje[i].liczbaGraczy);
         }
     }
