@@ -37,7 +37,7 @@ void do_use_fd(int ufd){
         return;
     }
     //dodać testowanie gdzie znajduje się gracz, i osyłanie go do danej klasy
-    cout << player.podajPozycjeGracza(ufd) << endl;
+    cout << buff << endl;
     switch(player.podajPozycjeGracza(ufd)){ //switch dla czytelnosci
     case 'r': //sygnały związane z poczekalnia, przeniesc do klasy poczekalnia
         pocz.actionManager(ufd,buff,size);

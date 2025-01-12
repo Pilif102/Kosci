@@ -19,15 +19,15 @@
 #define ILEPOKOI 10
 
 struct Partia{
-    // bool reload=false;
-    // bool waiting=false;
     int liczbaGraczy = 0;
     int idGraczy[MAXGRACZY]={};
     int kosci[MAXGRACZY*5]={};
     int wybrane[MAXGRACZY*5];
     int runda=0;
     int limitRund = 1;
-    int rerolls=3;
+    int rerolls=2;
+    int MaxRolls=2;
+    int LimitGraczy=4;
     bool ready[4] = {};
     bool punktowanie = false;
     int punkty[17*MAXGRACZY]={};
@@ -35,7 +35,7 @@ struct Partia{
 
 struct Gracz{
     //struct in_addr ipik;
-    std::string nick = "nowy_gracz"; //mozna ze nick do 10 znakow
+    std::string nick = ""; //mozna ze nick do 20 znakow
     int id = -1;
     char pozycja = 'r';
     int numpokoju = -1;

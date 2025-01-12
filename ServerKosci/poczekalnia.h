@@ -4,6 +4,7 @@
 #include "struktury.h"
 #include "playermanager.h"
 #include "gamemanager.h"
+#include <string>
 
 class Poczekalnia
 {

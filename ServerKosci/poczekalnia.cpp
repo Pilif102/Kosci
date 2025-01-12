@@ -58,16 +58,18 @@ Partia* Poczekalnia::zwrocPokoj(int usr){
 void Poczekalnia::actionManager(int usr, char* command, int size){
     if(size>=3){
         string komenda = {command[0],command[1],command[2]};
-        if(komenda == "new"){
+        if(komenda == "new" && gracz.zwrocNick(usr).string::compare("")!=0){
             nowyPokoj(usr);
         } else if(komenda == "gib"){
             podajPokoje(usr);
-        } else if(komenda == "chs"){
+        } else if(komenda == "chs" && gracz.zwrocNick(usr).string::compare("")!=0){
             //unikaj nie-numerow (teraz nie implementuje) i pustych wartosci
             string s = command;
             s.erase(0,3);
-            int wyb = stoi(s);
-            wyborPokoju(usr,wyb);
+            //if(!s.empty() && find_if(s.begin(),s.end(), [](unsigned char c) { return !isdigit(c); }) == s.end()){
+                int wyb = stoi(s);
+                wyborPokoju(usr,wyb);
+            //}
         } else if(komenda == "nnc"){
             string s = command;
             s.erase(0,3);

@@ -10,6 +10,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/KlientKosci.dir/gra.cpp.o.d"
   "CMakeFiles/KlientKosci.dir/main.cpp.o"
   "CMakeFiles/KlientKosci.dir/main.cpp.o.d"
+  "CMakeFiles/KlientKosci.dir/punkt.cpp.o"
+  "CMakeFiles/KlientKosci.dir/punkt.cpp.o.d"
   "CMakeFiles/KlientKosci.dir/wybor.cpp.o"
   "CMakeFiles/KlientKosci.dir/wybor.cpp.o.d"
   "KlientKosci"

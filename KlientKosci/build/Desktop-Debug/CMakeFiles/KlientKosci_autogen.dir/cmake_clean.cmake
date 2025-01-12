@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/KlientKosci_autogen"
   "KlientKosci_autogen/include/ui_gra.h"
+  "KlientKosci_autogen/include/ui_punkt.h"
   "KlientKosci_autogen/include/ui_wybor.h"
   "KlientKosci_autogen/mocs_compilation.cpp"
   "KlientKosci_autogen/timestamp"

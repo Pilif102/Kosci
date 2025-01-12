@@ -79,6 +79,7 @@ KlientKosci_autogen/timestamp: CMakeFiles/KlientKosci.dir/compiler_depend.ts
 KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp: /home/student/KosciVersus/KlientKosci/res.qrc
 KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp: CMakeFiles/KlientKosci_autogen.dir/AutoRcc_res_EWIEGA46WW_Info.json
 KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp: /home/student/KosciVersus/KlientKosci/resources/side1.jpeg
+KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp: /home/student/KosciVersus/KlientKosci/resources/config.ini
 KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp: /home/student/KosciVersus/KlientKosci/resources/side3.jpeg
 KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp: /home/student/KosciVersus/KlientKosci/resources/side2.jpeg
 KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp: /home/student/KosciVersus/KlientKosci/resources/side6.jpeg
@@ -144,10 +145,24 @@ CMakeFiles/KlientKosci.dir/gra.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/KlientKosci.dir/gra.cpp.s"
 	/usr/bin/clang++-18 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/student/KosciVersus/KlientKosci/gra.cpp -o CMakeFiles/KlientKosci.dir/gra.cpp.s
 
+CMakeFiles/KlientKosci.dir/punkt.cpp.o: CMakeFiles/KlientKosci.dir/flags.make
+CMakeFiles/KlientKosci.dir/punkt.cpp.o: /home/student/KosciVersus/KlientKosci/punkt.cpp
+CMakeFiles/KlientKosci.dir/punkt.cpp.o: CMakeFiles/KlientKosci.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/student/KosciVersus/KlientKosci/build/Desktop-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/KlientKosci.dir/punkt.cpp.o"
+	/usr/bin/clang++-18 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/KlientKosci.dir/punkt.cpp.o -MF CMakeFiles/KlientKosci.dir/punkt.cpp.o.d -o CMakeFiles/KlientKosci.dir/punkt.cpp.o -c /home/student/KosciVersus/KlientKosci/punkt.cpp
+
+CMakeFiles/KlientKosci.dir/punkt.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/KlientKosci.dir/punkt.cpp.i"
+	/usr/bin/clang++-18 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/student/KosciVersus/KlientKosci/punkt.cpp > CMakeFiles/KlientKosci.dir/punkt.cpp.i
+
+CMakeFiles/KlientKosci.dir/punkt.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/KlientKosci.dir/punkt.cpp.s"
+	/usr/bin/clang++-18 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/student/KosciVersus/KlientKosci/punkt.cpp -o CMakeFiles/KlientKosci.dir/punkt.cpp.s
+
 CMakeFiles/KlientKosci.dir/KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp.o: CMakeFiles/KlientKosci.dir/flags.make
 CMakeFiles/KlientKosci.dir/KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp.o: KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp
 CMakeFiles/KlientKosci.dir/KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp.o: CMakeFiles/KlientKosci.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/student/KosciVersus/KlientKosci/build/Desktop-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/KlientKosci.dir/KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/student/KosciVersus/KlientKosci/build/Desktop-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/KlientKosci.dir/KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp.o"
 	/usr/bin/clang++-18 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/KlientKosci.dir/KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp.o -MF CMakeFiles/KlientKosci.dir/KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp.o.d -o CMakeFiles/KlientKosci.dir/KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp.o -c /home/student/KosciVersus/KlientKosci/build/Desktop-Debug/KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp
 
 CMakeFiles/KlientKosci.dir/KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp.i: cmake_force
@@ -164,6 +179,7 @@ KlientKosci_OBJECTS = \
 "CMakeFiles/KlientKosci.dir/main.cpp.o" \
 "CMakeFiles/KlientKosci.dir/wybor.cpp.o" \
 "CMakeFiles/KlientKosci.dir/gra.cpp.o" \
+"CMakeFiles/KlientKosci.dir/punkt.cpp.o" \
 "CMakeFiles/KlientKosci.dir/KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp.o"
 
 # External object files for target KlientKosci
@@ -173,6 +189,7 @@ KlientKosci: CMakeFiles/KlientKosci.dir/KlientKosci_autogen/mocs_compilation.cpp
 KlientKosci: CMakeFiles/KlientKosci.dir/main.cpp.o
 KlientKosci: CMakeFiles/KlientKosci.dir/wybor.cpp.o
 KlientKosci: CMakeFiles/KlientKosci.dir/gra.cpp.o
+KlientKosci: CMakeFiles/KlientKosci.dir/punkt.cpp.o
 KlientKosci: CMakeFiles/KlientKosci.dir/KlientKosci_autogen/EWIEGA46WW/qrc_res.cpp.o
 KlientKosci: CMakeFiles/KlientKosci.dir/build.make
 KlientKosci: /usr/lib/x86_64-linux-gnu/libQt6Widgets.so.6.4.2
@@ -182,7 +199,7 @@ KlientKosci: /usr/lib/x86_64-linux-gnu/libGLX.so
 KlientKosci: /usr/lib/x86_64-linux-gnu/libOpenGL.so
 KlientKosci: /usr/lib/x86_64-linux-gnu/libQt6Core.so.6.4.2
 KlientKosci: CMakeFiles/KlientKosci.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/student/KosciVersus/KlientKosci/build/Desktop-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable KlientKosci"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/student/KosciVersus/KlientKosci/build/Desktop-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable KlientKosci"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/KlientKosci.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

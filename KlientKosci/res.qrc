@@ -6,5 +6,6 @@
         <file>resources/side4.jpeg</file>
         <file>resources/side5.jpeg</file>
         <file>resources/side6.jpeg</file>
+        <file>resources/config.ini</file>
     </qresource>
 </RCC>

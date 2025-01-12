@@ -27,6 +27,9 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 
         res.qrc
         resources/side1.jpeg resources/side2.jpeg resources/side3.jpeg resources/side4.jpeg resources/side5.jpeg resources/side6.jpeg
+        resources/config.ini
+        punkt.h punkt.cpp punkt.ui
+
 
 
     )

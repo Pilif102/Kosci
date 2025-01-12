@@ -5,6 +5,7 @@
 #include <QTcpSocket>
 #include <QMainWindow>
 #include <QWidget>
+#include <QSettings>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -19,11 +20,17 @@ class wybor : public QMainWindow
 public:
     wybor(QWidget *parent = nullptr);
     ~wybor();
-    QTcpSocket * sock {nullptr};
+
+public slots:
+    void wybierzKosc(QString dane);
+    void exitPok();
+    void reroll();
+    void gotowy();
+
 
 protected:
     QTimer * connTimeoutTimer{nullptr};
-
+    QTcpSocket * sock {nullptr};
     void connectRoom();
     void responseHandler(QByteArray komenda);
     void connectBtnHit();
@@ -37,6 +44,17 @@ protected:
 
 signals:
     void dodajGracza(QString dane);
+    void usunGracza(QString dane);
+    void rzucone(QString dane);
+    void zablokujKosc(QString dane);
+    void unset();
+    void punktowanie();
+    void rerolled(QString dane);
+    void PunktyKoniec(QString dane);
+    void przypiszPunkty(QString dane);
+    void roundNum(QString dane);
+    void zwyciezca(QString dane);
+
 
 private:
     Ui::wybor *ui;

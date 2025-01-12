@@ -3,13 +3,16 @@
 #include "gra.h"
 
 #include <QMessageBox>
-
+bool powiadomienia=true;
+bool first = true;
+gra *nw;
 
 wybor::wybor(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::wybor)
 {
     ui->setupUi(this);
+    nw = new gra();
 
     //server koneksje
     connect(ui->PushConnect, &QPushButton::clicked, this, &wybor::connectBtnHit);
@@ -28,12 +31,63 @@ wybor::wybor(QWidget *parent)
     connect(ui->GameButton,&QPushButton::clicked, this, &wybor::connectRoom);
     connect(ui->listWidget,&QListWidget::itemDoubleClicked,this,&wybor::connectRoom);
     connect(ui->listWidget,&QListWidget::itemClicked,this,[=]() {ui->GameButton->setEnabled("true");});
-    //
+
+    //sprobuj sie polaczyc z domyślnym serverem
+    QSettings settings(QString(":/res/resources/config.ini"),QSettings::IniFormat);
+    QString ip = settings.value("serverIP/server1").toString();
+    int port = settings.value("serverPort/server1").toInt();
+    ui->lineEditIP->setText(ip);
+    ui->portSpinBox->setValue(port);
+    ui->PushConnect->click();
+
+//-------------
+
+    //dodanie gracza
+    connect(this,SIGNAL(dodajGracza(QString)),nw,SLOT(gracze(QString)));
+
+    //usuniecie gracza
+    connect(this,SIGNAL(usunGracza(QString)),nw,SLOT(usunGracza(QString)));
+
+    //podanie kosci
+    connect(this,SIGNAL(rzucone(QString)),nw,SLOT(rzucone(QString)));
+
+    //wybranie kosci
+    connect(nw,SIGNAL(wybierzKosc(QString)),this,SLOT(wybierzKosc(QString)));
+
+    //zablokowanie kosci
+    connect(this,SIGNAL(zablokujKosc(QString)),nw,SLOT(zablokujKosc(QString)));
+
+    //wyjscie z pokoju
+    connect(nw,SIGNAL(exitPok()),this,SLOT(exitPok()));
+
+    //reroll
+    connect(nw,SIGNAL(reroll()),this,SLOT(reroll()));
+
+    //gotowosc
+    connect(nw,SIGNAL(gotowy()),this,SLOT(gotowy()));
+
+    //niegotowosc
+    connect(this,SIGNAL(unset()),nw,SLOT(unset()));
+
+    //przerzucono
+    connect(this,SIGNAL(rerolled(QString)),nw,SLOT(rerolled(QString)));
+
+    connect(this,SIGNAL(punktowanie()),nw,SLOT(punktowanie()));
+    //-------------------------------
+    //numerrundy
+    connect(this,SIGNAL(roundNum(QString)),nw,SLOT(roundNum(QString)));
+    //otrzymane punkty
+    connect(this,SIGNAL(przypiszPunkty(QString)),nw,SLOT(przypiszPunkty(QString)));
+    //punktacja koncowa
+    connect(this,SIGNAL(PunktyKoniec(QString)),nw,SLOT(PunktyKoniec(QString)));
+    //zwyciezca
+    connect(this,SIGNAL(zwyciezca(QString)),nw,SLOT(zwyciezca(QString)));
 
 }
 
 wybor::~wybor()
 {
+    powiadomienia = false;
     sock->close();
     delete ui;
 }
@@ -47,10 +101,86 @@ void wybor::responseHandler(QByteArray komenda){
         if(!dane.isEmpty()){
             if(kmd=="pok"){
                 roomsSetup(dane);
+
             } else if(kmd=="rom"){
                 joinGame(dane);
+
             } else if(kmd=="nic"){
                 emit dodajGracza(dane);
+
+            }  else if(kmd=="got"){
+                emit zablokujKosc(dane);
+
+            } else if(kmd=="qit"){
+                emit usunGracza(dane);
+
+            }  else if(kmd=="kos"){
+                emit rzucone(dane);
+
+            } else if(kmd=="rrl"){
+                //przerzut
+                emit rerolled(dane);
+
+            } else if(kmd=="rnd"){
+                //numer rundy
+                emit roundNum(dane);
+
+            } else if(kmd=="pts"){
+                //otrzymane punkty
+                emit przypiszPunkty(dane);
+
+            }  else if(kmd=="fin"){
+                //punktacja koncowa
+                emit PunktyKoniec(dane);
+
+            } else if(kmd=="win"){
+                //zwyciezca
+
+            } else if(kmd=="pdn"){
+                //konieczbierania kosci przez jednego z graczy
+
+            } else if(kmd=="prd"){
+                //gotowosc do startu gry
+
+            }  else if(kmd=="set"){
+                //opcje gry
+
+            }
+        } else {
+            if(kmd=="ust"){
+                emit unset();
+
+            }else if(kmd=="bck"){
+                //powrocono do poczekalni
+                QMessageBox::information(this, "Left Game", "Opuszczono gre");
+
+            }else if(kmd=="t-e"){
+                emit punktowanie();
+
+            }else if(kmd=="beg"){
+                //game start
+
+            }else if(kmd=="nst"){
+                //ustowiono nick
+                ui->listWidget->setEnabled(true);
+                ui->refresh->setEnabled(true);
+                ui->newRoom->setEnabled(true);
+                QMessageBox::information(this, "Done", "Ustawiono nick");
+
+            } else if(kmd=="end"){
+                //skonczono gre
+
+            }else if(kmd=="nrm"){
+                //brak miejsc na nowe pokoje
+                QMessageBox::critical(this, "Error", "Nie można stworzyć nowego pokoju");
+
+            }else if(kmd=="rbd"){
+                //podlaczenie do pokoju niemozliwe
+                QMessageBox::critical(this, "Error", "Błąd dołączenia do pokoju");
+
+            }else if(kmd=="bnc"){
+                //niepoprawny nick
+                QMessageBox::critical(this, "Error", "Nick niepoprawny");
             }
         }
         command = command.remove(0,lend+1);
@@ -69,12 +199,10 @@ void wybor::joinGame(QString dane){
     int wyb = dane.indexOf("ply");
     int pok = (dane.first(wyb)).toInt();
     int gracze = (dane.remove(0,wyb+3)).toInt();
-    gra *nw = new gra();
     this->hide();
     nw->show();
     nw->setup(pok,gracze);
 
-    connect(this,SIGNAL(dodajGracza(QString)),nw,SLOT(gracze(QString)));
 
 }
 
@@ -118,9 +246,6 @@ void wybor::connectBtnHit() {
 
 void wybor::socketConnected() {
     ui->nickEdit->setEnabled(true);
-    ui->listWidget->setEnabled(true);
-    ui->refresh->setEnabled(true);
-    ui->newRoom->setEnabled(true);
     connTimeoutTimer->stop();
     connTimeoutTimer->disconnect();
     QMessageBox::information(this, "Done", "Connected");
@@ -139,7 +264,7 @@ void wybor::socketDisconnected(){
     sock = nullptr;
     connTimeoutTimer->deleteLater();
     connTimeoutTimer=nullptr;
-    QMessageBox::critical(this, "Error", "Connect timed out");
+    if(powiadomienia) QMessageBox::critical(this, "Error", "Connect timed out");
 }
 
 void wybor::socketError(QTcpSocket::SocketError err){
@@ -165,5 +290,23 @@ void wybor::sendNick(){
         return;
     }
     sock->write("nnc"+nick.toUtf8());
+}
+
+//sloty
+
+
+void wybor::wybierzKosc(QString dane){
+    QMessageBox::information(this, "Done", dane);
+    sock->write("get"+dane.toUtf8());
+}
+void wybor::exitPok(){
+    sock->write("ext");
+    this->show();
+}
+void wybor::reroll(){
+    sock->write("rol");
+}
+void wybor::gotowy(){
+    sock->write("rdy");
 }
 

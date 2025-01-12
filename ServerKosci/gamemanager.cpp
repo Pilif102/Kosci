@@ -57,16 +57,11 @@ void GameManager::wezKosc(int usr,int kosc){
             if(partia->wybrane[i]==-1){
                 if(wolne==-1){
                     wolne=i;
-                }
-            }else{
-                if(partia->wybrane[i]==kosc){ //usuniecie wybranej kosci
-                    partia->wybrane[i]=-1;
-                    SendToAll(partia,"got"+to_string(kosc)+"g"+to_string(id));
-                    //SendKosciToAll(partia,partia->wybrane,"wyb");
-                    return;
+                    break;
                 }
             }
         }
+        if(wolne == -1) return;
         for(int i=0;i<partia->liczbaGraczy*5;i++){
             if(partia->wybrane[i]==kosc){ //kosc w posiadaniu innego gracza
                 write(usr,"zaj:",4);
@@ -75,14 +70,17 @@ void GameManager::wezKosc(int usr,int kosc){
         }
         partia->wybrane[wolne]=kosc;
         //write done
-        SendKosciToAll(partia,partia->wybrane,"wyb");
+        SendToAll(partia,"got"+to_string(kosc)+"g"+to_string(id));
+        if(wolne==(id*5)+4) endPlayerTurn(usr);
     }
 }
 
 void GameManager::koniecGry(Partia* gra){
+    gra->punktowanie=false;
     //liczenie punktów
     int max=0;
     int wygrany=0;
+    SendToAll(gra,"end");
 
     for(int i=0;i<gra->liczbaGraczy;i++){
         int wynik=0;
@@ -98,6 +96,8 @@ void GameManager::koniecGry(Partia* gra){
     SendToAll(gra,"win"+to_string(wygrany));
     gra->runda=0;
     fill(gra->ready,gra->ready+MAXGRACZY,0);
+    fill(gra->kosci,gra->kosci+MAXGRACZY*5,0);
+    fill(gra->wybrane,gra->wybrane+MAXGRACZY*5,0);
 }
 
 void GameManager::dodajGracza(int usr,Partia* gra){
@@ -108,6 +108,9 @@ void GameManager::dodajGracza(int usr,Partia* gra){
         gra->idGraczy[i]=usr;
         gra->ready[i]=false;
     }
+
+
+    SendToAll(gra,"ust");
     SendToAll(gra,"nic"+to_string(i)+","+gracz.zwrocNick(usr));
     for(int j=0;j<gra->liczbaGraczy;j++){
         if(i!=j){
@@ -115,12 +118,21 @@ void GameManager::dodajGracza(int usr,Partia* gra){
             char tab[msg.length()];
             strcpy(tab,msg.c_str());
             write(usr,tab,sizeof(tab));
+        } else {
+            //napisz ustawienia gry
+            string msg = "setR"+to_string(gra->MaxRolls)+"G"+to_string(gra->LimitGraczy)+":";
+            char tab[msg.length()];
+            strcpy(tab,msg.c_str());
+            write(usr,tab,sizeof(tab));
+
         }
     }
+
 
     for(int j=0;j<MAXGRACZY;j++){
         cout << "nic"+to_string(j)+","+gracz.zwrocNick(gra->idGraczy[j]) << endl;
     }
+    fill(gra->ready,gra->ready+MAXGRACZY,0);
 
 }
 
@@ -141,7 +153,11 @@ void GameManager::przygotowanie(int usr){
         if(suma == partia->liczbaGraczy){
             SendToAll(partia,"beg");
             //mozna dodac timer
-            //thread nowy(runda,partia); //wrzucic do thread
+            fill(partia->punkty,partia->punkty+17,0);
+            for(int i=0;i<6;i++){
+                int zero[5]={};
+                partia->punkty[i]=punkty.liczPunkty(zero,i);
+            }
             partia->runda++;
             runda(partia);
         }
@@ -150,9 +166,10 @@ void GameManager::przygotowanie(int usr){
 
 void GameManager::runda(Partia* gra){
     //przebieg rundy
+    cout<<gra->runda<<endl;
     fill(gra->kosci,gra->kosci+MAXGRACZY*5,0);
     fill(gra->wybrane,gra->wybrane+MAXGRACZY*5,-1);
-    gra->rerolls=3;
+    gra->rerolls=2;
     fill(gra->ready,gra->ready+MAXGRACZY,0);
     SendToAll(gra,"rnd"+to_string(gra->runda));
     //rzuty
@@ -160,6 +177,7 @@ void GameManager::runda(Partia* gra){
 }
 
 void GameManager::reroll(Partia* gra){
+    if(gra->rerolls<1) return;
     string msg="";
     for(int i=0;i<gra->liczbaGraczy*5;i++){
         bool znalezione=false;
@@ -171,10 +189,10 @@ void GameManager::reroll(Partia* gra){
         }
         if(znalezione==false){
             gra->kosci[i]=rollDie();
-            gra->rerolls--;
         }
     }
 
+    gra->rerolls--;
     for(int i=0;i<gra->liczbaGraczy*5;i++){
         msg+=to_string(gra->kosci[i]);
     }
@@ -265,7 +283,8 @@ void GameManager::actionManager(int usr,char* command, int size,Partia* gra){
         if(komenda == "ext"){
             cout << "gracz sie rozlaczyl" << endl;
             refactor(usr,partia);
-            gracz.usunGracza(usr);
+            gracz.zmienPozycjeGracza(usr,'r');
+            write(usr,"bck:",4);
         }else if(partia->runda == 0){
             if(komenda == "rdy"){
                 //gotowosc
@@ -281,11 +300,10 @@ void GameManager::actionManager(int usr,char* command, int size,Partia* gra){
                     //dodaj kontrole bledow
                     string s = command;
                     s.erase(0,3);
-                    int wyb = stoi(s);
-                    wezKosc(usr,wyb);
-                } else if(komenda == "rdy"){
-                    //koniec,wszystko wybrane
-                    endPlayerTurn(usr);
+                    // if(!s.empty() && std::find_if(s.begin(),s.end(), [](unsigned char c) { return !isdigit(c); }) == s.end()){
+                        int wyb = stoi(s);
+                        wezKosc(usr,wyb);
+                    // }
                 }
 
                 for(int i=0;i<gra->liczbaGraczy*5;i++){
@@ -297,13 +315,15 @@ void GameManager::actionManager(int usr,char* command, int size,Partia* gra){
                 }
                 cout << endl;
             }else {
-                if(komenda == "ptn" && partia->ready[graczId(usr,partia)]){
+                if(komenda == "ptn"){
                 //wybierz rubryke punktacji (id)
                     cout << "punktacja" << endl;
                     string s = command;
                     s.erase(0,3);
-                    int wyb = stoi(s);
-                    punktyGra(usr,wyb);
+                    // if(!s.empty() && std::find_if(s.begin(),s.end(), [](unsigned char c) { return !isdigit(c); }) == s.end()){
+                        int wyb = stoi(s);
+                        punktyGra(usr,wyb);
+                    // }
                 }
             }
         }
