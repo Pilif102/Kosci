@@ -71,7 +71,7 @@ void Poczekalnia::actionManager(int usr, char* command, int size){
                 wyborPokoju(usr,wyb);
             //}
         } else if(komenda == "nnc"){
-            string s = command;
+            string s = string(command,size);
             s.erase(0,3);
             gracz.dajNick(usr,s);
         } else if(komenda == "ext"){

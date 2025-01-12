@@ -20,7 +20,7 @@ void setnonblocking(int fd) {
 
 void do_use_fd(int ufd){
     char buff[MAXBUF]; // dodaj ochrone przed przepelnieniem bufora na wszelki wypadek
-    cout << ufd << endl;
+    cout << "id:"<< ufd << endl;
     int size = 0;
     try{
         size = read(ufd,buff,MAXBUF); //dodać exita i shutdowana przy błędzie
@@ -37,7 +37,9 @@ void do_use_fd(int ufd){
         return;
     }
     //dodać testowanie gdzie znajduje się gracz, i osyłanie go do danej klasy
-    cout << buff << endl;
+    cout <<"buff:" << buff << endl;
+    cout <<"size:" << size << endl;
+    cout <<"changed:" << string(buff,size) <<endl;
     switch(player.podajPozycjeGracza(ufd)){ //switch dla czytelnosci
     case 'r': //sygnały związane z poczekalnia, przeniesc do klasy poczekalnia
         pocz.actionManager(ufd,buff,size);

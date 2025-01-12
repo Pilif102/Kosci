@@ -154,9 +154,11 @@ void GameManager::przygotowanie(int usr){
             SendToAll(partia,"beg");
             //mozna dodac timer
             fill(partia->punkty,partia->punkty+17,0);
-            for(int i=0;i<6;i++){
-                int zero[5]={};
-                partia->punkty[i]=punkty.liczPunkty(zero,i);
+            for(int j=0;j<partia->liczbaGraczy;j++){
+                for(int i=0;i<6;i++){
+                    int zero[5]={};
+                    partia->punkty[i]=punkty.liczPunkty(zero,i);
+                }
             }
             partia->runda++;
             runda(partia);
@@ -298,7 +300,7 @@ void GameManager::actionManager(int usr,char* command, int size,Partia* gra){
                     reroll(partia);
                 } else if(komenda == "get"){
                     //dodaj kontrole bledow
-                    string s = command;
+                    string s = string(command,size);
                     s.erase(0,3);
                     // if(!s.empty() && std::find_if(s.begin(),s.end(), [](unsigned char c) { return !isdigit(c); }) == s.end()){
                         int wyb = stoi(s);
@@ -318,7 +320,7 @@ void GameManager::actionManager(int usr,char* command, int size,Partia* gra){
                 if(komenda == "ptn"){
                 //wybierz rubryke punktacji (id)
                     cout << "punktacja" << endl;
-                    string s = command;
+                    string s = string(command,size);
                     s.erase(0,3);
                     // if(!s.empty() && std::find_if(s.begin(),s.end(), [](unsigned char c) { return !isdigit(c); }) == s.end()){
                         int wyb = stoi(s);
