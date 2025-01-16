@@ -26,6 +26,7 @@ public slots:
     void exitPok();
     void reroll();
     void gotowy();
+    void punkt(QString dane);
 
 
 protected:

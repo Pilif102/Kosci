@@ -32,7 +32,7 @@ gra::gra(QWidget *parent)
 {
     pkty = new Punkt();
     ui->setupUi(this);
-    ui->tableView->setStyle(new QProxyStyle(ui->tableView->style()));
+    ui->tableView->setStyle(new ProxyStyle(ui->tableView->style()));
     connect(ui->tableView,&QTableView::clicked,this,&gra::test);
     connect(ui->Gotowosc,&QCheckBox::clicked,this,[=]() {emit gotowy();ui->Gotowosc->setEnabled(false);});
 
@@ -102,9 +102,7 @@ void gra::rzucone(QString dane){
             model->setItem(j, i, item);
         }
     }
-    ui->tableView->setStyle(new QProxyStyle(ui->tableView->style()));
     ui->tableView->setModel(model);
-
 }
 
 void gra::zablokujKosc(QString dane){

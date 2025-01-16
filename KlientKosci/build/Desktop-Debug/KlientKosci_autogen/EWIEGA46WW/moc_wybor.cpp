@@ -26,7 +26,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 namespace {
 struct qt_meta_stringdata_wybor_t {
-    uint offsetsAndSizes[36];
+    uint offsetsAndSizes[38];
     char stringdata0[6];
     char stringdata1[12];
     char stringdata2[1];
@@ -45,6 +45,7 @@ struct qt_meta_stringdata_wybor_t {
     char stringdata15[8];
     char stringdata16[7];
     char stringdata17[7];
+    char stringdata18[6];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_wybor_t::offsetsAndSizes) + ofs), len 
@@ -67,7 +68,8 @@ Q_CONSTINIT static const qt_meta_stringdata_wybor_t qt_meta_stringdata_wybor = {
         QT_MOC_LITERAL(130, 11),  // "wybierzKosc"
         QT_MOC_LITERAL(142, 7),  // "exitPok"
         QT_MOC_LITERAL(150, 6),  // "reroll"
-        QT_MOC_LITERAL(157, 6)   // "gotowy"
+        QT_MOC_LITERAL(157, 6),  // "gotowy"
+        QT_MOC_LITERAL(164, 5)   // "punkt"
     },
     "wybor",
     "dodajGracza",
@@ -86,7 +88,8 @@ Q_CONSTINIT static const qt_meta_stringdata_wybor_t qt_meta_stringdata_wybor = {
     "wybierzKosc",
     "exitPok",
     "reroll",
-    "gotowy"
+    "gotowy",
+    "punkt"
 };
 #undef QT_MOC_LITERAL
 } // unnamed namespace
@@ -97,7 +100,7 @@ Q_CONSTINIT static const uint qt_meta_data_wybor[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-      15,   14, // methods
+      16,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -105,23 +108,24 @@ Q_CONSTINIT static const uint qt_meta_data_wybor[] = {
       11,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,  104,    2, 0x06,    1 /* Public */,
-       4,    1,  107,    2, 0x06,    3 /* Public */,
-       5,    1,  110,    2, 0x06,    5 /* Public */,
-       6,    1,  113,    2, 0x06,    7 /* Public */,
-       7,    0,  116,    2, 0x06,    9 /* Public */,
-       8,    0,  117,    2, 0x06,   10 /* Public */,
-       9,    1,  118,    2, 0x06,   11 /* Public */,
-      10,    1,  121,    2, 0x06,   13 /* Public */,
-      11,    1,  124,    2, 0x06,   15 /* Public */,
-      12,    1,  127,    2, 0x06,   17 /* Public */,
-      13,    1,  130,    2, 0x06,   19 /* Public */,
+       1,    1,  110,    2, 0x06,    1 /* Public */,
+       4,    1,  113,    2, 0x06,    3 /* Public */,
+       5,    1,  116,    2, 0x06,    5 /* Public */,
+       6,    1,  119,    2, 0x06,    7 /* Public */,
+       7,    0,  122,    2, 0x06,    9 /* Public */,
+       8,    0,  123,    2, 0x06,   10 /* Public */,
+       9,    1,  124,    2, 0x06,   11 /* Public */,
+      10,    1,  127,    2, 0x06,   13 /* Public */,
+      11,    1,  130,    2, 0x06,   15 /* Public */,
+      12,    1,  133,    2, 0x06,   17 /* Public */,
+      13,    1,  136,    2, 0x06,   19 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-      14,    1,  133,    2, 0x0a,   21 /* Public */,
-      15,    0,  136,    2, 0x0a,   23 /* Public */,
-      16,    0,  137,    2, 0x0a,   24 /* Public */,
-      17,    0,  138,    2, 0x0a,   25 /* Public */,
+      14,    1,  139,    2, 0x0a,   21 /* Public */,
+      15,    0,  142,    2, 0x0a,   23 /* Public */,
+      16,    0,  143,    2, 0x0a,   24 /* Public */,
+      17,    0,  144,    2, 0x0a,   25 /* Public */,
+      18,    1,  145,    2, 0x0a,   26 /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString,    3,
@@ -141,6 +145,7 @@ Q_CONSTINIT static const uint qt_meta_data_wybor[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,    3,
 
        0        // eod
 };
@@ -193,7 +198,10 @@ Q_CONSTINIT const QMetaObject wybor::staticMetaObject = { {
         // method 'reroll'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'gotowy'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'punkt'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QString, std::false_type>
     >,
     nullptr
 } };
@@ -219,6 +227,7 @@ void wybor::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void 
         case 12: _t->exitPok(); break;
         case 13: _t->reroll(); break;
         case 14: _t->gotowy(); break;
+        case 15: _t->punkt((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -322,13 +331,13 @@ int wybor::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 15)
+        if (_id < 16)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 15;
+        _id -= 16;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 15)
+        if (_id < 16)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 15;
+        _id -= 16;
     }
     return _id;
 }

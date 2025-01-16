@@ -46,6 +46,7 @@ signals:
     void exitPok();
     void reroll();
     void gotowy();
+    void punkt(QString dane);
 
 private:
     Ui::gra *ui;
