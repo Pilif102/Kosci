@@ -16,7 +16,7 @@ public:
     void nowyPokoj(int usr);
     Partia* zwrocPokoj(int usr);
 
-    void actionManager(int usr,char* command, int size);
+    void actionManager(int usr,std::string s);
 };
 
 #endif // POCZEKALNIA_H

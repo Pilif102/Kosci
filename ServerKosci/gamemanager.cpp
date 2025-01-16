@@ -278,57 +278,54 @@ void GameManager::endPlayerTurn(int usr){
     }
 }
 
-void GameManager::actionManager(int usr,char* command, int size,Partia* gra){
-    if(size>=3){
-        string komenda = {command[0],command[1],command[2]};
-        partia = gra;
-        if(komenda == "ext"){
-            cout << "gracz sie rozlaczyl" << endl;
-            refactor(usr,partia);
-            gracz.zmienPozycjeGracza(usr,'r');
-            write(usr,"bck:",4);
-        }else if(partia->runda == 0){
-            if(komenda == "rdy"){
-                //gotowosc
-                przygotowanie(usr);
-            } else if(komenda == "chg"){
-                //zmienione zasady (może, może nie)
+void GameManager::actionManager(int usr,string s,Partia* gra){
+    string komenda = s.string::substr(0,3);
+    partia = gra;
+    if(komenda == "ext"){
+        cout << "gracz sie rozlaczyl" << endl;
+        refactor(usr,partia);
+        gracz.zmienPozycjeGracza(usr,'r');
+        write(usr,"bck:",4);
+    }else if(partia->runda == 0){
+        if(komenda == "rdy"){
+            //gotowosc
+            przygotowanie(usr);
+        } else if(komenda == "chg"){
+            //zmienione zasady (może, może nie)
+        }
+    } else if (partia->runda <= partia->limitRund){
+        if(partia->punktowanie==false){
+            if(komenda == "rol"){
+                reroll(partia);
+            } else if(komenda == "get"){
+                //dodaj kontrole bledow
+                s.erase(0,3);
+                if(!s.empty() && std::find_if(s.begin(),s.end(), [](unsigned char c) { return !isdigit(c); }) == s.end()){
+                    int wyb = stoi(s);
+                    wezKosc(usr,wyb);
+                }
             }
-        } else if (partia->runda <= partia->limitRund){
-            if(partia->punktowanie==false){
-                if(komenda == "rol"){
-                    reroll(partia);
-                } else if(komenda == "get"){
-                    //dodaj kontrole bledow
-                    string s = string(command,size);
-                    s.erase(0,3);
-                    // if(!s.empty() && std::find_if(s.begin(),s.end(), [](unsigned char c) { return !isdigit(c); }) == s.end()){
-                        int wyb = stoi(s);
-                        wezKosc(usr,wyb);
-                    // }
-                }
 
-                for(int i=0;i<gra->liczbaGraczy*5;i++){
-                    cout << partia->kosci[i] << ",";
-                }
-                cout << endl;
-                for(int i=0;i<partia->liczbaGraczy*5;i++){
-                    cout << partia->wybrane[i] << ",";
-                }
-                cout << endl;
-            }else {
-                if(komenda == "ptn"){
-                //wybierz rubryke punktacji (id)
-                    cout << "punktacja" << endl;
-                    string s = string(command,size);
-                    s.erase(0,3);
-                    // if(!s.empty() && std::find_if(s.begin(),s.end(), [](unsigned char c) { return !isdigit(c); }) == s.end()){
-                        int wyb = stoi(s);
-                        punktyGra(usr,wyb);
-                    // }
+            for(int i=0;i<gra->liczbaGraczy*5;i++){
+                cout << partia->kosci[i] << ",";
+            }
+            cout << endl;
+            for(int i=0;i<partia->liczbaGraczy*5;i++){
+                cout << partia->wybrane[i] << ",";
+            }
+            cout << endl;
+        }else {
+            if(komenda == "ptn"){
+            //wybierz rubryke punktacji (id)
+                cout << "punktacja" << endl;
+                s.erase(0,3);
+                if(!s.empty() && std::find_if(s.begin(),s.end(), [](unsigned char c) { return !isdigit(c); }) == s.end()){
+                    int wyb = stoi(s);
+                    punktyGra(usr,wyb);
                 }
             }
         }
-
     }
+
+
 }

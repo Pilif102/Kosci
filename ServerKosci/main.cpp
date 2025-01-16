@@ -26,6 +26,9 @@ void do_use_fd(int ufd){
         size = read(ufd,buff,MAXBUF); //dodać exita i shutdowana przy błędzie
         if(size == 0){
             throw(1);
+        } else if(size>=MAXBUF){
+            cout << "Niemożliwa ilosc znakow, rozłączam" << endl;
+            throw(1);
         }
 
     } catch(int l){
@@ -37,19 +40,19 @@ void do_use_fd(int ufd){
         return;
     }
     if(size>=3){
-        string s = string(buff,size);
-        size = s.find(':');
-        cout << size << endl;
-
+        string command = string(buff,size);
+        size = command.string::find(':');
+        if(size == -1) return;
+        command = command.string::substr(0,size);
         //dodać testowanie gdzie znajduje się gracz, i osyłanie go do danej klasy
-
+        cout << command << endl;
         switch(player.podajPozycjeGracza(ufd)){ //switch dla czytelnosci
         case 'r': //sygnały związane z poczekalnia, przeniesc do klasy poczekalnia
-            pocz.actionManager(ufd,buff,size);
+            pocz.actionManager(ufd,command);
             break;
         case 'g': //komendy dla gry
             //if w grze
-            gra.actionManager(ufd,buff,size,pocz.zwrocPokoj(ufd));
+            gra.actionManager(ufd,command,pocz.zwrocPokoj(ufd));
             break;
         }
     }
@@ -107,6 +110,7 @@ int main()
                     exit(EXIT_FAILURE);
                 }
                 player.przygotujGracza(conn_sock);
+                cout << "dołączył gracz o id: " << conn_sock <<endl;
             } else {
                 do_use_fd(events[n].data.fd);
             }

@@ -55,31 +55,32 @@ Partia* Poczekalnia::zwrocPokoj(int usr){
     return ptr;
 }
 
-void Poczekalnia::actionManager(int usr, char* command, int size){
-    if(size>=3){
-        string komenda = {command[0],command[1],command[2]};
-        if(komenda == "new" && gracz.zwrocNick(usr).string::compare("")!=0){
-            nowyPokoj(usr);
-        } else if(komenda == "gib"){
-            podajPokoje(usr);
-        } else if(komenda == "chs" && gracz.zwrocNick(usr).string::compare("")!=0){
-            //unikaj nie-numerow (teraz nie implementuje) i pustych wartosci
-            string s = command;
-            s.erase(0,3);
-            //if(!s.empty() && find_if(s.begin(),s.end(), [](unsigned char c) { return !isdigit(c); }) == s.end()){
-                int wyb = stoi(s);
-                wyborPokoju(usr,wyb);
-            //}
-        } else if(komenda == "nnc"){
-            string s = string(command,size);
-            s.erase(0,3);
-            gracz.dajNick(usr,s);
-        } else if(komenda == "ext"){
-            cout << "gracz sie rozlaczyl" << endl;
-            gracz.usunGracza(usr);
-            shutdown(usr,SHUT_RDWR);
-            close(usr);
-            return;
+void Poczekalnia::actionManager(int usr, string s){
+    string komenda = s.string::substr(0,3);
+    cout << komenda << endl;
+    if(komenda == "new" && gracz.zwrocNick(usr).string::compare("")!=0){
+        cout << usr << endl;
+        nowyPokoj(usr);
+    } else if(komenda == "gib"){
+        podajPokoje(usr);
+    } else if(komenda == "chs" && gracz.zwrocNick(usr).string::compare("")!=0){
+        //unikaj nie-numerow (teraz nie implementuje) i pustych wartosci
+        s.erase(0,3);
+        if(!s.empty() && find_if(s.begin(),s.end(), [](unsigned char c) { return !isdigit(c); }) == s.end()){
+            int wyb = stoi(s);
+            wyborPokoju(usr,wyb);
         }
+    } else if(komenda == "nnc"){
+        s.erase(0,3);
+        cout << s <<endl;
+        gracz.dajNick(usr,s);
+        cout << "nick" <<endl;
+    } else if(komenda == "ext"){
+        cout << "gracz sie rozlaczyl" << endl;
+        gracz.usunGracza(usr);
+        shutdown(usr,SHUT_RDWR);
+        close(usr);
+        return;
     }
+
 }

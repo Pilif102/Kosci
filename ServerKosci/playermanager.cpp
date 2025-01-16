@@ -17,14 +17,11 @@ int PlayerManager::graczId(int usr){
 
 void PlayerManager::przygotujGracza(int usr){
     if(int i = graczId(-1);i != -1){
-        cout << i << endl;
         gracze[i].id = usr;
-        cout << gracze[i].id << endl;
     }
 }
 
 void PlayerManager::zmienPozycjeGracza(int usr,char pozycja,int num){
-    cout << gracze[0].id << endl;
     if(int i = graczId(usr);i != -1){
         gracze[i].pozycja = pozycja;
         if(num != -1){
@@ -48,7 +45,9 @@ int PlayerManager::podajPokojGracza(int usr){
 }
 
 string PlayerManager::zwrocNick(int usr){
+    cout << usr << endl;
     if(int i = graczId(usr);i != -1){
+        cout << i << " usr:" <<usr <<endl;
         return gracze[i].nick;
     }
     return "dziwny_gracz";

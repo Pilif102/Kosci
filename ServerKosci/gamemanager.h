@@ -20,7 +20,7 @@ public:
     void przygotowanie(int usr);
     void runda(Partia* gra);//przebieg rundy
     void refactor(int usr,Partia* gra);
-    void actionManager(int usr,char* command, int size, Partia* gra);
+    void actionManager(int usr,std::string s, Partia* gra);
     void punktyGra(int usr,int pid);
 
 };
