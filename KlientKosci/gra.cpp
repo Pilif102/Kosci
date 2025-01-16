@@ -8,6 +8,7 @@ int runda=0;
 int maxRols=2;
 int yourNumber=-1;
 bool czyPunkty = false;
+int kosci[5]={};
 int punkty[17]={};
 bool wybWyn[17]={};
 
@@ -35,6 +36,7 @@ gra::gra(QWidget *parent)
     ui->tableView->setStyle(new ProxyStyle(ui->tableView->style()));
     connect(ui->tableView,&QTableView::clicked,this,&gra::test);
     connect(ui->Gotowosc,&QCheckBox::clicked,this,[=]() {emit gotowy();ui->Gotowosc->setEnabled(false);});
+    connect(ui->rollButton,&QPushButton::clicked,this,[=]() {emit reroll();});
 
     //-pnktconn
     connect(pkty,SIGNAL(wybrane(int)),this,SLOT(wybrane(int)));
@@ -58,7 +60,6 @@ void gra::test(QModelIndex index){
     int rzd = index.row();
     int Kosc = kol+(rzd*5);
     emit wybierzKosc(QString::number(Kosc));
-    // model->item(index.row(),index.column())->setBackground(QColor(Qt::blue));
 
 }
 
@@ -98,7 +99,6 @@ void gra::rzucone(QString dane){
             image = image.scaled(50,50,Qt::KeepAspectRatio);
             QStandardItem *item = new QStandardItem();
             item->setData(QVariant(QPixmap::fromImage(image)), Qt::DecorationRole);
-            // item->setBackground(QColor(Qt::blue));
             model->setItem(j, i, item);
         }
     }
@@ -106,7 +106,6 @@ void gra::rzucone(QString dane){
 }
 
 void gra::zablokujKosc(QString dane){
-    // model->item(index.row(),index.column())->setBackground(QColor(Qt::blue));
     int pok = dane.indexOf("g");
     int kosc = dane.first(pok).toInt();
     QString gracz = dane.at(pok+1);
@@ -121,10 +120,12 @@ void gra::zablokujKosc(QString dane){
 void gra::unset(){
     ui->Gotowosc->setEnabled(true);
     ui->Gotowosc->setChecked(false);
+    for(int i=0;i<lGraczy;i++){
+        ui->gracze->item(0,i)->setBackground(QColor(Qt::white));
+    }
 }
 
 void gra::punktowanie(){
-    wybWyn[10]=true;
     pkty->show();
     pkty->setup(wybWyn);
 }
@@ -149,27 +150,50 @@ void gra::gracze(QString dane){
 
 
 void gra::PunktyKoniec(QString dane){
-
+    int lim = dane.indexOf("usr");
+    int punkty = dane.first(lim).toInt();
+    int gracz = dane.mid(lim+3,dane.length()).toInt();
+    ui->gracze->item(1,gracz)->setText(QString::number(punkty));
 }
 
 void gra::przypiszPunkty(QString dane){
 
+    int lim = dane.indexOf("usr");
+    int punkty = dane.first(lim).toInt();
+    int gracz = dane.mid(lim+3,dane.length()).toInt();
+    ui->gracze->item(1,gracz)->setText(QString::number(ui->gracze->item(1,gracz)->text().toInt()+punkty));
 }
 
 void gra::roundNum(QString dane){
-
+    ui->runda->setText("Runda: "+dane);
 }
 
 void gra::zwyciezca(QString dane){
-
+    int zwyciezca = dane.toInt();
+    QMessageBox::information(this,"KONIEC GRY","Zwycięzca: " + ui->gracze->item(0,zwyciezca)->text());
+    ui->Gotowosc->setChecked(false);
+    ui->Gotowosc->setEnabled(true);
+    model->clear();
+    ui->runda->setText("Runda: 0");
 }
 
 
 void gra::wybrane(int wyn){
-
+    QString wybr = QString::number(wyn);
+    wybWyn[wyn] = true;
+    emit punkt(wybr);
 }
 
-void gra::dodajKosc(){
+void gra::poczatekGry(){
+    for(int i=0;i<lGraczy;i++){
+        ui->gracze->item(0,i)->setBackground(QColor(Qt::white));
+        ui->gracze->item(1,i)->setText("0");
+    }
+}
+
+void gra::graczGotowy(QString dane){
+    int gracz = dane.toInt();
+    ui->gracze->item(0,gracz)->setBackground(QColor(Qt::yellow));
 }
 
 gra::~gra()

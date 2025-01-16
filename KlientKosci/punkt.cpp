@@ -4,7 +4,7 @@
 using namespace std;
 string wybNaz[17]={
     "jedynki","dwojki","trojki","czworki","piatki","szóstki",
-    "para","dwie pary","trojka","kareta","full","maly strit","duzy strit","parzyste","nieparzyste","poker","szansa"
+    "para","dwie pary","trojka","kareta","nieparzyste","parzyste","maly strit","duzy strit","full","poker","szansa"
 };
 
 Punkt::Punkt(QWidget *parent)
@@ -19,6 +19,7 @@ Punkt::Punkt(QWidget *parent)
 }
 
 void Punkt::setup(bool wyb[17]){
+    ui->Opcje->clear();
     ui->chooseBtn->setEnabled(false);
     ui->Opcje->clearSelection();
     for(int i=0;i<17;i++){
@@ -35,8 +36,9 @@ void Punkt::setup(bool wyb[17]){
 
 void Punkt::sendIt(){
 
-    auto dana = (ui->Opcje->currentItem()->data(Qt::UserRole)).value<int>();
-    QMessageBox::information(this, "Done", QString::number(dana));
+    int dana = (ui->Opcje->currentItem()->data(Qt::UserRole)).value<int>();
+    emit wybrane(dana);
+    this->close();
 }
 
 Punkt::~Punkt()

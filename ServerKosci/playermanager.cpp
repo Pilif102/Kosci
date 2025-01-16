@@ -53,22 +53,22 @@ string PlayerManager::zwrocNick(int usr){
 
 void PlayerManager::dajNick(int usr, string nick){ //przy dołączaniu do pokoju
     if(nick.string::length()<3){
-        write(usr,"bnc:",4);
+        write(usr,"bnc;",4);
         return;
     }
     if(nick.string::length()>=20) nick = nick.string::substr(0,20);
     for(int i=0;i<MAXGRACZY*ILEPOKOI;i++){
         if(nick.string::compare(gracze[i].nick)==0){
-            write(usr,"unc:",4);
+            write(usr,"unc;",4);
             return;
         }
     }
     if(int i = graczId(usr);i != -1){
-        write(usr,"nst:",4);
+        write(usr,"nst;",4);
         gracze[i].nick = nick;
         return;
     }
-    write(usr,"bnc:",4);
+    write(usr,"bnc;",4);
 }
 
 void PlayerManager::usunGracza(int usr){

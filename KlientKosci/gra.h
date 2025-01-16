@@ -19,7 +19,6 @@ public:
     explicit gra(QWidget *parent = nullptr);
     void setup(int pokoj,int gracze);
 
-    void dodajKosc();
     void test(QModelIndex index);
 
     ~gra();
@@ -37,6 +36,8 @@ public slots:
     void roundNum(QString dane);
     void zwyciezca(QString dane);
     void wybrane(int wyb);
+    void poczatekGry();
+    void graczGotowy(QString dane);
 
 protected:
     int liczbaGraczy;

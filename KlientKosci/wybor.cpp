@@ -22,10 +22,11 @@ wybor::wybor(QWidget *parent)
     connect(ui->nickEdit, &QLineEdit::editingFinished, this, &wybor::sendNick);
 
     //odswiez pokoje
-    connect(ui->refresh, &QPushButton::clicked, this,[=]() {sock->write("gib:");});
+    connect(ui->refresh, &QPushButton::clicked, this,[=]() {sock->write("gib;");});
 
     //wyslij prosbe o nowy pokoj
-    connect(ui->newRoom, &QPushButton::clicked, this,[=]() {sock->write("new:");});
+    connect(ui->newRoom, &QPushButton::clicked, this,[=]() {sock->write("new;");});
+
 
     //dolacz do pokoju
     connect(ui->GameButton,&QPushButton::clicked, this, &wybor::connectRoom);
@@ -71,7 +72,7 @@ wybor::wybor(QWidget *parent)
 
     //przerzucono
     connect(this,SIGNAL(rerolled(QString)),nw,SLOT(rerolled(QString)));
-
+    //punnktowanie wybor
     connect(this,SIGNAL(punktowanie()),nw,SLOT(punktowanie()));
     //-------------------------------
     //numerrundy
@@ -82,6 +83,15 @@ wybor::wybor(QWidget *parent)
     connect(this,SIGNAL(PunktyKoniec(QString)),nw,SLOT(PunktyKoniec(QString)));
     //zwyciezca
     connect(this,SIGNAL(zwyciezca(QString)),nw,SLOT(zwyciezca(QString)));
+
+    //punktacja
+    connect(nw,SIGNAL(punkt(QString)),this,SLOT(punkt(QString)));
+
+    //poczatek gry
+    connect(this,SIGNAL(poczatekGry()),nw,SLOT(poczatekGry()));
+
+    //inny gracz gotowy
+    connect(this,SIGNAL(graczGotowy(QString)),nw,SLOT(graczGotowy(QString)));
 
 }
 
@@ -94,7 +104,7 @@ wybor::~wybor()
 
 void wybor::responseHandler(QByteArray komenda){
     QString command = QString::fromUtf8(komenda).trimmed();
-    int lend=command.indexOf(":");
+    int lend=command.indexOf(";");
     while(lend!=-1 && command.length()>3){
         QString kmd = command.first(3);
         QString dane = command.mid(3,lend-3);
@@ -135,12 +145,14 @@ void wybor::responseHandler(QByteArray komenda){
 
             } else if(kmd=="win"){
                 //zwyciezca
+                emit zwyciezca(dane);
 
             } else if(kmd=="pdn"){
                 //konieczbierania kosci przez jednego z graczy
 
             } else if(kmd=="prd"){
                 //gotowosc do startu gry
+                emit graczGotowy(dane);
 
             }  else if(kmd=="set"){
                 //opcje gry
@@ -159,6 +171,7 @@ void wybor::responseHandler(QByteArray komenda){
 
             }else if(kmd=="beg"){
                 //game start
+                emit poczatekGry();
 
             }else if(kmd=="nst"){
                 //ustowiono nick
@@ -166,6 +179,7 @@ void wybor::responseHandler(QByteArray komenda){
                 ui->refresh->setEnabled(true);
                 ui->newRoom->setEnabled(true);
                 QMessageBox::information(this, "Done", "Ustawiono nick");
+                sock->write("gib;");
 
             } else if(kmd=="end"){
                 //skonczono gre
@@ -183,7 +197,7 @@ void wybor::responseHandler(QByteArray komenda){
                 QMessageBox::critical(this, "Error", "Nick niepoprawny");
             }else if(kmd=="zaj"){
                 //wybrano zajetą kość
-                // QMessageBox::critical(this, "Error", "zla kosc");
+                //QMessageBox::critical(this, "Error", "zla kosc");
             }else if(kmd=="brq"){
                 //niepoprawne zapytanie
                 QMessageBox::critical(this, "Error", "Błąd klienta");
@@ -193,17 +207,20 @@ void wybor::responseHandler(QByteArray komenda){
             }else if(kmd=="bnc"){
                 //zł← nick
                 QMessageBox::critical(this, "Error", "Nick zbyt krótki, przynajmniej 3 litery");
+            }else if(kmd=="pok"){
+                ui->listWidget->clear();
+
             }
         }
         command = command.remove(0,lend+1);
-        lend=command.indexOf(":");
+        lend=command.indexOf(";");
     }
 }
 
 void wybor::connectRoom(){
     auto dana = (ui->listWidget->currentItem()->data(Qt::UserRole)).value<int>();
     QString msg = "chs"+QString::number(dana);
-    sock->write(msg.toUtf8()+":");
+    sock->write(msg.toUtf8()+";");
 
 }
 
@@ -261,8 +278,6 @@ void wybor::socketConnected() {
     connTimeoutTimer->stop();
     connTimeoutTimer->disconnect();
     QMessageBox::information(this, "Done", "Connected");
-    //wyslij prosbe o pokoje
-    sock->write("gib:");
 }
 
 void wybor::socketDisconnected(){
@@ -301,27 +316,26 @@ void wybor::sendNick(){
     if(nick.isEmpty()){
         return;
     }
-    sock->write("nnc"+nick.toUtf8()+":");
+    sock->write("nnc"+nick.toUtf8()+";");
 }
 
 //sloty
 
 
 void wybor::wybierzKosc(QString dane){
-    sock->write("get"+dane.toUtf8()+":");
+    sock->write("get"+dane.toUtf8()+";");
 }
 void wybor::exitPok(){
-    sock->write("ext:");
+    sock->write("ext;");
     this->show();
 }
 void wybor::reroll(){
-    sock->write("rol:");
+    sock->write("rol;");
 }
 void wybor::gotowy(){
-    sock->write("rdy:");
+    sock->write("rdy;");
 }
 
 void wybor::punkt(QString dane){
-    QMessageBox::information(this, "Done", dane);
-    sock->write("ptn"+dane.toUtf8()+":");
+    sock->write("ptn"+dane.toUtf8()+";");
 }

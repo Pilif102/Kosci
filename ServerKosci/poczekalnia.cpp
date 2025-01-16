@@ -16,7 +16,7 @@ void Poczekalnia::podajPokoje(int usr){
             msg+="p"+to_string(i)+"g"+to_string(pokoje[i].liczbaGraczy);
         }
     }
-    msg+=":";
+    msg+=";";
     char tab[msg.length()];
     strcpy(tab,msg.c_str());
     write(usr,tab,sizeof(tab));
@@ -25,14 +25,14 @@ void Poczekalnia::podajPokoje(int usr){
 void Poczekalnia::wyborPokoju(int usr,int wyb){
     if(pokoje[wyb].liczbaGraczy < MAXGRACZY && pokoje[wyb].runda==0){
         Partia* pokoj = pokoje+wyb;
-        string msg = "rom"+to_string(wyb)+"ply"+to_string(pokoj->liczbaGraczy)+":";
+        string msg = "rom"+to_string(wyb)+"ply"+to_string(pokoj->liczbaGraczy)+";";
         char tab[msg.length()];
         strcpy(tab,msg.c_str());
         write(usr,tab,sizeof(tab));
         gracz.zmienPozycjeGracza(usr,'g',wyb);
         partia.dodajGracza(usr,pokoj);
     } else {
-        write(usr,"rbd:",4);
+        write(usr,"rbd;",4);
     }
 }
 
@@ -47,7 +47,7 @@ void Poczekalnia::nowyPokoj(int usr){
         }
         wyb++;
     }
-    write(usr,"nrm:",4);
+    write(usr,"nrm;",4);
 }
 
 Partia* Poczekalnia::zwrocPokoj(int usr){
@@ -69,10 +69,10 @@ void Poczekalnia::actionManager(int usr, string s){
             if(wyb < ILEPOKOI){
                 wyborPokoju(usr,wyb);
             } else {
-                write(usr,"brq:",4);
+                write(usr,"brq;",4);
             }
         } else {
-            write(usr,"brq:",4);
+            write(usr,"brq;",4);
         }
     } else if(komenda == "nnc"){
         s.erase(0,3);
@@ -84,7 +84,7 @@ void Poczekalnia::actionManager(int usr, string s){
         close(usr);
         return;
     } else {
-        write(usr,"brq:",4);
+        write(usr,"brq;",4);
     }
 
 }

@@ -26,7 +26,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 namespace {
 struct qt_meta_stringdata_gra_t {
-    uint offsetsAndSizes[42];
+    uint offsetsAndSizes[46];
     char stringdata0[4];
     char stringdata1[12];
     char stringdata2[1];
@@ -48,6 +48,8 @@ struct qt_meta_stringdata_gra_t {
     char stringdata18[10];
     char stringdata19[8];
     char stringdata20[4];
+    char stringdata21[12];
+    char stringdata22[12];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_gra_t::offsetsAndSizes) + ofs), len 
@@ -73,7 +75,9 @@ Q_CONSTINIT static const qt_meta_stringdata_gra_t qt_meta_stringdata_gra = {
         QT_MOC_LITERAL(144, 8),  // "roundNum"
         QT_MOC_LITERAL(153, 9),  // "zwyciezca"
         QT_MOC_LITERAL(163, 7),  // "wybrane"
-        QT_MOC_LITERAL(171, 3)   // "wyb"
+        QT_MOC_LITERAL(171, 3),  // "wyb"
+        QT_MOC_LITERAL(175, 11),  // "poczatekGry"
+        QT_MOC_LITERAL(187, 11)   // "graczGotowy"
     },
     "gra",
     "wybierzKosc",
@@ -95,7 +99,9 @@ Q_CONSTINIT static const qt_meta_stringdata_gra_t qt_meta_stringdata_gra = {
     "roundNum",
     "zwyciezca",
     "wybrane",
-    "wyb"
+    "wyb",
+    "poczatekGry",
+    "graczGotowy"
 };
 #undef QT_MOC_LITERAL
 } // unnamed namespace
@@ -106,7 +112,7 @@ Q_CONSTINIT static const uint qt_meta_data_gra[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-      17,   14, // methods
+      19,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -114,25 +120,27 @@ Q_CONSTINIT static const uint qt_meta_data_gra[] = {
        5,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,  116,    2, 0x06,    1 /* Public */,
-       4,    0,  119,    2, 0x06,    3 /* Public */,
-       5,    0,  120,    2, 0x06,    4 /* Public */,
-       6,    0,  121,    2, 0x06,    5 /* Public */,
-       7,    1,  122,    2, 0x06,    6 /* Public */,
+       1,    1,  128,    2, 0x06,    1 /* Public */,
+       4,    0,  131,    2, 0x06,    3 /* Public */,
+       5,    0,  132,    2, 0x06,    4 /* Public */,
+       6,    0,  133,    2, 0x06,    5 /* Public */,
+       7,    1,  134,    2, 0x06,    6 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       8,    1,  125,    2, 0x0a,    8 /* Public */,
-       9,    1,  128,    2, 0x0a,   10 /* Public */,
-      10,    1,  131,    2, 0x0a,   12 /* Public */,
-      11,    1,  134,    2, 0x0a,   14 /* Public */,
-      12,    0,  137,    2, 0x0a,   16 /* Public */,
-      13,    0,  138,    2, 0x0a,   17 /* Public */,
-      14,    1,  139,    2, 0x0a,   18 /* Public */,
-      15,    1,  142,    2, 0x0a,   20 /* Public */,
-      16,    1,  145,    2, 0x0a,   22 /* Public */,
-      17,    1,  148,    2, 0x0a,   24 /* Public */,
-      18,    1,  151,    2, 0x0a,   26 /* Public */,
-      19,    1,  154,    2, 0x0a,   28 /* Public */,
+       8,    1,  137,    2, 0x0a,    8 /* Public */,
+       9,    1,  140,    2, 0x0a,   10 /* Public */,
+      10,    1,  143,    2, 0x0a,   12 /* Public */,
+      11,    1,  146,    2, 0x0a,   14 /* Public */,
+      12,    0,  149,    2, 0x0a,   16 /* Public */,
+      13,    0,  150,    2, 0x0a,   17 /* Public */,
+      14,    1,  151,    2, 0x0a,   18 /* Public */,
+      15,    1,  154,    2, 0x0a,   20 /* Public */,
+      16,    1,  157,    2, 0x0a,   22 /* Public */,
+      17,    1,  160,    2, 0x0a,   24 /* Public */,
+      18,    1,  163,    2, 0x0a,   26 /* Public */,
+      19,    1,  166,    2, 0x0a,   28 /* Public */,
+      21,    0,  169,    2, 0x0a,   30 /* Public */,
+      22,    1,  170,    2, 0x0a,   31 /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString,    3,
@@ -154,6 +162,8 @@ Q_CONSTINIT static const uint qt_meta_data_gra[] = {
     QMetaType::Void, QMetaType::QString,    3,
     QMetaType::Void, QMetaType::QString,    3,
     QMetaType::Void, QMetaType::Int,   20,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,    3,
 
        0        // eod
 };
@@ -212,7 +222,12 @@ Q_CONSTINIT const QMetaObject gra::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<QString, std::false_type>,
         // method 'wybrane'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<int, std::false_type>
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        // method 'poczatekGry'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'graczGotowy'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QString, std::false_type>
     >,
     nullptr
 } };
@@ -240,6 +255,8 @@ void gra::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **
         case 14: _t->roundNum((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         case 15: _t->zwyciezca((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         case 16: _t->wybrane((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 17: _t->poczatekGry(); break;
+        case 18: _t->graczGotowy((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -301,13 +318,13 @@ int gra::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 17)
+        if (_id < 19)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 17;
+        _id -= 19;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 17)
+        if (_id < 19)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 17;
+        _id -= 19;
     }
     return _id;
 }

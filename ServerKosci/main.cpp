@@ -41,7 +41,7 @@ void do_use_fd(int ufd){
     }
     if(size>=3){
         string command = string(buff,size);
-        size = command.string::find(':');
+        size = command.string::find(';');
         if(size == -1) return;
         command = command.string::substr(0,size);
         //dodać testowanie gdzie znajduje się gracz, i osyłanie go do danej klasy

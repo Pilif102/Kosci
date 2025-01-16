@@ -11,7 +11,7 @@ PointsCount punkty;
 GameManager::GameManager() {}
 
 void SendToAll(Partia* gra, string msg){
-    msg+=":";
+    msg+=";";
     for(int i=0;i<gra->liczbaGraczy;i++){
         char tab[msg.length()];
         strcpy(tab,msg.c_str());
@@ -34,6 +34,8 @@ int GameManager::graczId(int usr,Partia* gra){
         }
     }
     return -1;
+}
+void GameManager::zmienOpcje(Partia* gra){
 }
 
 int GameManager::rollDie(){
@@ -64,7 +66,7 @@ void GameManager::wezKosc(int usr,int kosc){
         if(wolne == -1) return;
         for(int i=0;i<partia->liczbaGraczy*5;i++){
             if(partia->wybrane[i]==kosc){ //kosc w posiadaniu innego gracza
-                write(usr,"zaj:",4);
+                write(usr,"zaj;",4);
                 return;
             }
         }
@@ -108,23 +110,19 @@ void GameManager::dodajGracza(int usr,Partia* gra){
         gra->idGraczy[i]=usr;
         gra->ready[i]=false;
     }
-
-
-    SendToAll(gra,"ust");
     SendToAll(gra,"nic"+to_string(i)+","+gracz.zwrocNick(usr));
     for(int j=0;j<gra->liczbaGraczy;j++){
         if(i!=j){
-            string msg = "nic"+to_string(j)+","+gracz.zwrocNick(gra->idGraczy[j])+":";
+            string msg = "nic"+to_string(j)+","+gracz.zwrocNick(gra->idGraczy[j])+";";
             char tab[msg.length()];
             strcpy(tab,msg.c_str());
             write(usr,tab,sizeof(tab));
         } else {
             //napisz ustawienia gry
-            string msg = "setR"+to_string(gra->MaxRolls)+"G"+to_string(gra->LimitGraczy)+":";
+            string msg = "setg"+to_string(gra->LimitGraczy)+"r"+to_string(gra->limitRund)+"p"+to_string(gra->MaxRolls)+";";
             char tab[msg.length()];
             strcpy(tab,msg.c_str());
             write(usr,tab,sizeof(tab));
-
         }
     }
 
@@ -169,7 +167,8 @@ void GameManager::przygotowanie(int usr){
 
 void GameManager::runda(Partia* gra){
     //przebieg rundy
-    cout<< "round:" <<gra->runda<<endl;
+    cout<< "round" <<gra->runda<<endl;
+    gra->punktowanie=false;
     fill(gra->kosci,gra->kosci+MAXGRACZY*5,0);
     fill(gra->wybrane,gra->wybrane+MAXGRACZY*5,-1);
     gra->rerolls=2;
@@ -199,8 +198,8 @@ void GameManager::reroll(Partia* gra){
     for(int i=0;i<gra->liczbaGraczy*5;i++){
         msg+=to_string(gra->kosci[i]);
     }
-    SendToAll(gra,"rrl"+to_string(gra->rerolls)+":");
-    SendToAll(gra,"kos"+msg+":");
+    SendToAll(gra,"rrl"+to_string(gra->rerolls));
+    SendToAll(gra,"kos"+msg);
     cout << msg << endl;
 }
 
@@ -286,15 +285,18 @@ void GameManager::actionManager(int usr,string s,Partia* gra){
         cout << "gracz sie rozlaczyl" << endl;
         refactor(usr,partia);
         gracz.zmienPozycjeGracza(usr,'r');
-        write(usr,"bck:",4);
+        write(usr,"bck;",4);
     }else if(partia->runda == 0){
         if(komenda == "rdy"){
             //gotowosc
             przygotowanie(usr);
         } else if(komenda == "chg"){
             //zmienione zasady (może, może nie)
+
+            //wyslij zasady do graczy
+            SendToAll(gra,"setg"+to_string(gra->LimitGraczy)+"r"+to_string(gra->limitRund)+"p"+to_string(gra->MaxRolls));
         } else {
-            write(usr,"brq:",4);
+            write(usr,"brq;",4);
         }
     } else if (partia->runda <= partia->limitRund){
         if(partia->punktowanie==false){
@@ -308,13 +310,13 @@ void GameManager::actionManager(int usr,string s,Partia* gra){
                     if(wyb < gra->liczbaGraczy*5){
                         wezKosc(usr,wyb);
                     } else {
-                        write(usr,"brq:",4);
+                        write(usr,"brq;",4);
                     }
                 } else {
-                    write(usr,"brq:",4);
+                    write(usr,"brq;",4);
                 }
             } else {
-                write(usr,"brq:",4);
+                write(usr,"brq;",4);
                 return;
             }
 
@@ -329,20 +331,20 @@ void GameManager::actionManager(int usr,string s,Partia* gra){
         }else {
             if(komenda == "ptn"){
             //wybierz rubryke punktacji (id)
-                cout << "punktacja" << endl;
+                cout << "punktacja " << s << endl;
                 s.erase(0,3);
                 if(!s.empty() && std::find_if(s.begin(),s.end(), [](unsigned char c) { return !isdigit(c); }) == s.end()){
                     int wyb = stoi(s);
                     if(wyb < 17){
                         punktyGra(usr,wyb);
                     }else {
-                        write(usr,"brq:",4);
+                        write(usr,"brq;",4);
                     }
                 } else {
-                    write(usr,"brq:",4);
+                    write(usr,"brq;",4);
                 }
             } else {
-                write(usr,"brq:",4);
+                write(usr,"brq;",4);
             }
         }
     }

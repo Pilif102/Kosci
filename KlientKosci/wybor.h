@@ -55,6 +55,8 @@ signals:
     void przypiszPunkty(QString dane);
     void roundNum(QString dane);
     void zwyciezca(QString dane);
+    void poczatekGry();
+    void graczGotowy(QString dane);
 
 
 private:

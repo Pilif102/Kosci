@@ -22,6 +22,7 @@ public:
     void refactor(int usr,Partia* gra);
     void actionManager(int usr,std::string s, Partia* gra);
     void punktyGra(int usr,int pid);
+    void zmienOpcje(Partia* gra);
 
 };
 
