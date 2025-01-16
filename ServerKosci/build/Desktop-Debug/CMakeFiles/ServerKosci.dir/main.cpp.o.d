@@ -250,10 +250,6 @@ CMakeFiles/ServerKosci.dir/main.cpp.o: \
   /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h \
   /usr/include/linux/falloc.h /usr/include/x86_64-linux-gnu/bits/stat.h \
   /usr/include/x86_64-linux-gnu/bits/struct_stat.h \
-  /home/student/KosciVersus/ServerKosci/poczekalnia.h \
-  /home/student/KosciVersus/ServerKosci/playermanager.h \
-  /home/student/KosciVersus/ServerKosci/gamemanager.h \
-  /home/student/KosciVersus/ServerKosci/pointscount.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/x86_64-linux-gnu/c++/13/bits/stdc++.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/cassert \
   /usr/include/assert.h \
@@ -447,4 +443,8 @@ CMakeFiles/ServerKosci.dir/main.cpp.o: \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/fs_path.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/fs_dir.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/fs_ops.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/memory_resource
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/memory_resource \
+  /home/student/KosciVersus/ServerKosci/poczekalnia.h \
+  /home/student/KosciVersus/ServerKosci/playermanager.h \
+  /home/student/KosciVersus/ServerKosci/gamemanager.h \
+  /home/student/KosciVersus/ServerKosci/pointscount.h

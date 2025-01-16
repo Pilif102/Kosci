@@ -36,18 +36,22 @@ void do_use_fd(int ufd){
         player.usunGracza(ufd);
         return;
     }
-    //dodać testowanie gdzie znajduje się gracz, i osyłanie go do danej klasy
-    cout <<"buff:" << buff << endl;
-    cout <<"size:" << size << endl;
-    cout <<"changed:" << string(buff,size) <<endl;
-    switch(player.podajPozycjeGracza(ufd)){ //switch dla czytelnosci
-    case 'r': //sygnały związane z poczekalnia, przeniesc do klasy poczekalnia
-        pocz.actionManager(ufd,buff,size);
-        break;
-    case 'g': //komendy dla gry
-        //if w grze
-        gra.actionManager(ufd,buff,size,pocz.zwrocPokoj(ufd));
-        break;
+    if(size>=3){
+        string s = string(buff,size);
+        size = s.find(':');
+        cout << size << endl;
+
+        //dodać testowanie gdzie znajduje się gracz, i osyłanie go do danej klasy
+
+        switch(player.podajPozycjeGracza(ufd)){ //switch dla czytelnosci
+        case 'r': //sygnały związane z poczekalnia, przeniesc do klasy poczekalnia
+            pocz.actionManager(ufd,buff,size);
+            break;
+        case 'g': //komendy dla gry
+            //if w grze
+            gra.actionManager(ufd,buff,size,pocz.zwrocPokoj(ufd));
+            break;
+        }
     }
 }
 

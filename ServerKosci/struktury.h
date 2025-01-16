@@ -14,6 +14,7 @@
 #include <sys/epoll.h>
 #include <sys/socket.h>
 #include <fcntl.h>
+#include <bits/stdc++.h>
 
 #define MAXGRACZY 4
 #define ILEPOKOI 10
