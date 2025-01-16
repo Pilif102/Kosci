@@ -142,6 +142,7 @@ void GameManager::przygotowanie(int usr){
     if(int i = graczId(usr,partia);i!=-1){
         partia->ready[i]=true;
         SendToAll(partia,"prd"+to_string(i));
+
     }
     if(partia->liczbaGraczy>1){
         int suma=0;
@@ -157,7 +158,7 @@ void GameManager::przygotowanie(int usr){
             for(int j=0;j<partia->liczbaGraczy;j++){
                 for(int i=0;i<6;i++){
                     int zero[5]={};
-                    partia->punkty[i]=punkty.liczPunkty(zero,i);
+                    partia->punkty[17*j+i]=punkty.liczPunkty(zero,i);
                 }
             }
             partia->runda++;
@@ -168,7 +169,7 @@ void GameManager::przygotowanie(int usr){
 
 void GameManager::runda(Partia* gra){
     //przebieg rundy
-    cout<<gra->runda<<endl;
+    cout<< "round:" <<gra->runda<<endl;
     fill(gra->kosci,gra->kosci+MAXGRACZY*5,0);
     fill(gra->wybrane,gra->wybrane+MAXGRACZY*5,-1);
     gra->rerolls=2;
@@ -292,6 +293,8 @@ void GameManager::actionManager(int usr,string s,Partia* gra){
             przygotowanie(usr);
         } else if(komenda == "chg"){
             //zmienione zasady (może, może nie)
+        } else {
+            write(usr,"brq:",4);
         }
     } else if (partia->runda <= partia->limitRund){
         if(partia->punktowanie==false){
@@ -302,8 +305,17 @@ void GameManager::actionManager(int usr,string s,Partia* gra){
                 s.erase(0,3);
                 if(!s.empty() && std::find_if(s.begin(),s.end(), [](unsigned char c) { return !isdigit(c); }) == s.end()){
                     int wyb = stoi(s);
-                    wezKosc(usr,wyb);
+                    if(wyb < gra->liczbaGraczy*5){
+                        wezKosc(usr,wyb);
+                    } else {
+                        write(usr,"brq:",4);
+                    }
+                } else {
+                    write(usr,"brq:",4);
                 }
+            } else {
+                write(usr,"brq:",4);
+                return;
             }
 
             for(int i=0;i<gra->liczbaGraczy*5;i++){
@@ -321,8 +333,16 @@ void GameManager::actionManager(int usr,string s,Partia* gra){
                 s.erase(0,3);
                 if(!s.empty() && std::find_if(s.begin(),s.end(), [](unsigned char c) { return !isdigit(c); }) == s.end()){
                     int wyb = stoi(s);
-                    punktyGra(usr,wyb);
+                    if(wyb < 17){
+                        punktyGra(usr,wyb);
+                    }else {
+                        write(usr,"brq:",4);
+                    }
+                } else {
+                    write(usr,"brq:",4);
                 }
+            } else {
+                write(usr,"brq:",4);
             }
         }
     }

@@ -45,20 +45,21 @@ int PlayerManager::podajPokojGracza(int usr){
 }
 
 string PlayerManager::zwrocNick(int usr){
-    cout << usr << endl;
     if(int i = graczId(usr);i != -1){
-        cout << i << " usr:" <<usr <<endl;
         return gracze[i].nick;
     }
     return "dziwny_gracz";
 }
 
 void PlayerManager::dajNick(int usr, string nick){ //przy dołączaniu do pokoju
-    if(nick.string::length()<3) return;
+    if(nick.string::length()<3){
+        write(usr,"bnc:",4);
+        return;
+    }
     if(nick.string::length()>=20) nick = nick.string::substr(0,20);
     for(int i=0;i<MAXGRACZY*ILEPOKOI;i++){
         if(nick.string::compare(gracze[i].nick)==0){
-            write(usr,"bnc:",4);
+            write(usr,"unc:",4);
             return;
         }
     }

@@ -57,10 +57,7 @@ Partia* Poczekalnia::zwrocPokoj(int usr){
 
 void Poczekalnia::actionManager(int usr, string s){
     string komenda = s.string::substr(0,3);
-    cout << komenda << endl;
-    cout << usr << endl;
     if(komenda == "new" && gracz.zwrocNick(usr).string::compare("")!=0){
-        cout << usr << endl;
         nowyPokoj(usr);
     } else if(komenda == "gib"){
         podajPokoje(usr);
@@ -69,19 +66,25 @@ void Poczekalnia::actionManager(int usr, string s){
         s.erase(0,3);
         if(!s.empty() && find_if(s.begin(),s.end(), [](unsigned char c) { return !isdigit(c); }) == s.end()){
             int wyb = stoi(s);
-            wyborPokoju(usr,wyb);
+            if(wyb < ILEPOKOI){
+                wyborPokoju(usr,wyb);
+            } else {
+                write(usr,"brq:",4);
+            }
+        } else {
+            write(usr,"brq:",4);
         }
     } else if(komenda == "nnc"){
         s.erase(0,3);
-        cout << s <<endl;
         gracz.dajNick(usr,s);
-        cout << "nick" <<endl;
     } else if(komenda == "ext"){
         cout << "gracz sie rozlaczyl" << endl;
         gracz.usunGracza(usr);
         shutdown(usr,SHUT_RDWR);
         close(usr);
         return;
+    } else {
+        write(usr,"brq:",4);
     }
 
 }
