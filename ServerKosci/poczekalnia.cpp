@@ -58,6 +58,7 @@ Partia* Poczekalnia::zwrocPokoj(int usr){
 void Poczekalnia::actionManager(int usr, string s){
     string komenda = s.string::substr(0,3);
     cout << komenda << endl;
+    cout << usr << endl;
     if(komenda == "new" && gracz.zwrocNick(usr).string::compare("")!=0){
         cout << usr << endl;
         nowyPokoj(usr);
