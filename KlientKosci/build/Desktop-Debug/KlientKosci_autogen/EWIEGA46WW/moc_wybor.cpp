@@ -26,7 +26,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 namespace {
 struct qt_meta_stringdata_wybor_t {
-    uint offsetsAndSizes[44];
+    uint offsetsAndSizes[52];
     char stringdata0[6];
     char stringdata1[12];
     char stringdata2[1];
@@ -49,6 +49,10 @@ struct qt_meta_stringdata_wybor_t {
     char stringdata19[7];
     char stringdata20[7];
     char stringdata21[6];
+    char stringdata22[7];
+    char stringdata23[2];
+    char stringdata24[2];
+    char stringdata25[2];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_wybor_t::offsetsAndSizes) + ofs), len 
@@ -75,7 +79,11 @@ Q_CONSTINIT static const qt_meta_stringdata_wybor_t qt_meta_stringdata_wybor = {
         QT_MOC_LITERAL(172, 7),  // "exitPok"
         QT_MOC_LITERAL(180, 6),  // "reroll"
         QT_MOC_LITERAL(187, 6),  // "gotowy"
-        QT_MOC_LITERAL(194, 5)   // "punkt"
+        QT_MOC_LITERAL(194, 5),  // "punkt"
+        QT_MOC_LITERAL(200, 6),  // "change"
+        QT_MOC_LITERAL(207, 1),  // "g"
+        QT_MOC_LITERAL(209, 1),  // "r"
+        QT_MOC_LITERAL(211, 1)   // "p"
     },
     "wybor",
     "dodajGracza",
@@ -98,7 +106,11 @@ Q_CONSTINIT static const qt_meta_stringdata_wybor_t qt_meta_stringdata_wybor = {
     "exitPok",
     "reroll",
     "gotowy",
-    "punkt"
+    "punkt",
+    "change",
+    "g",
+    "r",
+    "p"
 };
 #undef QT_MOC_LITERAL
 } // unnamed namespace
@@ -109,7 +121,7 @@ Q_CONSTINIT static const uint qt_meta_data_wybor[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-      19,   14, // methods
+      20,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -117,27 +129,28 @@ Q_CONSTINIT static const uint qt_meta_data_wybor[] = {
       14,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,  128,    2, 0x06,    1 /* Public */,
-       4,    1,  131,    2, 0x06,    3 /* Public */,
-       5,    1,  134,    2, 0x06,    5 /* Public */,
-       6,    1,  137,    2, 0x06,    7 /* Public */,
-       7,    0,  140,    2, 0x06,    9 /* Public */,
-       8,    0,  141,    2, 0x06,   10 /* Public */,
-       9,    1,  142,    2, 0x06,   11 /* Public */,
-      10,    1,  145,    2, 0x06,   13 /* Public */,
-      11,    1,  148,    2, 0x06,   15 /* Public */,
-      12,    1,  151,    2, 0x06,   17 /* Public */,
-      13,    1,  154,    2, 0x06,   19 /* Public */,
-      14,    0,  157,    2, 0x06,   21 /* Public */,
-      15,    1,  158,    2, 0x06,   22 /* Public */,
-      16,    1,  161,    2, 0x06,   24 /* Public */,
+       1,    1,  134,    2, 0x06,    1 /* Public */,
+       4,    1,  137,    2, 0x06,    3 /* Public */,
+       5,    1,  140,    2, 0x06,    5 /* Public */,
+       6,    1,  143,    2, 0x06,    7 /* Public */,
+       7,    0,  146,    2, 0x06,    9 /* Public */,
+       8,    0,  147,    2, 0x06,   10 /* Public */,
+       9,    1,  148,    2, 0x06,   11 /* Public */,
+      10,    1,  151,    2, 0x06,   13 /* Public */,
+      11,    1,  154,    2, 0x06,   15 /* Public */,
+      12,    1,  157,    2, 0x06,   17 /* Public */,
+      13,    1,  160,    2, 0x06,   19 /* Public */,
+      14,    0,  163,    2, 0x06,   21 /* Public */,
+      15,    1,  164,    2, 0x06,   22 /* Public */,
+      16,    1,  167,    2, 0x06,   24 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-      17,    1,  164,    2, 0x0a,   26 /* Public */,
-      18,    0,  167,    2, 0x0a,   28 /* Public */,
-      19,    0,  168,    2, 0x0a,   29 /* Public */,
-      20,    0,  169,    2, 0x0a,   30 /* Public */,
-      21,    1,  170,    2, 0x0a,   31 /* Public */,
+      17,    1,  170,    2, 0x0a,   26 /* Public */,
+      18,    0,  173,    2, 0x0a,   28 /* Public */,
+      19,    0,  174,    2, 0x0a,   29 /* Public */,
+      20,    0,  175,    2, 0x0a,   30 /* Public */,
+      21,    1,  176,    2, 0x0a,   31 /* Public */,
+      22,    3,  179,    2, 0x0a,   33 /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString,    3,
@@ -161,6 +174,7 @@ Q_CONSTINIT static const uint qt_meta_data_wybor[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::QString,    3,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int, QMetaType::Int,   23,   24,   25,
 
        0        // eod
 };
@@ -224,7 +238,12 @@ Q_CONSTINIT const QMetaObject wybor::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'punkt'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<QString, std::false_type>
+        QtPrivate::TypeAndForceComplete<QString, std::false_type>,
+        // method 'change'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>
     >,
     nullptr
 } };
@@ -254,6 +273,7 @@ void wybor::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void 
         case 16: _t->reroll(); break;
         case 17: _t->gotowy(); break;
         case 18: _t->punkt((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 19: _t->change((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[3]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -378,13 +398,13 @@ int wybor::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 19)
+        if (_id < 20)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 19;
+        _id -= 20;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 19)
+        if (_id < 20)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 19;
+        _id -= 20;
     }
     return _id;
 }

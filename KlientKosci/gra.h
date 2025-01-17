@@ -39,6 +39,7 @@ public slots:
     void poczatekGry();
     void graczGotowy(QString dane);
     void opcje(QString dane);
+    void wybOpcje(int g,int r,int p);
 
 protected:
     int liczbaGraczy;
@@ -49,6 +50,7 @@ signals:
     void reroll();
     void gotowy();
     void punkt(QString dane);
+    void change(int g,int r,int p);
 
 private:
     Ui::gra *ui;

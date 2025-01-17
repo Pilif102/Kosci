@@ -27,6 +27,7 @@ public slots:
     void reroll();
     void gotowy();
     void punkt(QString dane);
+    void change(int g,int r,int p);
 
 
 protected:

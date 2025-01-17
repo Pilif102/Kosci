@@ -32,6 +32,7 @@ QT_BEGIN_NAMESPACE
 class Ui_gra
 {
 public:
+    QAction *actionOpcje;
     QWidget *centralwidget;
     QVBoxLayout *verticalLayout;
     QGridLayout *gridLayout;
@@ -56,6 +57,8 @@ public:
             gra->setObjectName("gra");
         gra->resize(450, 544);
         gra->setMinimumSize(QSize(450, 0));
+        actionOpcje = new QAction(gra);
+        actionOpcje->setObjectName("actionOpcje");
         centralwidget = new QWidget(gra);
         centralwidget->setObjectName("centralwidget");
         verticalLayout = new QVBoxLayout(centralwidget);
@@ -148,6 +151,7 @@ public:
         gra->setStatusBar(statusbar);
 
         menubar->addAction(wyjdz->menuAction());
+        wyjdz->addAction(actionOpcje);
 
         retranslateUi(gra);
 
@@ -157,6 +161,7 @@ public:
     void retranslateUi(QMainWindow *gra)
     {
         gra->setWindowTitle(QCoreApplication::translate("gra", "MainWindow", nullptr));
+        actionOpcje->setText(QCoreApplication::translate("gra", "Opcje", nullptr));
         runda->setText(QCoreApplication::translate("gra", "Runda:", nullptr));
         Gotowosc->setText(QCoreApplication::translate("gra", "ready", nullptr));
         pokoj->setText(QCoreApplication::translate("gra", "Pok\303\263j:", nullptr));

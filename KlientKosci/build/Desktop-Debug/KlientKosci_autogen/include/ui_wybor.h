@@ -167,12 +167,12 @@ public:
     void retranslateUi(QMainWindow *wybor)
     {
         wybor->setWindowTitle(QCoreApplication::translate("wybor", "Sieci", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(wybor_2), QCoreApplication::translate("wybor", "Wybor Serwera", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(wybor_2), QCoreApplication::translate("wybor", "Choose server", nullptr));
         lineEditIP->setInputMask(QString());
         lineEditIP->setText(QCoreApplication::translate("wybor", "127.0.0.1", nullptr));
         lineEditIP->setPlaceholderText(QCoreApplication::translate("wybor", "server ip", nullptr));
         PushConnect->setText(QCoreApplication::translate("wybor", "Connect to Server", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(IpSetter), QCoreApplication::translate("wybor", "Wpisywanie r\304\231czne", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(IpSetter), QCoreApplication::translate("wybor", "Set manually", nullptr));
         nickEdit->setPlaceholderText(QCoreApplication::translate("wybor", "nick", nullptr));
         label->setText(QCoreApplication::translate("wybor", "<html><head/><body><p>Available games list:</p></body></html>", nullptr));
         refresh->setText(QCoreApplication::translate("wybor", "Refresh", nullptr));

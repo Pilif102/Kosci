@@ -7,6 +7,8 @@ KlientKosci_autogen/timestamp: \
 	/home/student/KosciVersus/KlientKosci/gra.cpp \
 	/home/student/KosciVersus/KlientKosci/gra.h \
 	/home/student/KosciVersus/KlientKosci/main.cpp \
+	/home/student/KosciVersus/KlientKosci/opcje.cpp \
+	/home/student/KosciVersus/KlientKosci/opcje.h \
 	/home/student/KosciVersus/KlientKosci/punkt.cpp \
 	/home/student/KosciVersus/KlientKosci/punkt.h \
 	/home/student/KosciVersus/KlientKosci/res.qrc \
@@ -435,6 +437,7 @@ KlientKosci_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/QtNetwork/qtnetworkexports.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtNetwork/qtnetworkglobal.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QCommonStyle \
+	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QDialog \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMainWindow \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMessageBox \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QProxyStyle \
@@ -600,6 +603,7 @@ KlientKosci_autogen/timestamp: \
 	/usr/share/cmake-3.28/Modules/Platform/Linux.cmake \
 	/usr/share/cmake-3.28/Modules/Platform/UnixPaths.cmake \
 	/home/student/KosciVersus/KlientKosci/gra.ui \
+	/home/student/KosciVersus/KlientKosci/opcje.ui \
 	/home/student/KosciVersus/KlientKosci/punkt.ui \
 	/home/student/KosciVersus/KlientKosci/wybor.ui \
 	/usr/bin/cmake

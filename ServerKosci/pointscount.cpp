@@ -108,15 +108,19 @@ int PointsCount::punktyFinalne(int punktyGracza[17]){
     int punkty=0;
     int szkolka = 0;
     for(int i=0;i<6;i++){
-        szkolka = punktyGracza[i]-3;
+        cout << "gracz" << punktyGracza[i] << endl;
+        szkolka += punktyGracza[i];
     }
     if(szkolka > 10){
         punkty += 30;
     } else if(szkolka <= 0) {
         punkty -= 30;
     }
+    cout << punkty << endl;
     for(int i=6;i<17;i++){
         punkty+=punktyGracza[i];
+        cout <<"gracz" << punktyGracza[i] << endl;
+        cout <<"pkt" << punkty << endl;
     }
     return punkty;
 }

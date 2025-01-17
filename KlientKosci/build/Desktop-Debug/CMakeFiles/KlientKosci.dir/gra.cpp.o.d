@@ -472,4 +472,6 @@ CMakeFiles/KlientKosci.dir/gra.cpp.o: \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtablewidget.h \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QVBoxLayout \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
-  /home/student/KosciVersus/KlientKosci/punkt.h
+  /home/student/KosciVersus/KlientKosci/punkt.h \
+  /home/student/KosciVersus/KlientKosci/opcje.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QDialog

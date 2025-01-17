@@ -65,6 +65,7 @@ void GameManager::zmienOpcje(Partia* gra, string dane){
         }
     }
     SendToAll(gra,"setg"+to_string(gra->LimitGraczy)+"r"+to_string(gra->limitRund)+"p"+to_string(gra->MaxRolls));
+    fill(gra->ready,gra->ready+MAXGRACZY,0);
 }
 
 int GameManager::rollDie(){
@@ -111,13 +112,14 @@ void GameManager::koniecGry(Partia* gra){
     //liczenie punktów
     int max=0;
     int wygrany=0;
-    SendToAll(gra,"end");
 
     for(int i=0;i<gra->liczbaGraczy;i++){
-        int wynik=0;
+        int pkt[17]={};
         for(int j=0;j<ILEWIERSZY;j++){
-            wynik+=gra->punkty[(17*i)+j];
+            pkt[j]=gra->punkty[(17*i)+j];
+            cout << pkt[j] << endl;
         }
+        int wynik = punkty.punktyFinalne(pkt);
         SendToAll(gra,"fin"+to_string(wynik)+"usr"+to_string(i));
         if(wynik > max){
             max=wynik;
@@ -264,7 +266,9 @@ void GameManager::punktyGra(int usr,int pid){
     int pkt = punkty.liczPunkty(ksc,pid);
     //dodaj do punktacji gracza
     partia->punkty[(gid*17)+pid]=pkt;
-    SendToAll(partia,"pts"+to_string(pkt)+"usr"+to_string(gid));
+    if(pid > 5){
+        SendToAll(partia,"pts"+to_string(pkt)+"usr"+to_string(gid));
+    }
     //dodac gotowosc, jesli gotowe to nowa runda chyba ze koniec
     partia->ready[gid]=true;
     for(int i=0;i<partia->liczbaGraczy;i++){

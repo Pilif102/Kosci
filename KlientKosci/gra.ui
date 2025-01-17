@@ -156,6 +156,7 @@
     <property name="title">
      <string>menu</string>
     </property>
+    <addaction name="actionOpcje"/>
    </widget>
    <addaction name="wyjdz"/>
   </widget>
@@ -164,6 +165,11 @@
     <bool>true</bool>
    </property>
   </widget>
+  <action name="actionOpcje">
+   <property name="text">
+    <string>Opcje</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

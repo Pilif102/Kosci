@@ -419,6 +419,9 @@ CMakeFiles/KlientKosci.dir/KlientKosci_autogen/mocs_compilation.cpp.o: \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/QSizeF \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/QTransform \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qnativeinterface.h \
+  /home/student/KosciVersus/KlientKosci/build/Desktop-Debug/KlientKosci_autogen/EWIEGA46WW/moc_opcje.cpp \
+  /home/student/KosciVersus/KlientKosci/build/Desktop-Debug/KlientKosci_autogen/EWIEGA46WW/../../../../opcje.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QDialog \
   /home/student/KosciVersus/KlientKosci/build/Desktop-Debug/KlientKosci_autogen/EWIEGA46WW/moc_punkt.cpp \
   /home/student/KosciVersus/KlientKosci/build/Desktop-Debug/KlientKosci_autogen/EWIEGA46WW/../../../../punkt.h \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \

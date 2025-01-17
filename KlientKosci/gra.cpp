@@ -1,6 +1,7 @@
 #include "gra.h"
 #include "ui_gra.h"
 #include "punkt.h"
+#include "opcje.h"
 
 int lGraczy=0;
 int yourNumber=-1;
@@ -8,8 +9,10 @@ bool czyPunkty = false;
 int kosci[5]={};
 int punkty[17]={};
 bool wybWyn[17]={};
+int g,r,p;
 
 Punkt *pkty;
+Opcje *opcj;
 QStandardItemModel *model = new QStandardItemModel;
 
 class ProxyStyle: public QProxyStyle{
@@ -29,14 +32,19 @@ gra::gra(QWidget *parent)
     , ui(new Ui::gra)
 {
     pkty = new Punkt();
+    opcj = new Opcje(this);
     ui->setupUi(this);
     ui->tableView->setStyle(new ProxyStyle(ui->tableView->style()));
     connect(ui->tableView,&QTableView::clicked,this,&gra::test);
     connect(ui->Gotowosc,&QCheckBox::clicked,this,[=]() {emit gotowy();ui->Gotowosc->setEnabled(false);});
     connect(ui->rollButton,&QPushButton::clicked,this,[=]() {emit reroll();});
+    connect(ui->menubar,&QMenuBar::triggered,this,[=]() {if(yourNumber==0){opcj->show();opcj->setup(g,r,p);}});
 
     //-pnktconn
     connect(pkty,SIGNAL(wybrane(int)),this,SLOT(wybrane(int)));
+
+    //opcje
+    connect(opcj,SIGNAL(wybOpcje(int,int,int)),this,SLOT(wybOpcje(int,int,int)));
 }
 
 void gra::closeEvent(QCloseEvent* event){
@@ -47,6 +55,7 @@ void gra::closeEvent(QCloseEvent* event){
     std::fill(wybWyn,wybWyn+17,false);
     emit exitPok();
     pkty->close();
+    opcj->close();
     event->accept();
 }
 
@@ -82,6 +91,7 @@ void gra::usunGracza(QString dane){
     if(yourNumber>dane.toInt()) yourNumber--;
     ui->gracze->removeColumn(dane.toInt());
     model->removeRow(lGraczy);
+    unset();
 }
 
 void gra::rzucone(QString dane){
@@ -139,6 +149,7 @@ void gra::gracze(QString dane){
     ui->gracze->setItem(0,numer,v);
     auto* e = new QTableWidgetItem("0");
     ui->gracze->setItem(1,numer,e);
+    if(lGraczy>yourNumber) unset();
 }
 
 
@@ -193,9 +204,21 @@ void gra::opcje(QString dane){
     int gracz = dane.indexOf("g");
     int rund = dane.indexOf("r");
     int rolls = dane.indexOf("p");
-    ui->MaxGraczy->setText("Max Players: " + dane.mid(gracz+1,rund-gracz-1));
-    ui->MaxRund->setText("Max rounds: " + dane.mid(rund+1,rolls-rund-1));
-    ui->MaxRolls->setText("Max rolls: " + dane.mid(rolls+1,rolls-dane.length()-1));
+    g =dane.mid(gracz+1,rund-gracz-1).toInt();
+    r = dane.mid(rund+1,rolls-rund-1).toInt();
+    p = dane.mid(rolls+1,rolls-dane.length()-1).toInt();
+    ui->MaxGraczy->setText("Max Players: " + QString::number(g));
+    ui->MaxRund->setText("Max rounds: " + QString::number(r));
+    ui->MaxRolls->setText("Max rolls: " + QString::number(p));
+    unset();
+
+}
+
+void gra::wybOpcje(int g,int r,int p){
+    ui->MaxGraczy->setText("Max Players: " + QString::number(g));
+    ui->MaxRund->setText("Max rounds: " + QString::number(r));
+    ui->MaxRolls->setText("Max rolls: " + QString::number(p));
+    emit change(g,r,p);
 }
 
 gra::~gra()

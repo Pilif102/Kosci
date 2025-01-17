@@ -48,7 +48,7 @@ wybor::wybor(QWidget *parent)
     }
 
 
-    // connect(ui->Servery,&QComboBox::currentIndexChanged,this,&wybor::wybieranie);
+    connect(ui->Servery,&QComboBox::currentIndexChanged,this,&wybor::wybieranie);
 
 //-------------
 
@@ -76,9 +76,6 @@ wybor::wybor(QWidget *parent)
     //gotowosc
     connect(nw,SIGNAL(gotowy()),this,SLOT(gotowy()));
 
-    //niegotowosc
-    connect(this,SIGNAL(unset()),nw,SLOT(unset()));
-
     //przerzucono
     connect(this,SIGNAL(rerolled(QString)),nw,SLOT(rerolled(QString)));
     //punnktowanie wybor
@@ -105,6 +102,8 @@ wybor::wybor(QWidget *parent)
     //opcje
     connect(this,SIGNAL(opcje(QString)),nw,SLOT(opcje(QString)));
 
+    //wybOpcje
+    connect(nw,SIGNAL(change(int,int,int)),this,SLOT(change(int,int,int)));
 }
 
 wybor::~wybor()
@@ -116,8 +115,6 @@ wybor::~wybor()
 
 void wybor::wybieranie(){
 
-    QMessageBox::critical(this, "ip", settings->value("serverIP/"+ui->Servery->currentData().toString()).toString());
-    QMessageBox::critical(this, "Port", settings->value("serverPort/"+ui->Servery->currentData().toString()).toString());
     ui->lineEditIP->setText(settings->value("serverIP/"+ui->Servery->currentData().toString()).toString());
     ui->portSpinBox->setValue(settings->value("serverPort/"+ui->Servery->currentData().toString()).toInt());
     connectBtnHit();
@@ -181,10 +178,7 @@ void wybor::responseHandler(QByteArray komenda){
 
             }
         } else {
-            if(kmd=="ust"){
-                emit unset();
-
-            }else if(kmd=="bck"){
+            if(kmd=="bck"){
                 //powrocono do poczekalni
                 QMessageBox::information(this, "Left Game", "Opuszczono gre");
 
@@ -321,6 +315,9 @@ void wybor::socketDisconnected(){
     sock = nullptr;
     connTimeoutTimer->deleteLater();
     connTimeoutTimer=nullptr;
+    if(nw->isVisible()){
+        nw->close();
+    }
     if(powiadomienia) QMessageBox::critical(this, "Error", "Connect timed out");
 }
 
@@ -356,7 +353,9 @@ void wybor::wybierzKosc(QString dane){
     sock->write("get"+dane.toUtf8()+";");
 }
 void wybor::exitPok(){
-    sock->write("ext;");
+    if(sock){
+        sock->write("ext;");
+    }
     this->show();
 }
 void wybor::reroll(){
@@ -368,4 +367,9 @@ void wybor::gotowy(){
 
 void wybor::punkt(QString dane){
     sock->write("ptn"+dane.toUtf8()+";");
+}
+
+
+void wybor::change(int g,int r,int p){
+    sock->write("chgg"+QString::number(g).toUtf8()+"r"+QString::number(r).toUtf8()+"p"+QString::number(p).toUtf8()+";");
 }

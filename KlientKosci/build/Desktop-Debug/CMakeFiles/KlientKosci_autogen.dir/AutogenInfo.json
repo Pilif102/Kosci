@@ -225,6 +225,12 @@
 			null
 		],
 		[
+			"/home/student/KosciVersus/KlientKosci/opcje.h",
+			"MU",
+			"EWIEGA46WW/moc_opcje.cpp",
+			null
+		],
+		[
 			"/home/student/KosciVersus/KlientKosci/punkt.h",
 			"MU",
 			"EWIEGA46WW/moc_punkt.cpp",
@@ -298,6 +304,7 @@
 	[
 		[ "/home/student/KosciVersus/KlientKosci/gra.cpp", "MU", null ],
 		[ "/home/student/KosciVersus/KlientKosci/main.cpp", "MU", null ],
+		[ "/home/student/KosciVersus/KlientKosci/opcje.cpp", "MU", null ],
 		[ "/home/student/KosciVersus/KlientKosci/punkt.cpp", "MU", null ],
 		[ "/home/student/KosciVersus/KlientKosci/wybor.cpp", "MU", null ]
 	],

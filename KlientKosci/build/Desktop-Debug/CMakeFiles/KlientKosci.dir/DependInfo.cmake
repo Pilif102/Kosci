@@ -13,6 +13,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/student/KosciVersus/KlientKosci/build/Desktop-Debug/KlientKosci_autogen/mocs_compilation.cpp" "CMakeFiles/KlientKosci.dir/KlientKosci_autogen/mocs_compilation.cpp.o" "gcc" "CMakeFiles/KlientKosci.dir/KlientKosci_autogen/mocs_compilation.cpp.o.d"
   "/home/student/KosciVersus/KlientKosci/gra.cpp" "CMakeFiles/KlientKosci.dir/gra.cpp.o" "gcc" "CMakeFiles/KlientKosci.dir/gra.cpp.o.d"
   "/home/student/KosciVersus/KlientKosci/main.cpp" "CMakeFiles/KlientKosci.dir/main.cpp.o" "gcc" "CMakeFiles/KlientKosci.dir/main.cpp.o.d"
+  "/home/student/KosciVersus/KlientKosci/opcje.cpp" "CMakeFiles/KlientKosci.dir/opcje.cpp.o" "gcc" "CMakeFiles/KlientKosci.dir/opcje.cpp.o.d"
   "/home/student/KosciVersus/KlientKosci/punkt.cpp" "CMakeFiles/KlientKosci.dir/punkt.cpp.o" "gcc" "CMakeFiles/KlientKosci.dir/punkt.cpp.o.d"
   "/home/student/KosciVersus/KlientKosci/wybor.cpp" "CMakeFiles/KlientKosci.dir/wybor.cpp.o" "gcc" "CMakeFiles/KlientKosci.dir/wybor.cpp.o.d"
   )

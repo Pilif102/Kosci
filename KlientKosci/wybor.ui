@@ -52,7 +52,7 @@
       </property>
       <widget class="QWidget" name="wybor_2">
        <attribute name="title">
-        <string>Wybor Serwera</string>
+        <string>Choose server</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_3">
         <item>
@@ -62,7 +62,7 @@
       </widget>
       <widget class="QWidget" name="IpSetter">
        <attribute name="title">
-        <string>Wpisywanie ręczne</string>
+        <string>Set manually</string>
        </attribute>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>

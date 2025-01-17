@@ -296,6 +296,30 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/KlientKosci.dir/build.make CMakeFiles/KlientKosci.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+opcje.o: opcje.cpp.o
+.PHONY : opcje.o
+
+# target to build an object file
+opcje.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KlientKosci.dir/build.make CMakeFiles/KlientKosci.dir/opcje.cpp.o
+.PHONY : opcje.cpp.o
+
+opcje.i: opcje.cpp.i
+.PHONY : opcje.i
+
+# target to preprocess a source file
+opcje.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KlientKosci.dir/build.make CMakeFiles/KlientKosci.dir/opcje.cpp.i
+.PHONY : opcje.cpp.i
+
+opcje.s: opcje.cpp.s
+.PHONY : opcje.s
+
+# target to generate assembly for a file
+opcje.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/KlientKosci.dir/build.make CMakeFiles/KlientKosci.dir/opcje.cpp.s
+.PHONY : opcje.cpp.s
+
 punkt.o: punkt.cpp.o
 .PHONY : punkt.o
 
@@ -371,6 +395,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... opcje.o"
+	@echo "... opcje.i"
+	@echo "... opcje.s"
 	@echo "... punkt.o"
 	@echo "... punkt.i"
 	@echo "... punkt.s"
