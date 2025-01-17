@@ -26,7 +26,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 namespace {
 struct qt_meta_stringdata_wybor_t {
-    uint offsetsAndSizes[42];
+    uint offsetsAndSizes[44];
     char stringdata0[6];
     char stringdata1[12];
     char stringdata2[1];
@@ -43,11 +43,12 @@ struct qt_meta_stringdata_wybor_t {
     char stringdata13[10];
     char stringdata14[12];
     char stringdata15[12];
-    char stringdata16[12];
-    char stringdata17[8];
-    char stringdata18[7];
+    char stringdata16[6];
+    char stringdata17[12];
+    char stringdata18[8];
     char stringdata19[7];
-    char stringdata20[6];
+    char stringdata20[7];
+    char stringdata21[6];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_wybor_t::offsetsAndSizes) + ofs), len 
@@ -69,11 +70,12 @@ Q_CONSTINIT static const qt_meta_stringdata_wybor_t qt_meta_stringdata_wybor = {
         QT_MOC_LITERAL(120, 9),  // "zwyciezca"
         QT_MOC_LITERAL(130, 11),  // "poczatekGry"
         QT_MOC_LITERAL(142, 11),  // "graczGotowy"
-        QT_MOC_LITERAL(154, 11),  // "wybierzKosc"
-        QT_MOC_LITERAL(166, 7),  // "exitPok"
-        QT_MOC_LITERAL(174, 6),  // "reroll"
-        QT_MOC_LITERAL(181, 6),  // "gotowy"
-        QT_MOC_LITERAL(188, 5)   // "punkt"
+        QT_MOC_LITERAL(154, 5),  // "opcje"
+        QT_MOC_LITERAL(160, 11),  // "wybierzKosc"
+        QT_MOC_LITERAL(172, 7),  // "exitPok"
+        QT_MOC_LITERAL(180, 6),  // "reroll"
+        QT_MOC_LITERAL(187, 6),  // "gotowy"
+        QT_MOC_LITERAL(194, 5)   // "punkt"
     },
     "wybor",
     "dodajGracza",
@@ -91,6 +93,7 @@ Q_CONSTINIT static const qt_meta_stringdata_wybor_t qt_meta_stringdata_wybor = {
     "zwyciezca",
     "poczatekGry",
     "graczGotowy",
+    "opcje",
     "wybierzKosc",
     "exitPok",
     "reroll",
@@ -106,34 +109,35 @@ Q_CONSTINIT static const uint qt_meta_data_wybor[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-      18,   14, // methods
+      19,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-      13,       // signalCount
+      14,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,  122,    2, 0x06,    1 /* Public */,
-       4,    1,  125,    2, 0x06,    3 /* Public */,
-       5,    1,  128,    2, 0x06,    5 /* Public */,
-       6,    1,  131,    2, 0x06,    7 /* Public */,
-       7,    0,  134,    2, 0x06,    9 /* Public */,
-       8,    0,  135,    2, 0x06,   10 /* Public */,
-       9,    1,  136,    2, 0x06,   11 /* Public */,
-      10,    1,  139,    2, 0x06,   13 /* Public */,
-      11,    1,  142,    2, 0x06,   15 /* Public */,
-      12,    1,  145,    2, 0x06,   17 /* Public */,
-      13,    1,  148,    2, 0x06,   19 /* Public */,
-      14,    0,  151,    2, 0x06,   21 /* Public */,
-      15,    1,  152,    2, 0x06,   22 /* Public */,
+       1,    1,  128,    2, 0x06,    1 /* Public */,
+       4,    1,  131,    2, 0x06,    3 /* Public */,
+       5,    1,  134,    2, 0x06,    5 /* Public */,
+       6,    1,  137,    2, 0x06,    7 /* Public */,
+       7,    0,  140,    2, 0x06,    9 /* Public */,
+       8,    0,  141,    2, 0x06,   10 /* Public */,
+       9,    1,  142,    2, 0x06,   11 /* Public */,
+      10,    1,  145,    2, 0x06,   13 /* Public */,
+      11,    1,  148,    2, 0x06,   15 /* Public */,
+      12,    1,  151,    2, 0x06,   17 /* Public */,
+      13,    1,  154,    2, 0x06,   19 /* Public */,
+      14,    0,  157,    2, 0x06,   21 /* Public */,
+      15,    1,  158,    2, 0x06,   22 /* Public */,
+      16,    1,  161,    2, 0x06,   24 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-      16,    1,  155,    2, 0x0a,   24 /* Public */,
-      17,    0,  158,    2, 0x0a,   26 /* Public */,
-      18,    0,  159,    2, 0x0a,   27 /* Public */,
-      19,    0,  160,    2, 0x0a,   28 /* Public */,
-      20,    1,  161,    2, 0x0a,   29 /* Public */,
+      17,    1,  164,    2, 0x0a,   26 /* Public */,
+      18,    0,  167,    2, 0x0a,   28 /* Public */,
+      19,    0,  168,    2, 0x0a,   29 /* Public */,
+      20,    0,  169,    2, 0x0a,   30 /* Public */,
+      21,    1,  170,    2, 0x0a,   31 /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString,    3,
@@ -148,6 +152,7 @@ Q_CONSTINIT static const uint qt_meta_data_wybor[] = {
     QMetaType::Void, QMetaType::QString,    3,
     QMetaType::Void, QMetaType::QString,    3,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,    3,
     QMetaType::Void, QMetaType::QString,    3,
 
  // slots: parameters
@@ -205,6 +210,9 @@ Q_CONSTINIT const QMetaObject wybor::staticMetaObject = { {
         // method 'graczGotowy'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QString, std::false_type>,
+        // method 'opcje'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QString, std::false_type>,
         // method 'wybierzKosc'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QString, std::false_type>,
@@ -240,11 +248,12 @@ void wybor::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void 
         case 10: _t->zwyciezca((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         case 11: _t->poczatekGry(); break;
         case 12: _t->graczGotowy((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
-        case 13: _t->wybierzKosc((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
-        case 14: _t->exitPok(); break;
-        case 15: _t->reroll(); break;
-        case 16: _t->gotowy(); break;
-        case 17: _t->punkt((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 13: _t->opcje((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 14: _t->wybierzKosc((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 15: _t->exitPok(); break;
+        case 16: _t->reroll(); break;
+        case 17: _t->gotowy(); break;
+        case 18: _t->punkt((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -340,6 +349,13 @@ void wybor::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void 
                 return;
             }
         }
+        {
+            using _t = void (wybor::*)(QString );
+            if (_t _q_method = &wybor::opcje; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
+                *result = 13;
+                return;
+            }
+        }
     }
 }
 
@@ -362,13 +378,13 @@ int wybor::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 18)
+        if (_id < 19)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 18;
+        _id -= 19;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 18)
+        if (_id < 19)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 18;
+        _id -= 19;
     }
     return _id;
 }
@@ -459,6 +475,13 @@ void wybor::graczGotowy(QString _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 12, _a);
+}
+
+// SIGNAL 13
+void wybor::opcje(QString _t1)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    QMetaObject::activate(this, &staticMetaObject, 13, _a);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

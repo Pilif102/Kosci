@@ -38,6 +38,7 @@ public slots:
     void wybrane(int wyb);
     void poczatekGry();
     void graczGotowy(QString dane);
+    void opcje(QString dane);
 
 protected:
     int liczbaGraczy;

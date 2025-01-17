@@ -42,6 +42,7 @@ protected:
     void socketDisconnected();
     void socketError(QTcpSocket::SocketError);
     void socketReadable();
+    void wybieranie();
 
 signals:
     void dodajGracza(QString dane);
@@ -57,6 +58,7 @@ signals:
     void zwyciezca(QString dane);
     void poczatekGry();
     void graczGotowy(QString dane);
+    void opcje(QString dane);
 
 
 private:

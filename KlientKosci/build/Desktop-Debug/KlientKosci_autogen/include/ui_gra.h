@@ -13,6 +13,7 @@
 #include <QtGui/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QCheckBox>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -31,14 +32,15 @@ QT_BEGIN_NAMESPACE
 class Ui_gra
 {
 public:
-    QAction *action_back;
-    QAction *action;
     QWidget *centralwidget;
     QVBoxLayout *verticalLayout;
-    QHBoxLayout *horizontalLayout_5;
-    QLabel *pokoj;
+    QGridLayout *gridLayout;
     QLabel *runda;
     QCheckBox *Gotowosc;
+    QLabel *pokoj;
+    QLabel *MaxGraczy;
+    QLabel *MaxRund;
+    QLabel *MaxRolls;
     QTableWidget *gracze;
     QTableView *tableView;
     QHBoxLayout *horizontalLayout;
@@ -52,35 +54,46 @@ public:
     {
         if (gra->objectName().isEmpty())
             gra->setObjectName("gra");
-        gra->resize(450, 520);
+        gra->resize(450, 544);
         gra->setMinimumSize(QSize(450, 0));
-        action_back = new QAction(gra);
-        action_back->setObjectName("action_back");
-        action = new QAction(gra);
-        action->setObjectName("action");
         centralwidget = new QWidget(gra);
         centralwidget->setObjectName("centralwidget");
         verticalLayout = new QVBoxLayout(centralwidget);
         verticalLayout->setObjectName("verticalLayout");
-        horizontalLayout_5 = new QHBoxLayout();
-        horizontalLayout_5->setObjectName("horizontalLayout_5");
-        pokoj = new QLabel(centralwidget);
-        pokoj->setObjectName("pokoj");
-
-        horizontalLayout_5->addWidget(pokoj);
-
+        gridLayout = new QGridLayout();
+        gridLayout->setObjectName("gridLayout");
         runda = new QLabel(centralwidget);
         runda->setObjectName("runda");
 
-        horizontalLayout_5->addWidget(runda);
+        gridLayout->addWidget(runda, 0, 1, 1, 1);
 
         Gotowosc = new QCheckBox(centralwidget);
         Gotowosc->setObjectName("Gotowosc");
 
-        horizontalLayout_5->addWidget(Gotowosc);
+        gridLayout->addWidget(Gotowosc, 0, 2, 1, 1);
+
+        pokoj = new QLabel(centralwidget);
+        pokoj->setObjectName("pokoj");
+
+        gridLayout->addWidget(pokoj, 0, 0, 1, 1);
+
+        MaxGraczy = new QLabel(centralwidget);
+        MaxGraczy->setObjectName("MaxGraczy");
+
+        gridLayout->addWidget(MaxGraczy, 1, 0, 1, 1);
+
+        MaxRund = new QLabel(centralwidget);
+        MaxRund->setObjectName("MaxRund");
+
+        gridLayout->addWidget(MaxRund, 1, 1, 1, 1);
+
+        MaxRolls = new QLabel(centralwidget);
+        MaxRolls->setObjectName("MaxRolls");
+
+        gridLayout->addWidget(MaxRolls, 1, 2, 1, 1);
 
 
-        verticalLayout->addLayout(horizontalLayout_5);
+        verticalLayout->addLayout(gridLayout);
 
         gracze = new QTableWidget(centralwidget);
         if (gracze->columnCount() < 4)
@@ -103,6 +116,7 @@ public:
         tableView->setMinimumSize(QSize(300, 300));
         tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
         tableView->setTabKeyNavigation(true);
+        tableView->setSelectionMode(QAbstractItemView::SingleSelection);
 
         verticalLayout->addWidget(tableView);
 
@@ -143,11 +157,12 @@ public:
     void retranslateUi(QMainWindow *gra)
     {
         gra->setWindowTitle(QCoreApplication::translate("gra", "MainWindow", nullptr));
-        action_back->setText(QCoreApplication::translate("gra", "change room", nullptr));
-        action->setText(QCoreApplication::translate("gra", "noew", nullptr));
-        pokoj->setText(QCoreApplication::translate("gra", "Pok\303\263j:", nullptr));
         runda->setText(QCoreApplication::translate("gra", "Runda:", nullptr));
         Gotowosc->setText(QCoreApplication::translate("gra", "ready", nullptr));
+        pokoj->setText(QCoreApplication::translate("gra", "Pok\303\263j:", nullptr));
+        MaxGraczy->setText(QCoreApplication::translate("gra", "Max Graczy:", nullptr));
+        MaxRund->setText(QCoreApplication::translate("gra", "Max Rund:", nullptr));
+        MaxRolls->setText(QCoreApplication::translate("gra", "Max przerzutow: ", nullptr));
         rollLabel->setText(QCoreApplication::translate("gra", "REROLLS LEFT :", nullptr));
         rollButton->setText(QCoreApplication::translate("gra", "REROLL", nullptr));
         wyjdz->setTitle(QCoreApplication::translate("gra", "menu", nullptr));

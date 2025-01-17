@@ -6,6 +6,7 @@
 bool powiadomienia=true;
 bool first = true;
 gra *nw;
+QSettings *settings;
 
 wybor::wybor(QWidget *parent)
     : QMainWindow(parent)
@@ -17,6 +18,7 @@ wybor::wybor(QWidget *parent)
     //server koneksje
     connect(ui->PushConnect, &QPushButton::clicked, this, &wybor::connectBtnHit);
     connect(ui->lineEditIP, &QLineEdit::returnPressed, ui->PushConnect, &QPushButton::click);
+
 
     //nick
     connect(ui->nickEdit, &QLineEdit::editingFinished, this, &wybor::sendNick);
@@ -34,12 +36,19 @@ wybor::wybor(QWidget *parent)
     connect(ui->listWidget,&QListWidget::itemClicked,this,[=]() {ui->GameButton->setEnabled("true");});
 
     //sprobuj sie polaczyc z domyślnym serverem
-    QSettings settings(QString(":/res/resources/config.ini"),QSettings::IniFormat);
-    QString ip = settings.value("serverIP/server1").toString();
-    int port = settings.value("serverPort/server1").toInt();
+    settings=new QSettings(QString(":/res/resources/config.ini"),QSettings::IniFormat);
+    QString ip = settings->value("serverIP/server1").toString();
+    int port = settings->value("serverPort/server1").toInt();
     ui->lineEditIP->setText(ip);
     ui->portSpinBox->setValue(port);
     ui->PushConnect->click();
+
+    for(int i=0;i<settings->value("serverCount/All").toInt();i++){
+        ui->Servery->addItem(settings->value("serverName/server"+QString::number(i+1)).toString(),"server"+QString::number(i+1));
+    }
+
+
+    // connect(ui->Servery,&QComboBox::currentIndexChanged,this,&wybor::wybieranie);
 
 //-------------
 
@@ -93,6 +102,9 @@ wybor::wybor(QWidget *parent)
     //inny gracz gotowy
     connect(this,SIGNAL(graczGotowy(QString)),nw,SLOT(graczGotowy(QString)));
 
+    //opcje
+    connect(this,SIGNAL(opcje(QString)),nw,SLOT(opcje(QString)));
+
 }
 
 wybor::~wybor()
@@ -100,6 +112,15 @@ wybor::~wybor()
     powiadomienia = false;
     sock->close();
     delete ui;
+}
+
+void wybor::wybieranie(){
+
+    QMessageBox::critical(this, "ip", settings->value("serverIP/"+ui->Servery->currentData().toString()).toString());
+    QMessageBox::critical(this, "Port", settings->value("serverPort/"+ui->Servery->currentData().toString()).toString());
+    ui->lineEditIP->setText(settings->value("serverIP/"+ui->Servery->currentData().toString()).toString());
+    ui->portSpinBox->setValue(settings->value("serverPort/"+ui->Servery->currentData().toString()).toInt());
+    connectBtnHit();
 }
 
 void wybor::responseHandler(QByteArray komenda){
@@ -156,6 +177,7 @@ void wybor::responseHandler(QByteArray komenda){
 
             }  else if(kmd=="set"){
                 //opcje gry
+                emit opcje(dane);
 
             }
         } else {
@@ -256,8 +278,16 @@ void wybor::roomsSetup(QString dane){
 }
 
 void wybor::connectBtnHit() {
-    if(sock)
+    if(sock){
+        powiadomienia=false;
         delete sock;
+        powiadomienia=true;
+    }
+    if(connTimeoutTimer){
+        connTimeoutTimer->stop();
+        connTimeoutTimer->disconnect();
+        delete connTimeoutTimer;
+    }
     sock = new QTcpSocket(this);
     connTimeoutTimer = new QTimer(this);
     connTimeoutTimer->setSingleShot(true);

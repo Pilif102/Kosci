@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>400</height>
+    <width>404</width>
+    <height>424</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -22,7 +22,7 @@
   <property name="minimumSize">
    <size>
     <width>400</width>
-    <height>400</height>
+    <height>0</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -40,38 +40,64 @@
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
-     <layout class="QHBoxLayout" name="connectGroup">
-      <item>
-       <widget class="QLineEdit" name="lineEditIP">
-        <property name="inputMask">
-         <string/>
-        </property>
-        <property name="text">
-         <string>127.0.0.1</string>
-        </property>
-        <property name="placeholderText">
-         <string>server ip</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QSpinBox" name="portSpinBox">
-        <property name="maximum">
-         <number>99999</number>
-        </property>
-        <property name="value">
-         <number>9999</number>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="PushConnect">
-        <property name="text">
-         <string>Connect to Server</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="wybor_2">
+       <attribute name="title">
+        <string>Wybor Serwera</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QComboBox" name="Servery"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="IpSetter">
+       <attribute name="title">
+        <string>Wpisywanie ręczne</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QLineEdit" name="lineEditIP">
+          <property name="inputMask">
+           <string/>
+          </property>
+          <property name="text">
+           <string>127.0.0.1</string>
+          </property>
+          <property name="placeholderText">
+           <string>server ip</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSpinBox" name="portSpinBox">
+          <property name="maximum">
+           <number>99999</number>
+          </property>
+          <property name="value">
+           <number>9999</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="PushConnect">
+          <property name="text">
+           <string>Connect to Server</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
     </item>
     <item>
      <widget class="QLineEdit" name="nickEdit">
@@ -153,24 +179,11 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>400</width>
+     <width>404</width>
      <height>23</height>
     </rect>
    </property>
   </widget>
-  <action name="actionclose">
-   <property name="checkable">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>Close</string>
-   </property>
-  </action>
-  <action name="actionInfo">
-   <property name="text">
-    <string>Info</string>
-   </property>
-  </action>
  </widget>
  <resources/>
  <connections/>

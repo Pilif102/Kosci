@@ -35,7 +35,36 @@ int GameManager::graczId(int usr,Partia* gra){
     }
     return -1;
 }
-void GameManager::zmienOpcje(Partia* gra){
+void GameManager::zmienOpcje(Partia* gra, string dane){
+    int gracze = dane.find("g");
+    int rundy = dane.find("r");
+    int rolls = dane.find("p");
+    if(gracze ==-1 || rundy ==-1|| rolls ==-1 || !(gracze<rundy<rolls))return;
+    string s = dane.substr(gracze+1,rundy-gracze-1);
+    cout << s << endl;
+    if(!s.empty() && std::find_if(s.begin(),s.end(), [](unsigned char c) { return !isdigit(c); }) == s.end()){
+        int wyb = stoi(s);
+        if(wyb <= 4 || wyb >=2){
+            gra->LimitGraczy = wyb;
+        }
+    }
+    s = dane.substr(rundy+1,rolls-rundy-1);
+    cout << s << endl;
+    if(!s.empty() && std::find_if(s.begin(),s.end(), [](unsigned char c) { return !isdigit(c); }) == s.end()){
+        int wyb = stoi(s);
+        if(wyb <= 17 || wyb >=1){
+            gra->limitRund = wyb;
+        }
+    }
+    s = dane.substr(rolls+1,dane.length()-rolls-1);
+    cout << s << endl;
+    if(!s.empty() && std::find_if(s.begin(),s.end(), [](unsigned char c) { return !isdigit(c); }) == s.end()){
+        int wyb = stoi(s);
+        if(wyb <= 5 || wyb >=0){
+            gra->MaxRolls = wyb;
+        }
+    }
+    SendToAll(gra,"setg"+to_string(gra->LimitGraczy)+"r"+to_string(gra->limitRund)+"p"+to_string(gra->MaxRolls));
 }
 
 int GameManager::rollDie(){
@@ -213,7 +242,7 @@ void GameManager::refactor(int usr,Partia* gra){
         SendToAll(gra,"qit"+to_string(i));
         for(int j=i;j<gra->liczbaGraczy-1;j++){
             gra->idGraczy[j]=gra->idGraczy[j+1]; /*else {
-                SendToAll(gra,"nic"+to_string(j-1)+","+gracz.zwrocNick(gra->idGraczy[j-1]));
+                SendToAll(gra,"nic"+to_string(j-1)+","+gracz.zwrocNick(gra->idGraczy[j-1])); //teraz zalatwia klient
             }*/
         }
         gra->liczbaGraczy--;
@@ -291,19 +320,21 @@ void GameManager::actionManager(int usr,string s,Partia* gra){
             //gotowosc
             przygotowanie(usr);
         } else if(komenda == "chg"){
-            //zmienione zasady (może, może nie)
-
-            //wyslij zasady do graczy
-            SendToAll(gra,"setg"+to_string(gra->LimitGraczy)+"r"+to_string(gra->limitRund)+"p"+to_string(gra->MaxRolls));
+            //zmienione zasady
+            s.erase(0,3);
+            if(!s.empty() && gra->idGraczy[0]==usr){
+                zmienOpcje(gra,s);
+            } else {
+                write(usr,"brq;",4);
+            }
         } else {
             write(usr,"brq;",4);
         }
     } else if (partia->runda <= partia->limitRund){
         if(partia->punktowanie==false){
-            if(komenda == "rol"){
+            if(komenda == "rol"){ //przerzuc kosci
                 reroll(partia);
-            } else if(komenda == "get"){
-                //dodaj kontrole bledow
+            } else if(komenda == "get"){ //wez kosc
                 s.erase(0,3);
                 if(!s.empty() && std::find_if(s.begin(),s.end(), [](unsigned char c) { return !isdigit(c); }) == s.end()){
                     int wyb = stoi(s);
@@ -311,9 +342,11 @@ void GameManager::actionManager(int usr,string s,Partia* gra){
                         wezKosc(usr,wyb);
                     } else {
                         write(usr,"brq;",4);
+                        return;
                     }
                 } else {
                     write(usr,"brq;",4);
+                    return;
                 }
             } else {
                 write(usr,"brq;",4);

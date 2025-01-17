@@ -25,7 +25,7 @@ struct Partia{
     int kosci[MAXGRACZY*5]={};
     int wybrane[MAXGRACZY*5];
     int runda=0;
-    int limitRund = 2;
+    int limitRund = 17;
     int rerolls=2;
     int MaxRolls=2;
     int LimitGraczy=4;

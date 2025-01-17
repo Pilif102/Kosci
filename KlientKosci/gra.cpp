@@ -3,9 +3,6 @@
 #include "punkt.h"
 
 int lGraczy=0;
-int pokoj;
-int runda=0;
-int maxRols=2;
 int yourNumber=-1;
 bool czyPunkty = false;
 int kosci[5]={};
@@ -44,7 +41,6 @@ gra::gra(QWidget *parent)
 
 void gra::closeEvent(QCloseEvent* event){
     lGraczy=0;
-    runda=0;
     yourNumber=-1;
     czyPunkty = false;
     std::fill(punkty,punkty+17,0);
@@ -65,14 +61,12 @@ void gra::test(QModelIndex index){
 
 void gra::setup(int pokoje,int gracze){
     lGraczy=0;
-    runda=0;
     yourNumber=-1;
     czyPunkty = false;
     std::fill(punkty,punkty+17,0);
     std::fill(wybWyn,wybWyn+17,false);
     ui->gracze->setRowCount(2);
     ui->gracze->setColumnCount(gracze+1);
-    pokoj = pokoje;
     model->clear();
     ui->pokoj->setText("Pokoj: "+QString::number(pokoje));
     ui->runda->setText("Runda: 0");
@@ -80,8 +74,7 @@ void gra::setup(int pokoje,int gracze){
     ui->gracze->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tableView->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    maxRols=2;
-    ui->rollLabel->setText("REROLLS LEFT : "+QString::number(maxRols));
+    ui->rollLabel->setText("REROLLS LEFT : 2");
 }
 
 void gra::usunGracza(QString dane){
@@ -194,6 +187,15 @@ void gra::poczatekGry(){
 void gra::graczGotowy(QString dane){
     int gracz = dane.toInt();
     ui->gracze->item(0,gracz)->setBackground(QColor(Qt::yellow));
+}
+
+void gra::opcje(QString dane){
+    int gracz = dane.indexOf("g");
+    int rund = dane.indexOf("r");
+    int rolls = dane.indexOf("p");
+    ui->MaxGraczy->setText("Max Players: " + dane.mid(gracz+1,rund-gracz-1));
+    ui->MaxRund->setText("Max rounds: " + dane.mid(rund+1,rolls-rund-1));
+    ui->MaxRolls->setText("Max rolls: " + dane.mid(rolls+1,rolls-dane.length()-1));
 }
 
 gra::~gra()

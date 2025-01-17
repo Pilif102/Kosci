@@ -10,8 +10,8 @@
 #define UI_WYBOR_H
 
 #include <QtCore/QVariant>
-#include <QtGui/QAction>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -20,6 +20,7 @@
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpinBox>
+#include <QtWidgets/QTabWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -28,11 +29,14 @@ QT_BEGIN_NAMESPACE
 class Ui_wybor
 {
 public:
-    QAction *actionclose;
-    QAction *actionInfo;
     QWidget *centralwidget;
     QVBoxLayout *verticalLayout_2;
-    QHBoxLayout *connectGroup;
+    QTabWidget *tabWidget;
+    QWidget *wybor_2;
+    QVBoxLayout *verticalLayout_3;
+    QComboBox *Servery;
+    QWidget *IpSetter;
+    QHBoxLayout *horizontalLayout;
     QLineEdit *lineEditIP;
     QSpinBox *portSpinBox;
     QPushButton *PushConnect;
@@ -50,45 +54,56 @@ public:
         if (wybor->objectName().isEmpty())
             wybor->setObjectName("wybor");
         wybor->setEnabled(true);
-        wybor->resize(400, 400);
+        wybor->resize(404, 424);
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(wybor->sizePolicy().hasHeightForWidth());
         wybor->setSizePolicy(sizePolicy);
-        wybor->setMinimumSize(QSize(400, 400));
+        wybor->setMinimumSize(QSize(400, 0));
         wybor->setMaximumSize(QSize(4000, 4000));
-        actionclose = new QAction(wybor);
-        actionclose->setObjectName("actionclose");
-        actionclose->setCheckable(false);
-        actionInfo = new QAction(wybor);
-        actionInfo->setObjectName("actionInfo");
         centralwidget = new QWidget(wybor);
         centralwidget->setObjectName("centralwidget");
         centralwidget->setEnabled(true);
         verticalLayout_2 = new QVBoxLayout(centralwidget);
         verticalLayout_2->setObjectName("verticalLayout_2");
-        connectGroup = new QHBoxLayout();
-        connectGroup->setObjectName("connectGroup");
-        lineEditIP = new QLineEdit(centralwidget);
+        tabWidget = new QTabWidget(centralwidget);
+        tabWidget->setObjectName("tabWidget");
+        tabWidget->setMinimumSize(QSize(0, 0));
+        wybor_2 = new QWidget();
+        wybor_2->setObjectName("wybor_2");
+        verticalLayout_3 = new QVBoxLayout(wybor_2);
+        verticalLayout_3->setObjectName("verticalLayout_3");
+        Servery = new QComboBox(wybor_2);
+        Servery->setObjectName("Servery");
+
+        verticalLayout_3->addWidget(Servery);
+
+        tabWidget->addTab(wybor_2, QString());
+        IpSetter = new QWidget();
+        IpSetter->setObjectName("IpSetter");
+        horizontalLayout = new QHBoxLayout(IpSetter);
+        horizontalLayout->setObjectName("horizontalLayout");
+        lineEditIP = new QLineEdit(IpSetter);
         lineEditIP->setObjectName("lineEditIP");
 
-        connectGroup->addWidget(lineEditIP);
+        horizontalLayout->addWidget(lineEditIP);
 
-        portSpinBox = new QSpinBox(centralwidget);
+        portSpinBox = new QSpinBox(IpSetter);
         portSpinBox->setObjectName("portSpinBox");
         portSpinBox->setMaximum(99999);
         portSpinBox->setValue(9999);
 
-        connectGroup->addWidget(portSpinBox);
+        horizontalLayout->addWidget(portSpinBox);
 
-        PushConnect = new QPushButton(centralwidget);
+        PushConnect = new QPushButton(IpSetter);
         PushConnect->setObjectName("PushConnect");
 
-        connectGroup->addWidget(PushConnect);
+        horizontalLayout->addWidget(PushConnect);
 
+        tabWidget->addTab(IpSetter, QString());
 
-        verticalLayout_2->addLayout(connectGroup);
+        verticalLayout_2->addWidget(tabWidget);
 
         nickEdit = new QLineEdit(centralwidget);
         nickEdit->setObjectName("nickEdit");
@@ -138,10 +153,13 @@ public:
         wybor->setCentralWidget(centralwidget);
         menubar = new QMenuBar(wybor);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 400, 23));
+        menubar->setGeometry(QRect(0, 0, 404, 23));
         wybor->setMenuBar(menubar);
 
         retranslateUi(wybor);
+
+        tabWidget->setCurrentIndex(0);
+
 
         QMetaObject::connectSlotsByName(wybor);
     } // setupUi
@@ -149,12 +167,12 @@ public:
     void retranslateUi(QMainWindow *wybor)
     {
         wybor->setWindowTitle(QCoreApplication::translate("wybor", "Sieci", nullptr));
-        actionclose->setText(QCoreApplication::translate("wybor", "Close", nullptr));
-        actionInfo->setText(QCoreApplication::translate("wybor", "Info", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(wybor_2), QCoreApplication::translate("wybor", "Wybor Serwera", nullptr));
         lineEditIP->setInputMask(QString());
         lineEditIP->setText(QCoreApplication::translate("wybor", "127.0.0.1", nullptr));
         lineEditIP->setPlaceholderText(QCoreApplication::translate("wybor", "server ip", nullptr));
         PushConnect->setText(QCoreApplication::translate("wybor", "Connect to Server", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(IpSetter), QCoreApplication::translate("wybor", "Wpisywanie r\304\231czne", nullptr));
         nickEdit->setPlaceholderText(QCoreApplication::translate("wybor", "nick", nullptr));
         label->setText(QCoreApplication::translate("wybor", "<html><head/><body><p>Available games list:</p></body></html>", nullptr));
         refresh->setText(QCoreApplication::translate("wybor", "Refresh", nullptr));

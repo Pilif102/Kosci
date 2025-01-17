@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>450</width>
-    <height>520</height>
+    <height>544</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -22,25 +22,46 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_5">
-      <item>
-       <widget class="QLabel" name="pokoj">
-        <property name="text">
-         <string>Pokój:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="1">
        <widget class="QLabel" name="runda">
         <property name="text">
          <string>Runda:</string>
         </property>
        </widget>
       </item>
-      <item>
+      <item row="0" column="2">
        <widget class="QCheckBox" name="Gotowosc">
         <property name="text">
          <string>ready</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="pokoj">
+        <property name="text">
+         <string>Pokój:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="MaxGraczy">
+        <property name="text">
+         <string>Max Graczy:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLabel" name="MaxRund">
+        <property name="text">
+         <string>Max Rund:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLabel" name="MaxRolls">
+        <property name="text">
+         <string>Max przerzutow: </string>
         </property>
        </widget>
       </item>
@@ -97,6 +118,9 @@
       <property name="tabKeyNavigation">
        <bool>true</bool>
       </property>
+      <property name="selectionMode">
+       <enum>QAbstractItemView::SingleSelection</enum>
+      </property>
      </widget>
     </item>
     <item>
@@ -140,16 +164,6 @@
     <bool>true</bool>
    </property>
   </widget>
-  <action name="action_back">
-   <property name="text">
-    <string>change room</string>
-   </property>
-  </action>
-  <action name="action">
-   <property name="text">
-    <string>noew</string>
-   </property>
-  </action>
  </widget>
  <resources/>
  <connections/>
