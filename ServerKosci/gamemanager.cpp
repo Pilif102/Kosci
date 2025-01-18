@@ -443,7 +443,7 @@ void GameManager::actionManager(int usr,string s,Partia* gra){
     } else if (partia->runda <= partia->limitRund){
         if(partia->punktowanie==false && usr!=przerolowany){
             if(komenda == "rol" ){ //przerzuc kosci
-                if(gra->rerolls<1) return;
+                if(gra->rerolls<1 || gra->ready[graczId(usr,gra)]) return;
                 thread t([=] {timerRoll(gra,usr,"msg");});
                 t.detach();
             } else if(komenda == "get"){ //wez kosc
