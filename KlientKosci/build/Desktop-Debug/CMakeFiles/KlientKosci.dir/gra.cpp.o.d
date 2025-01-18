@@ -462,6 +462,8 @@ CMakeFiles/KlientKosci.dir/gra.cpp.o: \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qmenu.h \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMenuBar \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qmenubar.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QProgressBar \
+  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qprogressbar.h \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QPushButton \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qpushbutton.h \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QStatusBar \

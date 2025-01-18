@@ -60,6 +60,7 @@ signals:
     void poczatekGry();
     void graczGotowy(QString dane);
     void opcje(QString dane);
+    void remain(QString dane);
 
 
 private:

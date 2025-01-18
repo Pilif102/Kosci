@@ -4,7 +4,7 @@
 
 #include <QMessageBox>
 bool powiadomienia=true;
-bool first = true;
+bool booted = false;
 gra *nw;
 QSettings *settings;
 
@@ -104,6 +104,9 @@ wybor::wybor(QWidget *parent)
 
     //wybOpcje
     connect(nw,SIGNAL(change(int,int,int)),this,SLOT(change(int,int,int)));
+
+    //czas
+    connect(this,SIGNAL(remain(QString)),nw,SLOT(remain(QString)));
 }
 
 wybor::~wybor()
@@ -175,13 +178,19 @@ void wybor::responseHandler(QByteArray komenda){
             }  else if(kmd=="set"){
                 //opcje gry
                 emit opcje(dane);
-
+            }  else if(kmd=="rem"){
+                //czas do odczekania
+                emit remain(dane);
             }
         } else {
             if(kmd=="bck"){
                 //powrocono do poczekalni
                 QMessageBox::information(this, "Left Game", "Opuszczono gre");
 
+            }else if(kmd=="but"){
+                QMessageBox::information(this, "Removed from Game", "Player removed from game for inactivity");
+                booted = true;
+                nw->close();
             }else if(kmd=="t-e"){
                 emit punktowanie();
 
@@ -196,9 +205,6 @@ void wybor::responseHandler(QByteArray komenda){
                 ui->newRoom->setEnabled(true);
                 QMessageBox::information(this, "Done", "Ustawiono nick");
                 sock->write("gib;");
-
-            } else if(kmd=="end"){
-                //skonczono gre
 
             }else if(kmd=="nrm"){
                 //brak miejsc na nowe pokoje
@@ -353,7 +359,7 @@ void wybor::wybierzKosc(QString dane){
     sock->write("get"+dane.toUtf8()+";");
 }
 void wybor::exitPok(){
-    if(sock){
+    if(sock && !booted){
         sock->write("ext;");
     }
     this->show();

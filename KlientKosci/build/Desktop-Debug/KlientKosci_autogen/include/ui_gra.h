@@ -20,6 +20,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTableView>
@@ -47,6 +48,7 @@ public:
     QHBoxLayout *horizontalLayout;
     QLabel *rollLabel;
     QPushButton *rollButton;
+    QProgressBar *progressBar;
     QMenuBar *menubar;
     QMenu *wyjdz;
     QStatusBar *statusbar;
@@ -138,6 +140,14 @@ public:
 
         verticalLayout->addLayout(horizontalLayout);
 
+        progressBar = new QProgressBar(centralwidget);
+        progressBar->setObjectName("progressBar");
+        progressBar->setMaximum(30);
+        progressBar->setValue(5);
+        progressBar->setInvertedAppearance(false);
+
+        verticalLayout->addWidget(progressBar);
+
         gra->setCentralWidget(centralwidget);
         menubar = new QMenuBar(gra);
         menubar->setObjectName("menubar");
@@ -170,6 +180,7 @@ public:
         MaxRolls->setText(QCoreApplication::translate("gra", "Max przerzutow: ", nullptr));
         rollLabel->setText(QCoreApplication::translate("gra", "REROLLS LEFT :", nullptr));
         rollButton->setText(QCoreApplication::translate("gra", "REROLL", nullptr));
+        progressBar->setFormat(QCoreApplication::translate("gra", "%v s", nullptr));
         wyjdz->setTitle(QCoreApplication::translate("gra", "menu", nullptr));
     } // retranslateUi
 

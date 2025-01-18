@@ -23,7 +23,9 @@ public:
     void actionManager(int usr,std::string s, Partia* gra);
     void punktyGra(int usr,int pid);
     void zmienOpcje(Partia* gra,std::string dane);
-
+    void timerPocz(Partia* gra,int czas);
+    void timerRunda(Partia* gra,int czas);
+    void timerPunktowanie(Partia* gra,int czas);
 };
 
 #endif // GAMEMANAGER_H

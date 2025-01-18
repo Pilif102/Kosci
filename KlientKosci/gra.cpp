@@ -10,6 +10,7 @@ int kosci[5]={};
 int punkty[17]={};
 bool wybWyn[17]={};
 int g,r,p;
+bool rolled = false;
 
 Punkt *pkty;
 Opcje *opcj;
@@ -102,10 +103,14 @@ void gra::rzucone(QString dane){
             image = image.scaled(50,50,Qt::KeepAspectRatio);
             QStandardItem *item = new QStandardItem();
             item->setData(QVariant(QPixmap::fromImage(image)), Qt::DecorationRole);
+            if(rolled){
+                if(model->item(j,i)->background()!=item->background()) item->setBackground(model->item(j,i)->background());
+            }
             model->setItem(j, i, item);
         }
     }
     ui->tableView->setModel(model);
+    rolled=false;
 }
 
 void gra::zablokujKosc(QString dane){
@@ -134,6 +139,7 @@ void gra::punktowanie(){
 }
 
 void gra::rerolled(QString dane){
+    rolled = true;
     ui->rollLabel->setText("REROLLS LEFT : "+dane);
 }
 
@@ -221,6 +227,10 @@ void gra::wybOpcje(int g,int r,int p){
     emit change(g,r,p);
 }
 
+void gra::remain(QString dane){
+    int czas = dane.toInt();
+    ui->progressBar->setValue(czas);
+}
 gra::~gra()
 {
     delete ui;

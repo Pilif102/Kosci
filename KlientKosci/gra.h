@@ -40,6 +40,7 @@ public slots:
     void graczGotowy(QString dane);
     void opcje(QString dane);
     void wybOpcje(int g,int r,int p);
+    void remain(QString dane);
 
 protected:
     int liczbaGraczy;

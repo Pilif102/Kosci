@@ -5,6 +5,7 @@ using namespace std;
 PlayerManager gracz;
 Partia* partia;
 PointsCount punkty;
+bool timeout = false;
 
 //thread gry[ILEPOKOI];
 
@@ -26,6 +27,94 @@ void SendKosciToAll(Partia* gra, int mes[], string msg=""){
     }
     SendToAll(gra,msg);
 }
+
+void GameManager::timerPunktowanie(Partia* gra,int czas){
+    int runda = gra->runda;
+    int l = gra->liczbaGraczy;
+    while(czas>0){
+        if(gra->punktowanie && runda==gra->runda && l==gra->liczbaGraczy){
+            SendToAll(gra,"rem"+to_string(czas));
+            cout << czas << endl;
+            this_thread::sleep_for(chrono::seconds(1));
+            czas--;
+        } else {
+            return;
+        }
+    }
+    timeout = true;
+    //wyrzuc niegotowych i daj nastepna runde
+    bool nieakt[MAXGRACZY]={};
+    for(int i=0;i<gra->liczbaGraczy;i++){
+        if(!gra->ready[i]){
+            nieakt[i]=true;
+        }
+    }
+    for(int i=gra->liczbaGraczy-1;i>=0;i--){
+        if(nieakt[i]){
+            int usr = gra->idGraczy[i];
+            cout << "gracz wyrzucony" << endl;
+            refactor(usr,gra);
+            gracz.zmienPozycjeGracza(usr,'r');
+            write(usr,"but;",4);
+        }
+    }
+    timeout = false;
+    gra->runda++;
+    thread t([this] {timerPocz(partia,5);});
+    t.detach();
+}
+
+void GameManager::timerRunda(Partia* gra,int czas){
+    int runda = gra->runda;
+    int l = gra->liczbaGraczy;
+    while(czas>0){
+        if(!gra->punktowanie && runda==gra->runda && l==gra->liczbaGraczy){
+            SendToAll(gra,"rem"+to_string(czas));
+            cout << czas << endl;
+            this_thread::sleep_for(chrono::seconds(1));
+            czas--;
+        } else {
+            return;
+        }
+    }
+    timeout = true;
+    //wyrzuc niegotowych i powtorz runde
+    bool nieakt[MAXGRACZY]={};
+    for(int i=0;i<gra->liczbaGraczy;i++){
+        if(!gra->ready[i]){
+            nieakt[i]=true;
+        }
+    }
+    for(int i=gra->liczbaGraczy-1;i>=0;i--){
+        if(nieakt[i]){
+            int usr = gra->idGraczy[i];
+            cout << "gracz wyrzucony" << endl;
+            refactor(usr,gra);
+            gracz.zmienPozycjeGracza(usr,'r');
+            write(usr,"but;",4);
+        }
+    }
+    timeout = false;
+    thread t([this] {timerPocz(partia,5);});
+    t.detach();
+}
+
+void GameManager::timerPocz(Partia* gra,int czas){
+    int rnd = gra->runda;
+    while(czas>0){
+        if(gra->ready[0] && rnd==gra->runda){
+            SendToAll(gra,"rem"+to_string(czas));
+            cout << czas << endl;
+            this_thread::sleep_for(chrono::seconds(1));
+            czas--;
+        } else {
+            return;
+        }
+    }
+    runda(gra);
+}
+
+
 
 int GameManager::graczId(int usr,Partia* gra){
     for(int i=0;i<MAXGRACZY;i++){
@@ -191,7 +280,8 @@ void GameManager::przygotowanie(int usr){
                 }
             }
             partia->runda++;
-            runda(partia);
+            thread t([this] {timerPocz(partia,5);});
+            t.detach();
         }
     }
 }
@@ -207,6 +297,8 @@ void GameManager::runda(Partia* gra){
     SendToAll(gra,"rnd"+to_string(gra->runda));
     //rzuty
     SendToAll(gra,"kos"+rollDice(gra->liczbaGraczy,gra->kosci));
+    thread t([this] { timerRunda(partia,30); });
+    t.detach();
 }
 
 void GameManager::reroll(Partia* gra){
@@ -255,7 +347,10 @@ void GameManager::refactor(int usr,Partia* gra){
         koniecGry(gra);
     }else
     //zrestartuj runde ktora aktualnie jest
-    if( gra->runda > 0 && gra->punktowanie==false) runda(gra);
+        if( gra->runda > 0 && gra->punktowanie==false && !timeout){
+            thread t([this] {timerPocz(partia,5);});
+            t.detach();
+        }
 }
 void GameManager::punktyGra(int usr,int pid){
     int gid = (graczId(usr,partia));
@@ -280,7 +375,8 @@ void GameManager::punktyGra(int usr,int pid){
         koniecGry(partia);
     }else{
         partia->runda++;
-        runda(partia);
+        thread t([this] {timerPocz(partia,5);});
+        t.detach();
     }
 }
 
@@ -306,6 +402,9 @@ void GameManager::endPlayerTurn(int usr){
                 SendToAll(partia,"t-e");
                 partia->punktowanie=true;
                 fill(partia->ready,partia->ready+MAXGRACZY,0);
+                //timer
+                thread t([this] {timerPunktowanie(partia,30);});
+                t.detach();
             }
         }
     }

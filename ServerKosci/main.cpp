@@ -57,14 +57,21 @@ void do_use_fd(int ufd){
     }
 }
 
-int main()
+int main(int argc,char*argv[])
 {
+
     srand(time(NULL));
+    int port = 9999;
+    if(argc > 1){
+        port = stoi(argv[1]);
+    }
+
+
     struct epoll_event ev, events[MAX_EVENTS];
     int fd, conn_sock, nfds, epollfd;
 
     fd = socket(PF_INET,SOCK_STREAM,0);
-    sockaddr_in addr{AF_INET,htons(9999),{htonl(INADDR_ANY) }};
+    sockaddr_in addr{AF_INET,htons(port),{htonl(INADDR_ANY) }};
     const int one = 1;
     setsockopt(fd,SOL_SOCKET,SO_REUSEADDR,&one,sizeof(one));
     socklen_t addrlen = sizeof(addr);
@@ -83,7 +90,7 @@ int main()
         perror("epoll_ctl: fd");
         exit(EXIT_FAILURE);
     }
-
+    cout << "server working" <<endl;
     for (;;) {
         nfds = epoll_wait(epollfd, events, MAX_EVENTS, -1);
         if (nfds == -1) {
