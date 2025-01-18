@@ -6,6 +6,7 @@ PlayerManager gracz;
 Partia* partia;
 PointsCount punkty;
 bool timeout = false;
+int przerolowany = -1;
 
 //thread gry[ILEPOKOI];
 
@@ -60,7 +61,7 @@ void GameManager::timerPunktowanie(Partia* gra,int czas){
     }
     timeout = false;
     gra->runda++;
-    thread t([this] {timerPocz(partia,5);});
+    thread t([=] {timerPocz(gra,5);});
     t.detach();
 }
 
@@ -95,7 +96,7 @@ void GameManager::timerRunda(Partia* gra,int czas){
         }
     }
     timeout = false;
-    thread t([this] {timerPocz(partia,5);});
+    thread t([=] {timerPocz(gra,5);});
     t.detach();
 }
 
@@ -114,7 +115,15 @@ void GameManager::timerPocz(Partia* gra,int czas){
     runda(gra);
 }
 
+void GameManager::timerRoll(Partia* gra,int usr,string msg){
+    gra->rerolls--;
+    SendToAll(gra,"rrl"+to_string(gra->rerolls));
+    przerolowany = usr;
+    this_thread::sleep_for(chrono::seconds(1));
+    przerolowany = -1;
+    reroll(partia);
 
+}
 
 int GameManager::graczId(int usr,Partia* gra){
     for(int i=0;i<MAXGRACZY;i++){
@@ -280,7 +289,7 @@ void GameManager::przygotowanie(int usr){
                 }
             }
             partia->runda++;
-            thread t([this] {timerPocz(partia,5);});
+            thread t([=] {timerPocz(partia,5);});
             t.detach();
         }
     }
@@ -297,12 +306,11 @@ void GameManager::runda(Partia* gra){
     SendToAll(gra,"rnd"+to_string(gra->runda));
     //rzuty
     SendToAll(gra,"kos"+rollDice(gra->liczbaGraczy,gra->kosci));
-    thread t([this] { timerRunda(partia,30); });
+    thread t([=] { timerRunda(gra,30); });
     t.detach();
 }
 
-void GameManager::reroll(Partia* gra){
-    if(gra->rerolls<1) return;
+string GameManager::reroll(Partia* gra){
     string msg="";
     for(int i=0;i<gra->liczbaGraczy*5;i++){
         bool znalezione=false;
@@ -317,13 +325,12 @@ void GameManager::reroll(Partia* gra){
         }
     }
 
-    gra->rerolls--;
     for(int i=0;i<gra->liczbaGraczy*5;i++){
         msg+=to_string(gra->kosci[i]);
     }
-    SendToAll(gra,"rrl"+to_string(gra->rerolls));
     SendToAll(gra,"kos"+msg);
     cout << msg << endl;
+    return msg;
 }
 
 void GameManager::refactor(int usr,Partia* gra){
@@ -348,7 +355,7 @@ void GameManager::refactor(int usr,Partia* gra){
     }else
     //zrestartuj runde ktora aktualnie jest
         if( gra->runda > 0 && gra->punktowanie==false && !timeout){
-            thread t([this] {timerPocz(partia,5);});
+            thread t([=] {timerPocz(gra,5);});
             t.detach();
         }
 }
@@ -375,7 +382,7 @@ void GameManager::punktyGra(int usr,int pid){
         koniecGry(partia);
     }else{
         partia->runda++;
-        thread t([this] {timerPocz(partia,5);});
+        thread t([=] {timerPocz(partia,5);});
         t.detach();
     }
 }
@@ -403,7 +410,7 @@ void GameManager::endPlayerTurn(int usr){
                 partia->punktowanie=true;
                 fill(partia->ready,partia->ready+MAXGRACZY,0);
                 //timer
-                thread t([this] {timerPunktowanie(partia,30);});
+                thread t([=] {timerPunktowanie(partia,30);});
                 t.detach();
             }
         }
@@ -434,9 +441,11 @@ void GameManager::actionManager(int usr,string s,Partia* gra){
             write(usr,"brq;",4);
         }
     } else if (partia->runda <= partia->limitRund){
-        if(partia->punktowanie==false){
-            if(komenda == "rol"){ //przerzuc kosci
-                reroll(partia);
+        if(partia->punktowanie==false && usr!=przerolowany){
+            if(komenda == "rol" ){ //przerzuc kosci
+                if(gra->rerolls<1) return;
+                thread t([=] {timerRoll(gra,usr,"msg");});
+                t.detach();
             } else if(komenda == "get"){ //wez kosc
                 s.erase(0,3);
                 if(!s.empty() && std::find_if(s.begin(),s.end(), [](unsigned char c) { return !isdigit(c); }) == s.end()){

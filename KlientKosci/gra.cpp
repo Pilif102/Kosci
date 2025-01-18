@@ -5,12 +5,12 @@
 
 int lGraczy=0;
 int yourNumber=-1;
-bool czyPunkty = false;
 int kosci[5]={};
-int punkty[17]={};
 bool wybWyn[17]={};
 int g,r,p;
 bool rolled = false;
+int maxRoll = 3;
+int rol = 0;
 
 Punkt *pkty;
 Opcje *opcj;
@@ -38,7 +38,7 @@ gra::gra(QWidget *parent)
     ui->tableView->setStyle(new ProxyStyle(ui->tableView->style()));
     connect(ui->tableView,&QTableView::clicked,this,&gra::test);
     connect(ui->Gotowosc,&QCheckBox::clicked,this,[=]() {emit gotowy();ui->Gotowosc->setEnabled(false);});
-    connect(ui->rollButton,&QPushButton::clicked,this,[=]() {emit reroll();});
+    connect(ui->rollButton,&QPushButton::clicked,this,[=]() {emit reroll();if(rol != 0) ui->tableView->setEnabled(false);});
     connect(ui->menubar,&QMenuBar::triggered,this,[=]() {if(yourNumber==0){opcj->show();opcj->setup(g,r,p);}});
 
     //-pnktconn
@@ -51,8 +51,6 @@ gra::gra(QWidget *parent)
 void gra::closeEvent(QCloseEvent* event){
     lGraczy=0;
     yourNumber=-1;
-    czyPunkty = false;
-    std::fill(punkty,punkty+17,0);
     std::fill(wybWyn,wybWyn+17,false);
     emit exitPok();
     pkty->close();
@@ -72,8 +70,6 @@ void gra::test(QModelIndex index){
 void gra::setup(int pokoje,int gracze){
     lGraczy=0;
     yourNumber=-1;
-    czyPunkty = false;
-    std::fill(punkty,punkty+17,0);
     std::fill(wybWyn,wybWyn+17,false);
     ui->gracze->setRowCount(2);
     ui->gracze->setColumnCount(gracze+1);
@@ -111,6 +107,8 @@ void gra::rzucone(QString dane){
     }
     ui->tableView->setModel(model);
     rolled=false;
+    ui->rollButton->setEnabled(true);
+    ui->tableView->setEnabled(true);
 }
 
 void gra::zablokujKosc(QString dane){
@@ -134,6 +132,7 @@ void gra::unset(){
 }
 
 void gra::punktowanie(){
+    ui->rollLabel->setText("REROLLS LEFT : "+QString::number(maxRoll));
     pkty->show();
     pkty->setup(wybWyn);
 }
@@ -141,6 +140,8 @@ void gra::punktowanie(){
 void gra::rerolled(QString dane){
     rolled = true;
     ui->rollLabel->setText("REROLLS LEFT : "+dane);
+    ui->rollButton->setEnabled(false);
+    rol = dane.toInt();
 }
 
 void gra::gracze(QString dane){
@@ -185,6 +186,8 @@ void gra::zwyciezca(QString dane){
     ui->Gotowosc->setEnabled(true);
     model->clear();
     ui->runda->setText("Runda: 0");
+    std::fill(wybWyn,wybWyn+17,false);
+
 }
 
 
@@ -213,6 +216,8 @@ void gra::opcje(QString dane){
     g =dane.mid(gracz+1,rund-gracz-1).toInt();
     r = dane.mid(rund+1,rolls-rund-1).toInt();
     p = dane.mid(rolls+1,rolls-dane.length()-1).toInt();
+    maxRoll = p;
+    rol = p;
     ui->MaxGraczy->setText("Max Players: " + QString::number(g));
     ui->MaxRund->setText("Max rounds: " + QString::number(r));
     ui->MaxRolls->setText("Max rolls: " + QString::number(p));
